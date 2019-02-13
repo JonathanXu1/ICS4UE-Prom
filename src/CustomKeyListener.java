@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-public class KeyListener implements KeyListener{
+public class CustomKeyListener implements KeyListener{
 
     public void keyTyped(KeyEvent e) {
     }
