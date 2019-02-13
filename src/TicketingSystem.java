@@ -25,7 +25,9 @@ import java.util.Random;
 
 public class TicketingSystem extends JFrame {
     static JFrame window;
-    JPanel gamePanel;
+    JPanel headerPanel;
+    JPanel navPanel;
+    JPanel contentPanel;
 
     //Main
     public static void main(String[] args) {
@@ -36,6 +38,21 @@ public class TicketingSystem extends JFrame {
     TicketingSystem() {
         super("Prom Ticketing System");
 
+        // Set the frame to full screen
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        // this.setUndecorated(true);  //Set to true to remove title bar
+        //frame.setResizable(false);
+
+        //Set up the inner panels (where we put our graphics)
+        headerPanel = new HeaderPanel();
+        this.add(headerPanel);
+        navPanel = new HeaderPanel();
+        this.add(navPanel);
+        contentPanel = new contentPanel();
+        this.add(headerPanel);
+
+        
     } //End of Constructor
 
 }
