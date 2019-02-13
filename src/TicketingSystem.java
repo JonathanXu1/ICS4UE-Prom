@@ -42,16 +42,16 @@ public class TicketingSystem extends JFrame {
 
         // Set the frame to full screen
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        // this.setUndecorated(true);  //Set to true to remove title bar
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setUndecorated(true);
         //frame.setResizable(false);
 
         //Set up the inner panels (where we put our graphics)``
-        headerPanel = new HeaderPanel(MAX_WIDTH, 500);
+        headerPanel = new HeaderPanel(MAX_WIDTH, MAX_HEIGHT/8);
         this.add(headerPanel, BorderLayout.NORTH);
-        navPanel = new NavPanel(MAX_WIDTH/4, MAX_HEIGHT-500);
+        navPanel = new NavPanel(MAX_WIDTH/6, MAX_HEIGHT/8*7);
         this.add(navPanel, BorderLayout.WEST);
-        contentPanel = new ContentPanel(MAX_WIDTH/4*3, MAX_HEIGHT-500);
+        contentPanel = new ContentPanel();
         this.add(contentPanel, BorderLayout.CENTER);
 
         //Add listeners
