@@ -49,10 +49,10 @@ public class TicketingSystem extends JFrame {
         this.add(headerPanel);
         navPanel = new HeaderPanel();
         this.add(navPanel);
-        contentPanel = new contentPanel();
-        this.add(headerPanel);
+        contentPanel = new ContentPanel();
+        this.add(contentPanel);
 
-        
+
     } //End of Constructor
 
 }
