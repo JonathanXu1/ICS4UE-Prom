@@ -1,29 +1,57 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class NavPanel extends CustomPanel{
     private int selection = 0;
+    private ContentPanel mainPanel;
+    private ButtonGroup group;
 
-    public NavPanel(int x, int y){
+    public NavPanel(int x, int y, ContentPanel mainPanel){
         super(x, y);
 
         this.setLayout(new GridLayout(10,1));
         this.setBackground(Color.decode("#C4C4C4"));
 
-        JRadioButton dashboard = new JRadioButton("Dasbhaord");
+        this.mainPanel = mainPanel;
+
+        JRadioButton dashboard, students, seatingGen, tableView;
+
+        dashboard = new JRadioButton("Dasbhaord");
         dashboard.setSelected(true);
-        JRadioButton students = new JRadioButton("Student Manager");
-        JRadioButton seatingGen = new JRadioButton("Seating Generator");
-        JRadioButton tableView = new JRadioButton("Table Display");
+        students = new JRadioButton("Student Manager");
+        seatingGen = new JRadioButton("Seating Generator");
+        tableView = new JRadioButton("Table Display");
 
         //Group the radio buttons.
-        ButtonGroup group = new ButtonGroup();
+        group = new ButtonGroup();
         group.add(dashboard);
         group.add(students);
         group.add(seatingGen);
         group.add(tableView);
 
+        ActionListener groupListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                AbstractButton btn = (AbstractButton) e.getSource();
+                if(btn.getText().equals("Dashboard")){
+                    mainPanel.changePanel(0);
+                } else if(btn.getText().equals("Student Manager")){
+                    mainPanel.changePanel(1);
+                } else if(btn.getText().equals("Seating Generator")){
+                    mainPanel.changePanel(2);
+                } else if(btn.getText().equals("Table Display")){
+                    mainPanel.changePanel(3);
+                }
+            }
+        };
+
+        dashboard.addActionListener(groupListener);
+        students.addActionListener(groupListener);
+        seatingGen.addActionListener(groupListener);
+        tableView.addActionListener(groupListener);
 
         this.add(dashboard);
         this.add(students);
@@ -32,4 +60,5 @@ public class NavPanel extends CustomPanel{
 
         this.add(Box.createVerticalGlue());
     }
+
 }
