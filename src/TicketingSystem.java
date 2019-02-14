@@ -23,13 +23,13 @@ import java.util.Random;
 
 public class TicketingSystem extends JFrame {
     //Class variables
-    static JFrame window;
-    JPanel headerPanel;
-    JPanel navPanel;
-    JPanel contentPanel;
+    private static JFrame window;
+    private JPanel headerPanel;
+    private JPanel navPanel;
+    private JPanel contentPanel;
     private Random rand = new Random();
-    final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     //Main
     public static void main(String[] args) {
@@ -43,13 +43,13 @@ public class TicketingSystem extends JFrame {
         // Set the frame to full screen
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setUndecorated(true);
+        //this.setUndecorated(true);
         //frame.setResizable(false);
 
         //Set up the inner panels (where we put our graphics)``
-        headerPanel = new HeaderPanel(MAX_WIDTH, MAX_HEIGHT/8);
+        headerPanel = new HeaderPanel(MAX_WIDTH, MAX_HEIGHT/10);
         this.add(headerPanel, BorderLayout.NORTH);
-        navPanel = new NavPanel(MAX_WIDTH/6, MAX_HEIGHT/8*7);
+        navPanel = new NavPanel(MAX_WIDTH/6, MAX_HEIGHT/10*9);
         this.add(navPanel, BorderLayout.WEST);
         contentPanel = new ContentPanel();
         this.add(contentPanel, BorderLayout.CENTER);
@@ -61,6 +61,9 @@ public class TicketingSystem extends JFrame {
         this.requestFocusInWindow(); //make sure the frame has focus
 
         this.setVisible(true);
+
+        //Navigate between panels
+
 
     } //End of Constructor
 
