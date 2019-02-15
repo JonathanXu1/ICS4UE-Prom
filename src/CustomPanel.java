@@ -6,4 +6,5 @@ public class CustomPanel extends JPanel {
     CustomPanel(int x, int y){
         this.setPreferredSize(new Dimension(x, y));
     }
+    // Move bg color here
 }

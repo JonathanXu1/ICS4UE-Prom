@@ -5,7 +5,7 @@ import java.awt.Color;
 public class DynamicLabel extends JLabel {
     private static Font labelFont = new Font("Arial", Font.PLAIN, 12);
 
-    public DynamicLabel(String content, int width, int height, int color){
+    public DynamicLabel(String content, int width, int height, Color color){
         super(content);
 
         int stringWidth = this.getFontMetrics(labelFont).stringWidth(content);
@@ -23,10 +23,7 @@ public class DynamicLabel extends JLabel {
         // Set the label's font size to the newly determined size.
         this.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
 
-        if(color == 1){ // Black
-            this.setForeground(Color.BLACK);
-        } else if(color == 2){ //White
-            this.setForeground(Color.WHITE);
-        }
+        this.setForeground(color);
+
     }
 }

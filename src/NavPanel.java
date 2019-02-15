@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class NavPanel extends CustomPanel{
-    private int selection = 0;
     private ContentPanel mainPanel;
     private ButtonGroup group;
 
@@ -16,13 +15,13 @@ public class NavPanel extends CustomPanel{
 
         this.mainPanel = mainPanel;
 
-        JRadioButton dashboard, students, seatingGen, tableView;
+        CustomRadioButton dashboard, students, seatingGen, tableView;
 
-        dashboard = new JRadioButton("Dasbhaord");
+        dashboard = new CustomRadioButton("Dashboard");
         dashboard.setSelected(true);
-        students = new JRadioButton("Student Manager");
-        seatingGen = new JRadioButton("Seating Generator");
-        tableView = new JRadioButton("Table Display");
+        students = new CustomRadioButton("Student Manager");
+        seatingGen = new CustomRadioButton("Seating Generator");
+        tableView = new CustomRadioButton("Table Display");
 
         //Group the radio buttons.
         group = new ButtonGroup();
@@ -35,7 +34,7 @@ public class NavPanel extends CustomPanel{
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                AbstractButton btn = (AbstractButton) e.getSource();
+                CustomRadioButton btn = (CustomRadioButton) e.getSource();
                 if(btn.getText().equals("Dashboard")){
                     mainPanel.changePanel(0);
                 } else if(btn.getText().equals("Student Manager")){

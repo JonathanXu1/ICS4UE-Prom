@@ -1,0 +1,39 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class EditStudentLayout extends JPanel {
+
+    public EditStudentLayout(){
+        // Deciding between row layout vs gridbag layout
+        JPanel mainContent = new JPanel();
+            JPanel row1 = new JPanel();
+                JLabel nameLabel = new JLabel("Name");
+                JLabel numberLabel = new JLabel("Name");
+            row1.add(nameLabel);
+            row1.add(numberLabel);
+            JPanel row2 = new JPanel();
+            JPanel row3 = new JPanel();
+                JLabel dietLabel = new JLabel("Name");
+                JLabel likesLabel = new JLabel("Name");
+                JButton deleteBtn = new JButton("Delete");
+                JButton addBtn = new JButton("Add");
+            row3.add(dietLabel);
+            row3.add(likesLabel);
+            row3.add(deleteBtn);
+            row3.add(addBtn);
+            JPanel row4 = new JPanel();
+                JPanel dietPanel = new JPanel();
+                JPanel likesPanel = new JPanel();
+        mainContent.add(row1);
+        mainContent.add(row2);
+        mainContent.add(row3);
+        mainContent.add(row4);
+
+        JPanel bottomNav = new JPanel();
+    }
+
+    // Edit existing student
+    public void editExisting (Student student){
+
+    }
+}

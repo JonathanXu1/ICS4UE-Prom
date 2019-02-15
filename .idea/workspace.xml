@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36138759-dd8d-4e17-b9bb-33d0a710b8e3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/EditLayout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prom/ContentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prom/ContentPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prom/HeaderPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prom/HeaderPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prom/NavPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prom/NavPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prom/TicketingSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prom/TicketingSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ContentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomRadioButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomRadioButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DynamicLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DynamicLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HeaderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeaderPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NavPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NavPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TicketingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicketingSystem.java" afterDir="false" />
     </list>
@@ -23,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TicketingSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="54" column="46" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
+            <state relative-caret-position="51">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -36,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContentPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="442">
+              <caret line="26" column="87" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,10 +54,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/NavPanel.java">
+        <entry file="file://$PROJECT_DIR$/src/EditLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+            <state relative-caret-position="629">
+              <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -58,10 +66,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HeaderPanel.java">
+        <entry file="file://$PROJECT_DIR$/src/DynamicLabel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state>
+              <caret column="26" lean-forward="true" selection-start-column="26" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CustomPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="6" column="49" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CustomButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,17 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CustomRadioButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CustomButton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,20 +127,22 @@
       <list>
         <option value="$PROJECT_DIR$/src/KeyListener.java" />
         <option value="$PROJECT_DIR$/src/DynamicFont.java" />
-        <option value="$PROJECT_DIR$/src/DynamicLabel.java" />
-        <option value="$PROJECT_DIR$/src/HeaderPanel.java" />
-        <option value="$PROJECT_DIR$/src/CustomPanel.java" />
         <option value="$PROJECT_DIR$/src/CustomLayeredPane.java" />
         <option value="$PROJECT_DIR$/src/CustomButton.java" />
+        <option value="$PROJECT_DIR$/src/CustomRadioButton.java" />
+        <option value="$PROJECT_DIR$/src/DynamicLabel.java" />
+        <option value="$PROJECT_DIR$/src/HeaderPanel.java" />
+        <option value="$PROJECT_DIR$/src/test.java" />
+        <option value="$PROJECT_DIR$/src/CustomPanel.java" />
+        <option value="$PROJECT_DIR$/src/NavPanel.java" />
         <option value="$PROJECT_DIR$/src/TicketingSystem.java" />
         <option value="$PROJECT_DIR$/src/ContentPanel.java" />
-        <option value="$PROJECT_DIR$/src/NavPanel.java" />
+        <option value="$PROJECT_DIR$/src/EditLayout.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="30" />
-    <option name="y" value="240" />
+    <option name="x" value="-15" />
     <option name="width" value="1950" />
     <option name="height" value="2075" />
   </component>
@@ -129,6 +151,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -145,12 +168,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550115940853" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550203258663" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
@@ -166,9 +188,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TicketingSystem">
     <configuration name="TicketingSystem" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TicketingSystem" />
+      <module name="Prom" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
       <module name="Prom" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,6 +206,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TicketingSystem" />
+        <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +227,7 @@
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.1307847" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4978903" visible="true" weight="0.12206573" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -206,7 +236,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5021097" side_tool="true" weight="0.12944333" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.07496464" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2545969" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -237,44 +267,32 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomLayeredPane.java" />
-    <entry file="file://$PROJECT_DIR$/src/DynamicLabel.java">
+    <entry file="file://$PROJECT_DIR$/src/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="-17">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1303#1304#0" expanded="true" />
+            <element signature="e#1356#1357#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/NavPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        <state relative-caret-position="102">
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HeaderPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomRadioButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
+        <state relative-caret-position="85">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -283,8 +301,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TicketingSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="54" column="46" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
+        <state relative-caret-position="51">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -292,20 +310,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ContentPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/CustomButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="187">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NavPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/CustomRadioButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ContentPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="87" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="49" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DynamicLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" lean-forward="true" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EditLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

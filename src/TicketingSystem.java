@@ -47,12 +47,15 @@ public class TicketingSystem extends JFrame {
         //frame.setResizable(false);
 
         //Set up the inner panels (where we put our graphics)``
-        headerPanel = new HeaderPanel(MAX_WIDTH, MAX_HEIGHT/10);
+        headerPanel = new HeaderPanel("Prom Design", MAX_WIDTH, MAX_HEIGHT/10, 1);
         this.add(headerPanel, BorderLayout.NORTH);
         contentPanel = new ContentPanel();
         this.add(contentPanel, BorderLayout.CENTER);
         navPanel = new NavPanel(MAX_WIDTH/6, MAX_HEIGHT/10*9, contentPanel);
         this.add(navPanel, BorderLayout.WEST);
+
+        this.pack();
+        contentPanel.addChildren();
 
         //Add listeners
         CustomKeyListener keyListener = new CustomKeyListener();

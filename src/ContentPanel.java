@@ -1,5 +1,5 @@
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
 
 public class ContentPanel extends JPanel {
     private JPanel dashboard = new JPanel();
@@ -10,18 +10,25 @@ public class ContentPanel extends JPanel {
     public ContentPanel(){
         super();
         this.setBackground(Color.decode("#E5E5E5"));
+    }
 
-        JLabel dashTitle = new JLabel("Dashboard");
-        dashboard.add(dashTitle);
+    public void addChildren(){
+        dashboard.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
+        studentMgr.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
+        seatGen.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
+        table.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
 
-        JLabel studentTitle = new JLabel("Student Manager");
-        studentMgr.add(studentTitle);
+        HeaderPanel dashTitle = new HeaderPanel("Dashboard", this.getWidth()/20*19, this.getHeight()/12, 2);
+        dashboard.add(dashTitle, BorderLayout.NORTH);
+        HeaderPanel studentTitle = new HeaderPanel("Student Manager", this.getWidth()/20*19, this.getHeight()/12, 2);
+        studentMgr.add(studentTitle, BorderLayout.NORTH);
+        HeaderPanel seatGenTitle = new HeaderPanel("Seating Generator", this.getWidth()/20*19, this.getHeight()/12, 2);
+        seatGen.add(seatGenTitle, BorderLayout.NORTH);
+        HeaderPanel tableTitle = new HeaderPanel("Table Display", this.getWidth()/20*19, this.getHeight()/12, 2);
+        table.add(tableTitle, BorderLayout.NORTH);
 
-        JLabel seatGenTitle = new JLabel("Seating Generator");
-        seatGen.add(seatGenTitle);
-
-        JLabel tableTitle = new JLabel("Table Display");
-        table.add(tableTitle);
+        System.out.print(this.getWidth());
+        System.out.println(this.getHeight());
 
         this.add(dashboard);
         this.add(studentMgr);
