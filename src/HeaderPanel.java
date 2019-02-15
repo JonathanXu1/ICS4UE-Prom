@@ -4,6 +4,8 @@ import java.awt.Color;
 public class HeaderPanel extends CustomPanel {
     public HeaderPanel(String content, int x, int y, int colorScheme){
         super(x, y);
+
+
         Color bg = Color.decode("#8780B8");
         Color text = Color.BLACK;
 

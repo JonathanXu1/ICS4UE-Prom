@@ -1,10 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class EditStudentLayout extends JPanel {
+public class EditStudentLayout extends CustomPanel {
 
-    public EditStudentLayout(){
+    public EditStudentLayout(int x, int y){
         // Deciding between row layout vs gridbag layout
+        super(x, y);
+        System.out.println(this.getWidth());
+        System.out.println(this.getHeight());
+        System.out.println(x);
+        System.out.println(y);
         JPanel mainContent = new JPanel();
             JPanel row1 = new JPanel();
                 JLabel nameLabel = new JLabel("Name");
@@ -30,6 +35,12 @@ public class EditStudentLayout extends JPanel {
         mainContent.add(row4);
 
         JPanel bottomNav = new JPanel();
+    }
+
+    public void addChildren(){
+        System.out.println("two");
+        System.out.println(this.getWidth());
+        System.out.println(this.getHeight());
     }
 
     // Edit existing student

@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class ContentPanel extends JPanel {
     private JPanel dashboard = new JPanel();
-    private JPanel studentMgr = new JPanel();
+    private EditStudentLayout studentMgr;
     private JPanel seatGen = new JPanel();
     private JPanel table = new JPanel();
 
@@ -13,8 +13,9 @@ public class ContentPanel extends JPanel {
     }
 
     public void addChildren(){
+
         dashboard.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
-        studentMgr.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
+        studentMgr = new EditStudentLayout(this.getWidth()/20*19, this.getHeight());
         seatGen.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
         table.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
 
@@ -27,13 +28,13 @@ public class ContentPanel extends JPanel {
         HeaderPanel tableTitle = new HeaderPanel("Table Display", this.getWidth()/20*19, this.getHeight()/12, 2);
         table.add(tableTitle, BorderLayout.NORTH);
 
-        System.out.print(this.getWidth());
-        System.out.println(this.getHeight());
-
         this.add(dashboard);
         this.add(studentMgr);
         this.add(seatGen);
         this.add(table);
+
+        this.revalidate();
+        studentMgr.addChildren();
 
         dashboard.setVisible(true);
         studentMgr.setVisible(false);
