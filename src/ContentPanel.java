@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ContentPanel extends JTabbedPane {
-    private CustomPanel studentMgr;
+    private DashboardLayout dashboard;
     private EditStudentLayout editStudent;
     private SeatingGenLayout seatGen;
-    private DashboardLayout dashboard;
+    private TableLayout tableLayout;
 
     public ContentPanel(){
         super();
@@ -17,11 +17,12 @@ public class ContentPanel extends JTabbedPane {
         dashboard = new DashboardLayout();
         editStudent = new EditStudentLayout();
         seatGen = new SeatingGenLayout();
+        tableLayout = new TableLayout();
 
         this.addTab("Dashboard", dashboard);
         this.addTab("Student Manager", editStudent);
         this.addTab("Seating Generator", seatGen);
-        this.addTab("Table Display", new JPanel());
+        this.addTab("Table Display", tableLayout);
 
         /*
         dashboard = new CustomPanel(this.getWidth()/20*19, this.getHeight());
