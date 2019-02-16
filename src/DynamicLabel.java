@@ -3,7 +3,7 @@ import java.awt.Font;
 import java.awt.Color;
 
 public class DynamicLabel extends JLabel {
-    private static Font labelFont = new Font("Arial", Font.PLAIN, 12);
+    private static Font labelFont = new Font("Roboto Light", Font.PLAIN, 12);
 
     public DynamicLabel(String content, int width, int height, Color color){
         super(content);
