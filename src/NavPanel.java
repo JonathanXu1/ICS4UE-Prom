@@ -35,6 +35,7 @@ public class NavPanel extends CustomPanel{
             public void actionPerformed(ActionEvent e)
             {
                 CustomRadioButton btn = (CustomRadioButton) e.getSource();
+                /*
                 if(btn.getText().equals("Dashboard")){
                     mainPanel.changePanel(0);
                 } else if(btn.getText().equals("Student Manager")){
@@ -43,7 +44,7 @@ public class NavPanel extends CustomPanel{
                     mainPanel.changePanel(2);
                 } else if(btn.getText().equals("Table Display")){
                     mainPanel.changePanel(3);
-                }
+                }*/
             }
         };
 

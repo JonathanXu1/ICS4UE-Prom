@@ -1,60 +1,53 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class ContentPanel extends JPanel {
-    private JPanel dashboard = new JPanel();
-    private EditStudentLayout studentMgr;
-    private JPanel seatGen = new JPanel();
-    private JPanel table = new JPanel();
+public class ContentPanel extends JTabbedPane {
+    private CustomPanel studentMgr;
+    private EditStudentLayout editStudent;
+    private SeatingGenLayout seatGen;
+    private DashboardLayout dashboard;
 
     public ContentPanel(){
         super();
         this.setBackground(Color.decode("#E5E5E5"));
+        this.setTabPlacement(LEFT);
     }
 
     public void addChildren(){
+        dashboard = new DashboardLayout();
+        editStudent = new EditStudentLayout();
+        seatGen = new SeatingGenLayout();
 
-        dashboard.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
-        studentMgr = new EditStudentLayout(this.getWidth()/20*19, this.getHeight());
-        seatGen.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
-        table.setPreferredSize(new Dimension(this.getWidth()/20*19, this.getHeight()));
+        this.addTab("Dashboard", dashboard);
+        this.addTab("Student Manager", editStudent);
+        this.addTab("Seating Generator", seatGen);
+        this.addTab("Table Display", new JPanel());
 
-        HeaderPanel dashTitle = new HeaderPanel("Dashboard", this.getWidth()/20*19, this.getHeight()/12, 2);
+        /*
+        dashboard = new CustomPanel(this.getWidth()/20*19, this.getHeight());
+            HeaderPanel dashTitle = new HeaderPanel("Dashboard", this.getWidth()/20*19, this.getHeight()/12, 2);
         dashboard.add(dashTitle, BorderLayout.NORTH);
+
+        studentMgr = new CustomPanel(this.getWidth()/20*19, this.getHeight());
         HeaderPanel studentTitle = new HeaderPanel("Student Manager", this.getWidth()/20*19, this.getHeight()/12, 2);
         studentMgr.add(studentTitle, BorderLayout.NORTH);
-        HeaderPanel seatGenTitle = new HeaderPanel("Seating Generator", this.getWidth()/20*19, this.getHeight()/12, 2);
-        seatGen.add(seatGenTitle, BorderLayout.NORTH);
+
+        table = new CustomPanel(this.getWidth()/20*19, this.getHeight());
         HeaderPanel tableTitle = new HeaderPanel("Table Display", this.getWidth()/20*19, this.getHeight()/12, 2);
         table.add(tableTitle, BorderLayout.NORTH);
 
-        this.add(dashboard);
-        this.add(studentMgr);
-        this.add(seatGen);
-        this.add(table);
+        this.add(dashboard, BorderLayout.CENTER);
+        this.add(studentMgr, BorderLayout.CENTER);
+        this.add(seatGen, BorderLayout.CENTER);
+        this.add(table, BorderLayout.CENTER);*/
 
-        this.revalidate();
-        studentMgr.addChildren();
+        //this.revalidate();
 
+
+        /*
         dashboard.setVisible(true);
         studentMgr.setVisible(false);
         seatGen.setVisible(false);
-        table.setVisible(false);
-    }
-
-    public void changePanel(int currentPanel){
-        dashboard.setVisible(false);
-        studentMgr.setVisible(false);
-        seatGen.setVisible(false);
-        table.setVisible(false);
-        if(currentPanel == 0){
-            dashboard.setVisible(true);
-        } else if(currentPanel == 1){
-            studentMgr.setVisible(true);
-        } else if(currentPanel == 2){
-            seatGen.setVisible(true);
-        } else if(currentPanel == 3){
-            table.setVisible(true);
-        }
+        table.setVisible(false);*/
     }
 }

@@ -1,48 +1,45 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class EditStudentLayout extends CustomPanel {
+public class EditStudentLayout extends JPanel {
 
-    public EditStudentLayout(int x, int y){
+    public EditStudentLayout(){
         // Deciding between row layout vs gridbag layout
-        super(x, y);
-        System.out.println(this.getWidth());
-        System.out.println(this.getHeight());
-        System.out.println(x);
-        System.out.println(y);
-        JPanel mainContent = new JPanel();
-            JPanel row1 = new JPanel();
-                JLabel nameLabel = new JLabel("Name");
-                JLabel numberLabel = new JLabel("Name");
-            row1.add(nameLabel);
-            row1.add(numberLabel);
-            JPanel row2 = new JPanel();
-            JPanel row3 = new JPanel();
-                JLabel dietLabel = new JLabel("Name");
-                JLabel likesLabel = new JLabel("Name");
-                JButton deleteBtn = new JButton("Delete");
-                JButton addBtn = new JButton("Add");
-            row3.add(dietLabel);
-            row3.add(likesLabel);
-            row3.add(deleteBtn);
-            row3.add(addBtn);
-            JPanel row4 = new JPanel();
-                JPanel dietPanel = new JPanel();
-                JPanel likesPanel = new JPanel();
-        mainContent.add(row1);
-        mainContent.add(row2);
-        mainContent.add(row3);
-        mainContent.add(row4);
 
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        JPanel editorContent = new CustomPanel(this.getWidth()/20*19, this.getHeight()/12*11);
+        editorContent.setLayout(new BoxLayout(editorContent, BoxLayout.PAGE_AXIS));
+        JPanel row1 = new CustomPanel(editorContent.getWidth(), editorContent.getHeight()/10);
+        JLabel nameLabel = new JLabel("Full Name");
+        JLabel numberLabel = new JLabel("Student Number");
+        row1.add(nameLabel);
+        row1.add(numberLabel);
+        JPanel row2 = new CustomPanel(editorContent.getWidth(), editorContent.getHeight()/10);
+        JPanel row3 = new CustomPanel(editorContent.getWidth(), editorContent.getHeight()/10);
+        JLabel dietLabel = new JLabel("Dietary Restrictions");
+        JLabel likesLabel = new JLabel("Likes");
+        JButton deleteBtn = new JButton("Delete");
+        JButton addBtn = new JButton("Add");
+        row3.add(dietLabel);
+        row3.add(likesLabel);
+        row3.add(deleteBtn);
+        row3.add(addBtn);
+        JPanel row4 = new CustomPanel(editorContent.getWidth(), editorContent.getHeight()/10*6);
+        JPanel dietPanel = new CustomPanel(row4.getWidth()/2, row4.getHeight());
+        JPanel likesPanel = new CustomPanel(row4.getWidth()/2, row4.getHeight());
+        row4.add(dietPanel);
+        row4.add(likesPanel);
+        editorContent.add(row1);
+        editorContent.add(row2);
+        editorContent.add(row3);
+        editorContent.add(row4);
         JPanel bottomNav = new JPanel();
-    }
+        JLabel title = new JLabel("Student Manager");
+        this.add(title);
+        this.add(editorContent);
+        this.add(bottomNav);
 
-    public void addChildren(){
-        System.out.println("two");
-        System.out.println(this.getWidth());
-        System.out.println(this.getHeight());
     }
-
     // Edit existing student
     public void editExisting (Student student){
 

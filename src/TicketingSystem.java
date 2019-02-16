@@ -5,8 +5,7 @@
  February 6, 2019
  **/
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 //Keyboard imports
 import java.awt.*;
@@ -51,8 +50,10 @@ public class TicketingSystem extends JFrame {
         this.add(headerPanel, BorderLayout.NORTH);
         contentPanel = new ContentPanel();
         this.add(contentPanel, BorderLayout.CENTER);
+        /*
         navPanel = new NavPanel(MAX_WIDTH/6, MAX_HEIGHT/10*9, contentPanel);
         this.add(navPanel, BorderLayout.WEST);
+        */
 
         this.pack();
         contentPanel.addChildren();

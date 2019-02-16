@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36138759-dd8d-4e17-b9bb-33d0a710b8e3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/DashboardLayout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prom/ContentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prom/ContentPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prom/HeaderPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prom/HeaderPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prom/TicketingSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prom/TicketingSystem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ContentPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EditStudentLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditStudentLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HeaderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeaderPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NavPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NavPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SeatingGenLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SeatingGenLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TicketingSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicketingSystem.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TicketingSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="99">
+              <caret line="50" column="42" lean-forward="true" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -37,10 +40,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HeaderPanel.java">
+        <entry file="file://$PROJECT_DIR$/src/ContentPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="289">
+              <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,10 +52,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/EditStudentLayout.java">
+        <entry file="file://$PROJECT_DIR$/src/NavPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+            <state relative-caret-position="407">
+              <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,22 +64,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ContentPanel.java">
+        <entry file="file://$PROJECT_DIR$/src/DashboardLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StudentManagerLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="33" selection-start-column="33" selection-end-column="33" />
+            <state relative-caret-position="102">
+              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -85,49 +76,16 @@
         <entry file="file://$PROJECT_DIR$/src/SeatingGenLayout.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <caret line="2" selection-start-line="2" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DynamicLabel.java">
+        <entry file="file://$PROJECT_DIR$/src/EditStudentLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="26" selection-start-column="26" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CustomPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="49" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CustomButton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CustomRadioButton.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="-272">
+              <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-end-line="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,6 +102,13 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>test</find>
+      <find>layout</find>
+      <find>addchildren</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -156,14 +121,16 @@
         <option value="$PROJECT_DIR$/src/CustomButton.java" />
         <option value="$PROJECT_DIR$/src/CustomRadioButton.java" />
         <option value="$PROJECT_DIR$/src/DynamicLabel.java" />
-        <option value="$PROJECT_DIR$/src/CustomPanel.java" />
-        <option value="$PROJECT_DIR$/src/NavPanel.java" />
         <option value="$PROJECT_DIR$/src/EditLayout.java" />
         <option value="$PROJECT_DIR$/src/test.java" />
-        <option value="$PROJECT_DIR$/src/TicketingSystem.java" />
         <option value="$PROJECT_DIR$/src/HeaderPanel.java" />
-        <option value="$PROJECT_DIR$/src/ContentPanel.java" />
+        <option value="$PROJECT_DIR$/src/CustomPanel.java" />
+        <option value="$PROJECT_DIR$/src/TicketingSystem.java" />
         <option value="$PROJECT_DIR$/src/EditStudentLayout.java" />
+        <option value="$PROJECT_DIR$/src/SeatingGenLayout.java" />
+        <option value="$PROJECT_DIR$/src/DashboardLayout.java" />
+        <option value="$PROJECT_DIR$/src/ContentPanel.java" />
+        <option value="$PROJECT_DIR$/src/NavPanel.java" />
       </list>
     </option>
   </component>
@@ -204,7 +171,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550204825574" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550275233328" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
@@ -268,7 +235,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5021097" side_tool="true" weight="0.12944333" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32956153" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3649222" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2503536" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -276,7 +243,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.21216407" />
+      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.21216407" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -299,21 +266,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomLayeredPane.java" />
-    <entry file="file://$PROJECT_DIR$/src/NavPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/SeatingGenLayout.java">
+    <entry file="file://$PROJECT_DIR$/src/StudentManagerLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state>
+          <caret column="33" selection-start-column="33" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -324,20 +281,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/CustomButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="49" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="49" />
+        <state relative-caret-position="187">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomButton.java">
+    <entry file="file://$PROJECT_DIR$/src/CustomPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
+        <state relative-caret-position="136">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -354,10 +311,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/HeaderPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" lean-forward="true" selection-start-column="27" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EditStudentLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeatingGenLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DashboardLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TicketingSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="99">
+          <caret line="50" column="42" lean-forward="true" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -367,37 +355,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StudentManagerLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="33" selection-start-column="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ContentPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="289">
+          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HeaderPanel.java">
+    <entry file="file://$PROJECT_DIR$/src/NavPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="23" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EditStudentLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+        <state relative-caret-position="407">
+          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
