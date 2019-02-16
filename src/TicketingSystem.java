@@ -17,6 +17,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 //Util
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,19 +28,18 @@ public class TicketingSystem extends JFrame {
     //Class variables
     private static JFrame window;
     private HeaderPanel headerPanel;
-    private NavPanel navPanel;
     private ContentPanel  contentPanel;
     private Random rand = new Random();
     private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     //Main
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, FontFormatException {
         window = new TicketingSystem();
     }
 
     //Constructor - this runs first
-    TicketingSystem() {
+    TicketingSystem() throws IOException, FontFormatException{
         super("Prom Ticketing System");
 
         // Set the frame to full screen
@@ -45,15 +48,23 @@ public class TicketingSystem extends JFrame {
         //this.setUndecorated(true);
         //frame.setResizable(false);
 
+        //Set up fonts
+        //TODO: Load files from assets folder instead of from the production folder
+        Font robotoThin = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("Roboto-Thin.ttf"));
+        Font robotoLight = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("Roboto-Light.ttf").openStream());
+        Font robotoRegular = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("Roboto-Regular.ttf").openStream());
+
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        genv.registerFont(robotoThin);
+        genv.registerFont(robotoLight);
+        genv.registerFont(robotoRegular);
+
+
         //Set up the inner panels (where we put our graphics)``
         headerPanel = new HeaderPanel("Prom Design", MAX_WIDTH, MAX_HEIGHT/10, 1);
         this.add(headerPanel, BorderLayout.NORTH);
-        contentPanel = new ContentPanel();
+        contentPanel = new ContentPanel(MAX_WIDTH, MAX_HEIGHT/10*9);
         this.add(contentPanel, BorderLayout.CENTER);
-        /*
-        navPanel = new NavPanel(MAX_WIDTH/6, MAX_HEIGHT/10*9, contentPanel);
-        this.add(navPanel, BorderLayout.WEST);
-        */
 
         this.pack();
         contentPanel.addChildren();
