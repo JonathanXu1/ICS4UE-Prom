@@ -48,7 +48,23 @@ public class DashboardLayout extends CustomPanel {
         row1.add(newProject);
         row1.add(loadProject);
         row1.setBackground(null);
-
+        
+        newProject.addActionListener(new ActionListener(){
+          @Override
+          public void actionPerformed(ActionEvent e)
+            {
+              // Code for new project details
+            }
+          });
+        
+        loadProject.addActionListener(new ActionListener(){
+          @Override
+          public void actionPerformed(ActionEvent e)
+            {
+              
+            }
+          });                             
+                                     
         JButton exit = new JButton("Exit");
         exit.addActionListener( new ActionListener(){
             @Override
