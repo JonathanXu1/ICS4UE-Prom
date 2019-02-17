@@ -5,15 +5,17 @@ public class CustomPanel extends JPanel {
     DynamicLabel title, subtitle;
 
     CustomPanel(int x, int y, String titleText, String subtitleText){
-        //this.setBackground(Color.RED);
+        //this.setBackground(Color.RED);a
         this.setBackground(Color.decode("#E5E5E5"));
-        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
+        CustomPanel header = new CustomPanel(x, y/15);
+        header.setLayout(new BoxLayout(header, BoxLayout.PAGE_AXIS));
         title = new DynamicLabel(titleText, x, y/20, Color.BLACK);
         subtitle = new DynamicLabel(subtitleText, x, y/30, Color.BLACK);
-        this.add(title);
-        this.add(new JSeparator());
-        this.add(subtitle);
+        header.add(title);
+        header.add(new JSeparator());
+        header.add(subtitle);
+        this.add(header, BorderLayout.NORTH);
     }
     CustomPanel(int x, int y){
         this.setPreferredSize(new Dimension(x, y));
