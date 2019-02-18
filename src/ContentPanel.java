@@ -24,6 +24,5 @@ public class ContentPanel extends JTabbedPane {
         this.addTab("Seating Generator", seatGen);
         this.addTab("Table Display", tableLayout);
 
-
     }
 }
