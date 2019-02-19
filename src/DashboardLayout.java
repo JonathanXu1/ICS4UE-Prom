@@ -12,7 +12,7 @@ public class DashboardLayout extends CustomPanel {
         super(x, y, "Dashboard", "");
         this.x = x;
         this.y = y;
-        this.setLayout(new OverlayLayout(this));
+        //this.setLayout(new OverlayLayout(this));
 
         addFrame1();
         addFrame2();
@@ -86,21 +86,37 @@ public class DashboardLayout extends CustomPanel {
         frames[1] = new JPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
-            DynamicLabel header = new DynamicLabel("New Project", x, y/10, Color.BLACK);
+            DynamicLabel header = new DynamicLabel("New Project", x, y/15, Color.BLACK);
             JPanel initPane = new JPanel();
             initPane.setBackground(Color.WHITE);
             initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
-                DynamicLabel nameLabel = new DynamicLabel("Project Name", x, y/8, Color.BLACK);
+                DynamicLabel nameLabel = new DynamicLabel("Project Name", x, y/20, Color.BLACK);
                 JTextField nameField = new JTextField(15);
-                DynamicLabel tableLabel = new DynamicLabel("Table Size", x, y/8, Color.BLACK);
+                nameField.setPreferredSize(new Dimension(x, y/20));
+                DynamicLabel tableLabel = new DynamicLabel("Table Size", x, y/20, Color.BLACK);
                 JTextField tableField = new JTextField(15);
+                tableField.setPreferredSize(new Dimension(x, y/20));
             initPane.add(nameLabel);
             initPane.add(nameField);
             initPane.add(tableLabel);
             initPane.add(tableField);
             JPanel row1 = new JPanel();
                 JButton cancelBtn = new JButton("Cancel");
+                cancelBtn.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        showFrame(0);
+                    }
+                });
                 JButton saveBtn = new JButton("Save");
+                saveBtn.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        showFrame(2);
+                    }
+                });
             row1.add(cancelBtn);
             row1.add(saveBtn);
         frames[1].add(header);
@@ -115,7 +131,7 @@ public class DashboardLayout extends CustomPanel {
         frames[2] = new JPanel();
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
-        JLabel header = new JLabel("Current Project: Cust");
+        DynamicLabel header = new DynamicLabel("Current Project: _NAME_", x, y/15, Color.BLACK);
         frames[2].add(header);
 
         this.add(frames[2], BorderLayout.CENTER);
