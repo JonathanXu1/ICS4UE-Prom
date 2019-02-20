@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class ContentPanel extends JTabbedPane {
     private DashboardLayout dashboard;
-    private EditStudentLayout editStudent;
+    private StudentManagerLayout editStudent;
     private SeatingGenLayout seatGen;
     private TableLayout tableLayout;
 
@@ -16,7 +16,7 @@ public class ContentPanel extends JTabbedPane {
     public void addChildren(){
         //TODO: Fix hardcode
         dashboard = new DashboardLayout(this.getWidth()-300, this.getHeight());
-        editStudent = new EditStudentLayout(this.getWidth()-300, this.getHeight());
+        editStudent = new StudentManagerLayout(this.getWidth()-300, this.getHeight());
         seatGen = new SeatingGenLayout(this.getWidth()-300, this.getHeight());
         tableLayout = new TableLayout(this.getWidth()-300, this.getHeight());
 

@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 
 public class StudentManagerLayout extends CustomPanel{
     private int x, y;
-    private JPanel[] frames = new JPanel[4];
+    private JPanel[] frames = new JPanel[2];
 
     public StudentManagerLayout(int x, int y){
         super(x, y, "Student Manager", "Add and modify students");
         this.x = x;
         this.y = y;
-        this.setLayout(new OverlayLayout(this));
+       // this.setLayout(new OverlayLayout(this));
 
         addFrame1();
         addFrame2();
@@ -25,6 +25,12 @@ public class StudentManagerLayout extends CustomPanel{
             frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
             DynamicLabel header = new DynamicLabel("Current Students", x, y/10, Color.BLACK);
             JPanel row1 = new JPanel();
+            Table gui = new Table();
+            gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            gui.setSize(600,200);;
+            gui.setVisible(true);
+            gui.setTitle("Students");
+
             JButton newStudent = new JButton("New Student");
             newStudent.addActionListener( new ActionListener(){
                 @Override
@@ -33,6 +39,7 @@ public class StudentManagerLayout extends CustomPanel{
                     showFrame(1);
                 }
             });
+            newStudent.setPreferredSize(new Dimension(x/4, y/8));
             /* Not sure how we want to implement drop down bar
             JButton manageStudents = new JButton("Manage");
             manageStudents.addActionListener( new ActionListener(){
@@ -81,9 +88,42 @@ public class StudentManagerLayout extends CustomPanel{
         private void addFrame2(){
             frames[1] = new JPanel();
             frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
-
-            JLabel header = new JLabel("New Student");
+            DynamicLabel header = new DynamicLabel("New Student", x, y/15, Color.BLACK);
+            JPanel initPane = new JPanel();
+            initPane.setBackground(Color.WHITE);
+            initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
+                DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/20, Color.BLACK);
+                JTextField nameField = new JTextField(15);
+                nameField.setPreferredSize(new Dimension(x, y/20));
+                DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/20, Color.BLACK);
+                JTextField numField = new JTextField(15);
+                numField.setPreferredSize(new Dimension(x,y/20));
+            initPane.add(nameLabel);
+            initPane.add(nameField);
+            initPane.add(numLabel);
+            initPane.add(numField);
+            JPanel row1 = new JPanel();
+            JButton cancelBtn = new JButton("Cancel");
+            cancelBtn.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    showFrame(0);
+                }
+            });
+            JButton saveBtn = new JButton("Save");
+            saveBtn.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    showFrame(2);
+                }
+            });
+            row1.add(cancelBtn);
+            row1.add(saveBtn);
             frames[1].add(header);
+            frames[1].add(initPane);
+            frames[1].add(row1);
 
             this.add(frames[1], BorderLayout.CENTER);
         }
