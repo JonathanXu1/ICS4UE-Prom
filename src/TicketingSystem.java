@@ -32,6 +32,7 @@ public class TicketingSystem extends JFrame {
     private Random rand = new Random();
     private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    private String projectName;
 
     //Main
     public static void main(String[] args) throws IOException, FontFormatException {

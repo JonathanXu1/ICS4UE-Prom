@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.io.File;
 
 public class FileIOManager{
+    public void createProject(String projectName){
+        new File("/path/" + projectName).mkdirs();
+    }
   public void saveStudents(ArrayList<Student> students, String projectName){
       try{
-        File projectFolder = new File("/saves/" + projectName);
-        projectFolder.mkdirs();
-        BufferedWriter bw = new BufferedWriter (new FileWriter ("/saves/students.txt"));
+        BufferedWriter bw = new BufferedWriter (new FileWriter ("/saves/" + projectName + "students.txt"));
         for (int i = 0; i < students.size(); i++){
           bw.write(students.get(i).getName()+"\t");
           bw.write(students.get(i).getStudentNumber()+"\t");
@@ -26,9 +27,7 @@ public class FileIOManager{
   public ArrayList<Student> loadStudents(String projectName){
     ArrayList <Student> students = new ArrayList<Student>();
       try{
-        File projectFolder = new File("/saves/" + projectName);
-        projectFolder.mkdirs();
-        BufferedReader br = new BufferedReader(new FileReader("/saves/students.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("/saves/" + projectName + "/saves/students.txt"));
         String currentLine, name, number;
         ArrayList<String> dietaryRestrictions = new ArrayList<String>();
         ArrayList<String> friendStudentNumbers = new ArrayList<String>();

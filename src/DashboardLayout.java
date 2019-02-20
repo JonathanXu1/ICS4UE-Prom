@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 public class DashboardLayout extends CustomPanel {
     private int x, y;
     private JPanel[] frames = new JPanel[3];
+    private FileIOManager io = new FileIOManager();
 
     public DashboardLayout(int x, int y){
         super(x, y, "Dashboard", "");
@@ -114,7 +115,10 @@ public class DashboardLayout extends CustomPanel {
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        showFrame(2);
+                        if(nameField.getText() != null && tableField.getText() != null){
+                            io.createProject(nameField.getText());
+                            showFrame(2);
+                        }
                     }
                 });
             row1.add(cancelBtn);
