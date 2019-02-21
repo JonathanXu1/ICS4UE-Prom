@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Prom.iml" filepath="$PROJECT_DIR$/Prom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ICS4UE-Prom.iml" filepath="$PROJECT_DIR$/.idea/ICS4UE-Prom.iml" />
     </modules>
   </component>
 </project>
