@@ -39,8 +39,8 @@ public class TicketingSystem extends JFrame {
         // Set the frame to full screen
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //this.setUndecorated(true);
-        //frame.setResizable(false);
+        this.setUndecorated(true);
+        this.setResizable(false);
 
         //Set up fonts
         //TODO: Load files from assets folder instead of from the production folder

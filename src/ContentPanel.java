@@ -17,6 +17,9 @@ public class ContentPanel extends JTabbedPane {
         this.setBackground(Color.decode("#C4C4C4"));
         this.setTabPlacement(LEFT);
 
+        DynamicLabel placeholder = new DynamicLabel("Placeholder", x/12, y, Color.BLACK);
+        this.setFont(placeholder.getFont());
+
         this.io = fileManager;
     }
 
