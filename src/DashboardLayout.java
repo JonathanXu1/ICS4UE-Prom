@@ -7,12 +7,15 @@ import java.awt.event.ActionEvent;
 public class DashboardLayout extends CustomPanel {
     private int x, y;
     private JPanel[] frames = new JPanel[3];
-    private FileIOManager io = new FileIOManager();
+    private FileIOManager io;
 
-    public DashboardLayout(int x, int y){
+    private DynamicLabel projectTitle;
+
+    public DashboardLayout(int x, int y, FileIOManager fileManager){
         super(x, y, "Dashboard", "");
         this.x = x;
         this.y = y;
+        this.io = fileManager;
         //this.setLayout(new OverlayLayout(this));
 
         addFrame1();
@@ -28,6 +31,7 @@ public class DashboardLayout extends CustomPanel {
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
         DynamicLabel header = new DynamicLabel("Welcome to the Seating Arranger!", x, y/10, Color.BLACK);
         JPanel row1 = new JPanel();
+
         JButton newProject = new JButton("New Project");
         newProject.addActionListener( new ActionListener(){
             @Override
@@ -37,34 +41,23 @@ public class DashboardLayout extends CustomPanel {
             }
         });
         newProject.setPreferredSize(new Dimension(x/4, y/8));
+
         JButton loadProject = new JButton("Load Project");
         loadProject.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                showFrame(2);
+                if(io.loadProject()){
+                    showFrame(2);
+                }
             }
         });
+
         loadProject.setPreferredSize(new Dimension(x/4, y/8));
         row1.add(newProject);
         row1.add(loadProject);
         row1.setBackground(null);
-        
-        newProject.addActionListener(new ActionListener(){
-          @Override
-          public void actionPerformed(ActionEvent e)
-            {
-              // Code for new project details
-            }
-          });
-        
-        loadProject.addActionListener(new ActionListener(){
-          @Override
-          public void actionPerformed(ActionEvent e)
-            {
-              
-            }
-          });                             
+
                                      
         JButton exit = new JButton("Exit");
         exit.addActionListener( new ActionListener(){
@@ -135,8 +128,8 @@ public class DashboardLayout extends CustomPanel {
         frames[2] = new JPanel();
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
-        DynamicLabel header = new DynamicLabel("Current Project: _NAME_", x, y/15, Color.BLACK);
-        frames[2].add(header);
+        projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
+        frames[2].add(projectTitle);
 
         this.add(frames[2], BorderLayout.CENTER);
     }
@@ -146,6 +139,10 @@ public class DashboardLayout extends CustomPanel {
             frames[i].setVisible(false);
         }
 
+        //Update frame 2 content, it's a custy solution tho
+        if(x == 2){
+            projectTitle.setText("Current Project: " + io.getProject());
+        }
         frames[x].setVisible(true);
     }
 }

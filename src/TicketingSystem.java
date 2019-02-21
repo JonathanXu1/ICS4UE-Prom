@@ -29,10 +29,12 @@ public class TicketingSystem extends JFrame {
     private static JFrame window;
     private HeaderPanel headerPanel;
     private ContentPanel  contentPanel;
-    private Random rand = new Random();
+
     private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
     private String projectName;
+    private FileIOManager io = new FileIOManager(this);
 
     //Main
     public static void main(String[] args) throws IOException, FontFormatException {
@@ -64,7 +66,7 @@ public class TicketingSystem extends JFrame {
         //Set up the inner panels (where we put our graphics)``
         headerPanel = new HeaderPanel("Prom Design", MAX_WIDTH, MAX_HEIGHT/10, 1);
         this.add(headerPanel, BorderLayout.NORTH);
-        contentPanel = new ContentPanel(MAX_WIDTH, MAX_HEIGHT/10*9);
+        contentPanel = new ContentPanel(MAX_WIDTH, MAX_HEIGHT/10*9, io);
         this.add(contentPanel, BorderLayout.CENTER);
 
         this.pack();
@@ -79,6 +81,7 @@ public class TicketingSystem extends JFrame {
         this.setVisible(true);
 
 
-    } //End of Constructor
+    }
+
 
 }

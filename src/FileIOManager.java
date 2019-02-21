@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -7,12 +8,52 @@ import java.util.ArrayList;
 import java.io.File;
 
 public class FileIOManager{
-    public void createProject(String projectName){
-        new File("/path/" + projectName).mkdirs();
+    private String directory;
+    private  JFileChooser chooser;
+
+    private TicketingSystem main;
+
+    public FileIOManager(TicketingSystem main){
+        this.main = main;
+        chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File(System.getProperty("user.dir") + "/saves/"));
+        chooser.setDialogTitle("Open a Project");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
     }
+
+    public void createProject(String projectName){
+        String path = System.getProperty("user.dir") + "/saves/" + projectName;
+        new File(System.getProperty("user.dir") + "/saves/" + projectName).mkdirs();
+        this.directory = path;
+    }
+
+    public boolean loadProject(){
+        boolean selected = true;
+
+        if (chooser.showOpenDialog(main) == JFileChooser.APPROVE_OPTION) {
+            System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
+            System.out.println("getSelectedFile() : " +  chooser.getSelectedFile());
+
+            String selection = chooser.getSelectedFile().getAbsolutePath();
+            this.directory = selection;
+        }
+        else {
+            System.out.println("No Selection ");
+            selected = false;
+        }
+
+        return selected;
+    }
+
+    public String getProject(){
+        // Return project name
+        return directory.substring((System.getProperty("user.dir") + "/saves/").length());
+    }
+
   public void saveStudents(ArrayList<Student> students, String projectName){
       try{
-        BufferedWriter bw = new BufferedWriter (new FileWriter ("/saves/" + projectName + "students.txt"));
+        BufferedWriter bw = new BufferedWriter (new FileWriter (System.getProperty("user.dir") +"/saves/" + projectName + "students.txt"));
         for (int i = 0; i < students.size(); i++){
           bw.write(students.get(i).getName()+"\t");
           bw.write(students.get(i).getStudentNumber()+"\t");
@@ -27,7 +68,7 @@ public class FileIOManager{
   public ArrayList<Student> loadStudents(String projectName){
     ArrayList <Student> students = new ArrayList<Student>();
       try{
-        BufferedReader br = new BufferedReader(new FileReader("/saves/" + projectName + "/saves/students.txt"));
+        BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/saves/" + projectName + "/saves/students.txt"));
         String currentLine, name, number;
         ArrayList<String> dietaryRestrictions = new ArrayList<String>();
         ArrayList<String> friendStudentNumbers = new ArrayList<String>();
