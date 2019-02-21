@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Table extends JFrame {
+public class Table extends JPanel {
     private JTable table;
     public Table() {
         setLayout(new FlowLayout());

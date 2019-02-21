@@ -25,11 +25,10 @@ public class StudentManagerLayout extends CustomPanel{
             frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
             DynamicLabel header = new DynamicLabel("Current Students", x, y/10, Color.BLACK);
             JPanel row1 = new JPanel();
-            Table gui = new Table();
-            gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            gui.setSize(600,200);;
-            gui.setVisible(true);
-            gui.setTitle("Students");
+            Table table = new Table();
+            table.setSize(600,200);;
+            JScrollPane scrollPane = new JScrollPane(table);
+            this.add(scrollPane);
 
             JButton newStudent = new JButton("New Student");
             newStudent.addActionListener( new ActionListener(){
