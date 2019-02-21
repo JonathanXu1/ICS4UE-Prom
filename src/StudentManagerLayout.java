@@ -8,7 +8,6 @@ public class StudentManagerLayout extends CustomPanel{
     private int x, y;
     private JPanel[] frames = new JPanel[2];
     private FileIOManager io;
-
     public StudentManagerLayout(int x, int y){
         super(x, y, "Student Manager", "Add and modify students");
         this.x = x;
@@ -26,21 +25,22 @@ public class StudentManagerLayout extends CustomPanel{
             frames[0] = new JPanel();
             frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
             DynamicLabel header = new DynamicLabel("Current Students", x, y/10, Color.BLACK);
-            JPanel row1 = new JPanel();
-            Table table = new Table(io.loadStudents());
-            table.setSize(600,200);;
-            JScrollPane scrollPane = new JScrollPane(table);
-            frames[0].add(scrollPane);
 
-            JButton newStudent = new JButton("New Student");
-            newStudent.addActionListener( new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
-                    showFrame(1);
-                }
-            });
-            newStudent.setPreferredSize(new Dimension(x/4, y/8));
+                JPanel row1 = new JPanel();
+                Table table = new Table(io.loadStudents());
+                table.setSize(600, 200);
+                ;
+                JScrollPane scrollPane = new JScrollPane(table);
+                frames[0].add(scrollPane);
+
+                JButton newStudent = new JButton("New Student");
+                newStudent.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        showFrame(1);
+                    }
+                });
+                newStudent.setPreferredSize(new Dimension(x / 4, y / 8));
             /* Not sure how we want to implement drop down bar
             JButton manageStudents = new JButton("Manage");
             manageStudents.addActionListener( new ActionListener(){
@@ -51,40 +51,38 @@ public class StudentManagerLayout extends CustomPanel{
                 }
             });
             */
-            JButton save = new JButton("Save");
-            save.addActionListener( new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
+                JButton save = new JButton("Save");
+                save.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
 
-                }
-            });
-            row1.add(newStudent);
-            row1.setBackground(null);
+                    }
+                });
+                row1.add(newStudent);
+                row1.setBackground(null);
 
-            newStudent.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
-                    // Code for student information
-                }
-            });
+                newStudent.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Code for student information
+                    }
+                });
 
-            JButton exit = new JButton("Exit");
-            exit.addActionListener( new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
-                    System.exit(0);
-                }
-            });
+                JButton exit = new JButton("Exit");
+                exit.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        System.exit(0);
+                    }
+                });
 
-            frames[0].add(header);
-            frames[0].add(row1);
-            frames[0].add(exit);
+                frames[0].add(header);
+                frames[0].add(row1);
+                frames[0].add(exit);
 
-            this.add(frames[0], BorderLayout.CENTER);
-        }
+                this.add(frames[0], BorderLayout.CENTER);
+            }
+
         // New student display
         private void addFrame2(){
             frames[1] = new JPanel();
@@ -138,5 +136,6 @@ public class StudentManagerLayout extends CustomPanel{
         }
         public void setIO(FileIOManager io){
         this.io = io;
+
     }
 }
