@@ -9,8 +9,11 @@ public class Table extends JPanel {
 
     public Table(){
         setLayout(new FlowLayout());
+    }
 
 
+    public void loadStudents(ArrayList<Student> students) {
+        this.students = students;
         String[] columnNames = {"Student Number",
                 "First",
                 "Last",
@@ -43,10 +46,5 @@ public class Table extends JPanel {
             JScrollPane scrollPane = new JScrollPane(table);
             add(scrollPane);
         }
-
-    }
-    public void loadStudents(ArrayList<Student> students){
-        this.students = students;
-
     }
 }
