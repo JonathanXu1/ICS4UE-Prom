@@ -115,6 +115,7 @@ public class FileIOManager{
        }catch (IOException e){
           e.printStackTrace();
        }
+      System.out.println(students);
      return students;
   }
 }
