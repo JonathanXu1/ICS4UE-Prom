@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -8,14 +7,16 @@ public class DashboardLayout extends CustomPanel {
     private int x, y;
     private JPanel[] frames = new JPanel[3];
     private FileIOManager io;
+    private ContentPanel contentPanel;
 
-    private DynamicLabel projectTitle;
+    private DynamicLabel projectTitle, tableSizeLabel;
 
-    public DashboardLayout(int x, int y, FileIOManager fileManager){
+    public DashboardLayout(int x, int y, FileIOManager fileManager, ContentPanel contentPanel){
         super(x, y, "Dashboard", "");
         this.x = x;
         this.y = y;
         this.io = fileManager;
+        this.contentPanel = contentPanel;
         //this.setLayout(new OverlayLayout(this));
 
         addFrame1();
@@ -108,9 +109,17 @@ public class DashboardLayout extends CustomPanel {
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        if(nameField.getText() != null && tableField.getText() != null){
-                            io.createProject(nameField.getText());
-                            showFrame(2);
+                        String newTitle = nameField.getText();
+                        String newTableSize = tableField.getText();
+
+                        if(!newTitle.isEmpty() && !newTableSize.isEmpty()){
+                            try {
+                                io.createProject(newTitle, newTableSize);
+                                showFrame(2);
+                            } catch (Exception j){
+
+                            }
+
                         }
                     }
                 });
@@ -142,7 +151,7 @@ public class DashboardLayout extends CustomPanel {
         row2.add(seatingHeader);
         row2.add(seatingHeaderStatus);
         DynamicLabel tables = new DynamicLabel("Tables: NULL", x, y/20, Color.BLACK);
-        DynamicLabel tableSize = new DynamicLabel("Tables Size: NULL", x, y/20, Color.BLACK);
+        tableSizeLabel = new DynamicLabel("Tables Size: NULL", x, y/20, Color.BLACK);
 
         JPanel row3 = new JPanel();
             JButton loadAnother = new JButton("Load Another Project");
@@ -171,7 +180,7 @@ public class DashboardLayout extends CustomPanel {
         frames[2].add(students);
         frames[2].add(row2);
         frames[2].add(tables);
-        frames[2].add(tableSize);
+        frames[2].add(tableSizeLabel);
         frames[2].add(row3);
 
 
@@ -185,7 +194,9 @@ public class DashboardLayout extends CustomPanel {
 
         //Update frame 2 content, it's a custy solution tho
         if(x == 2){
-            projectTitle.setText("Current Project: " + io.getProject());
+            projectTitle.setText("Current Project: " + io.getProject()[0]);
+            tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
+            contentPanel.enableTabs();
         }
         frames[x].setVisible(true);
     }
