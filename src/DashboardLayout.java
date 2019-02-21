@@ -129,7 +129,51 @@ public class DashboardLayout extends CustomPanel {
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
+        JPanel row1 = new JPanel();
+            DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
+            DynamicLabel studentHeaderStatus = new DynamicLabel("NULL", x, y/20, Color.RED);
+        row1.add(studentHeader);
+        row1.add(studentHeaderStatus);
+        DynamicLabel students = new DynamicLabel("Students: NULL", x, y/20, Color.BLACK);
+
+        JPanel row2 = new JPanel();
+            DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
+            DynamicLabel seatingHeaderStatus = new DynamicLabel("NULL", x, y/20, Color.RED);
+        row2.add(seatingHeader);
+        row2.add(seatingHeaderStatus);
+        DynamicLabel tables = new DynamicLabel("Tables: NULL", x, y/20, Color.BLACK);
+        DynamicLabel tableSize = new DynamicLabel("Tables Size: NULL", x, y/20, Color.BLACK);
+
+        JPanel row3 = new JPanel();
+            JButton loadAnother = new JButton("Load Another Project");
+            loadAnother.addActionListener( new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    if(io.loadProject()){
+                        showFrame(2);
+                    }
+                }
+            });
+            JButton exit = new JButton("Exit");
+            exit.addActionListener( new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    System.exit(0);
+                }
+            });
+        row3.add(loadAnother);
+        row3.add(exit);
+
         frames[2].add(projectTitle);
+        frames[2].add(row1);
+        frames[2].add(students);
+        frames[2].add(row2);
+        frames[2].add(tables);
+        frames[2].add(tableSize);
+        frames[2].add(row3);
+
 
         this.add(frames[2], BorderLayout.CENTER);
     }
