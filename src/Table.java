@@ -11,6 +11,7 @@ public class Table extends JPanel {
         setLayout(new FlowLayout());
     }
 
+
     public void loadStudents(ArrayList<Student> students) {
         String[] columnNames = {"Student Number",
                 "First",

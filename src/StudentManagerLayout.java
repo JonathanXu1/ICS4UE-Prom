@@ -157,9 +157,4 @@ public class StudentManagerLayout extends CustomPanel{
 
             frames[x].setVisible(true);
         }
-        public void setIO(FileIOManager io){
-        this.io = io;
-
-    }
-
 }
