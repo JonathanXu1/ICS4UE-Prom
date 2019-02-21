@@ -28,7 +28,7 @@ public class StudentManagerLayout extends CustomPanel{
             Table table = new Table();
             table.setSize(600,200);;
             JScrollPane scrollPane = new JScrollPane(table);
-            this.add(scrollPane);
+            frames[0].add(scrollPane);
 
             JButton newStudent = new JButton("New Student");
             newStudent.addActionListener( new ActionListener(){

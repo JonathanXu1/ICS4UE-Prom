@@ -8,6 +8,7 @@ public class ContentPanel extends JTabbedPane {
     private SeatingGenLayout seatGen;
     private TableLayout tableLayout;
 
+
     private FileIOManager io;
 
     public ContentPanel(int x, int y, FileIOManager fileManager){
