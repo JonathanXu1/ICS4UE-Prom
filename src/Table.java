@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class Table extends JPanel {
     private JTable table;
-    private ArrayList<Student> students;
+
 
     public Table(){
         setLayout(new FlowLayout());
@@ -13,7 +13,6 @@ public class Table extends JPanel {
 
 
     public void loadStudents(ArrayList<Student> students) {
-        this.students = students;
         String[] columnNames = {"Student Number",
                 "First",
                 "Last",

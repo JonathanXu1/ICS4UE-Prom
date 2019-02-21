@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class StudentManagerLayout extends CustomPanel{
@@ -11,6 +12,7 @@ public class StudentManagerLayout extends CustomPanel{
     private FileIOManager io;
 
     private Table table;
+    private ArrayList<Student> students;
 
     public StudentManagerLayout(int x, int y, FileIOManager io){
         super(x, y, "Student Manager", "Add and modify students");
@@ -26,7 +28,8 @@ public class StudentManagerLayout extends CustomPanel{
         }
 
         public void loadStudents(){
-            table.loadStudents(io.loadStudents());
+            this.students = io.loadStudents();
+            table.loadStudents(students);
         }
 
         // Default Student Display
@@ -123,7 +126,19 @@ public class StudentManagerLayout extends CustomPanel{
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    showFrame(2);
+                    String name = nameField.getText();
+                    String studentNumber = numField.getText();
+                    ArrayList<String> dietaryRestrictions = new ArrayList<String>();
+                    dietaryRestrictions.add("N/A");
+                    ArrayList<String> friends = new ArrayList<String>();
+                    friends. add("335548079");
+
+                    if(!name.isEmpty() && !studentNumber.isEmpty()){
+                        Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
+                        students.add(newStudent);
+                        showFrame(2);
+                    }
+                    showFrame(0);
                 }
             });
             row1.add(cancelBtn);
