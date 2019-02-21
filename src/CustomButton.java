@@ -9,7 +9,7 @@ public class CustomButton extends JButton {
         if(colorScheme == 1){ //Styled like the dashboard buttons
             bg = Color.decode("#BDA7D4");
             textColor = Color.WHITE;
-        } else if (colorScheme == 2){
+        } else if (colorScheme == 2){ //Styled like the exit button
             bg = Color.decode("#8780B8");
             textColor = Color.WHITE;
         }

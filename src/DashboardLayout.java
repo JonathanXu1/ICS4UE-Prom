@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 
 public class DashboardLayout extends CustomPanel {
     private int x, y;
-    private JPanel[] frames = new JPanel[3];
+    private CustomPanel[] frames = new CustomPanel[3];
     private FileIOManager io;
     private ContentPanel contentPanel;
 
@@ -28,10 +28,10 @@ public class DashboardLayout extends CustomPanel {
 
     //Default welcome screen
     private void addFrame1(){
-        frames[0] = new JPanel();
+        frames[0] = new CustomPanel();
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
         DynamicLabel header = new DynamicLabel("Welcome to the Seating Arranger!", x, y/10, Color.BLACK);
-        JPanel row1 = new JPanel();
+        CustomPanel row1 = new CustomPanel();
 
         CustomButton newProject = new CustomButton("New Project", 1, x/6, y);
         newProject.addActionListener( new ActionListener(){
@@ -57,8 +57,6 @@ public class DashboardLayout extends CustomPanel {
         loadProject.setPreferredSize(new Dimension(x/4, y/8));
         row1.add(newProject);
         row1.add(loadProject);
-        row1.setBackground(null);
-
                                      
         CustomButton exit = new CustomButton("Exit", 2,x/30, y);
 
@@ -79,7 +77,7 @@ public class DashboardLayout extends CustomPanel {
 
     // New project screen
     private void addFrame2(){
-        frames[1] = new JPanel();
+        frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
             DynamicLabel header = new DynamicLabel("New Project", x, y/15, Color.BLACK);
@@ -96,8 +94,8 @@ public class DashboardLayout extends CustomPanel {
             initPane.add(nameField);
             initPane.add(tableLabel);
             initPane.add(tableField);
-            JPanel row1 = new JPanel();
-                CustomButton cancelBtn = new CustomButton("Cancel", 2,  x/20, y);
+            CustomPanel row1 = new CustomPanel();
+                CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/40);
                 cancelBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -105,7 +103,7 @@ public class DashboardLayout extends CustomPanel {
                         showFrame(0);
                     }
                 });
-                CustomButton saveBtn = new CustomButton("Save", 2,  x/30, y);
+                CustomButton saveBtn = new CustomButton("Save", 2,  x, y/40);
                 saveBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -135,27 +133,27 @@ public class DashboardLayout extends CustomPanel {
 
     // Loaded project screen
     private void addFrame3(){
-        frames[2] = new JPanel();
+        frames[2] = new CustomPanel();
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
-        JPanel row1 = new JPanel();
+        CustomPanel row1 = new CustomPanel();
             DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
             DynamicLabel studentHeaderStatus = new DynamicLabel("NULL", x, y/20, Color.RED);
         row1.add(studentHeader);
         row1.add(studentHeaderStatus);
-        DynamicLabel students = new DynamicLabel("Students: NULL", x, y/20, Color.BLACK);
+        DynamicLabel students = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
 
-        JPanel row2 = new JPanel();
+        CustomPanel row2 = new CustomPanel();
             DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
             DynamicLabel seatingHeaderStatus = new DynamicLabel("NULL", x, y/20, Color.RED);
         row2.add(seatingHeader);
         row2.add(seatingHeaderStatus);
-        DynamicLabel tables = new DynamicLabel("Tables: NULL", x, y/20, Color.BLACK);
-        tableSizeLabel = new DynamicLabel("Tables Size: NULL", x, y/20, Color.BLACK);
+        DynamicLabel tables = new DynamicLabel("Tables: NULL", x, y/30, Color.BLACK);
+        tableSizeLabel = new DynamicLabel("Tables Size: NULL", x, y/30, Color.BLACK);
 
-        JPanel row3 = new JPanel();
-            CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x/6, y);
+        CustomPanel row3 = new CustomPanel();
+            CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x, y/40);
             loadAnother.addActionListener( new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e)
@@ -165,7 +163,7 @@ public class DashboardLayout extends CustomPanel {
                     }
                 }
             });
-            CustomButton exit = new CustomButton("Exit", 2,  x/30, y);
+            CustomButton exit = new CustomButton("Exit", 2,  x, y/40);
             exit.addActionListener( new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e)

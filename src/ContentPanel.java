@@ -19,6 +19,7 @@ public class ContentPanel extends JTabbedPane {
         this.setTabPlacement(LEFT);
         DynamicLabel placeholder = new DynamicLabel("Placeholder", x/12, y, Color.BLACK);
         this.setFont(placeholder.getFont());
+        //TODO: Figure out whether to delete this
         String[] css = {
                 "margin:0;background:#C4C4C4;",
                 "padding:10px;",
