@@ -12,7 +12,7 @@ public class StudentManagerLayout extends CustomPanel{
 
     private Table table;
 
-    public StudentManagerLayout(int x, int y){
+    public StudentManagerLayout(int x, int y, FileIOManager io){
         super(x, y, "Student Manager", "Add and modify students");
         this.x = x;
         this.y = y;
@@ -26,7 +26,7 @@ public class StudentManagerLayout extends CustomPanel{
         }
 
         public void loadStudents(){
-            table = new Table(io.loadStudents());
+            table.loadStudents(io.loadStudents());
         }
 
         // Default Student Display
@@ -36,6 +36,7 @@ public class StudentManagerLayout extends CustomPanel{
             DynamicLabel header = new DynamicLabel("Current Students", x, y/10, Color.BLACK);
 
             JPanel row1 = new JPanel();
+            table = new Table();
             table.setSize(600,200);;
             JScrollPane scrollPane = new JScrollPane(table);
             frames[0].add(scrollPane);

@@ -7,7 +7,7 @@ public class Table extends JPanel {
     private JTable table;
     private ArrayList<Student> students;
 
-    public Table() {
+    public Table(){
         setLayout(new FlowLayout());
 
         this.students = students;
@@ -45,7 +45,7 @@ public class Table extends JPanel {
         }
 
     }
-    public void loadStudents(ArrayList<Student>){
+    public void loadStudents(ArrayList<Student> students){
         this.students = students;
     }
 }
