@@ -22,10 +22,18 @@ public class FileIOManager{
         chooser.setAcceptAllFileFilterUsed(false);
     }
 
-    public void createProject(String projectName){
-        String path = System.getProperty("user.dir") + "/saves/" + projectName;
-        new File(System.getProperty("user.dir") + "/saves/" + projectName).mkdirs();
-        this.directory = path;
+    public void createProject(String projectName, String tableSize) throws IOException{
+        //Creates project folder
+        this.directory = System.getProperty("user.dir") + "/saves/" + projectName;
+        new File(this.directory).mkdirs();
+
+        // Initializes storage files
+        BufferedWriter writer = new BufferedWriter(new FileWriter(this.directory + "/config.txt"));
+        writer.write(tableSize);
+        new File(this.directory + "/students.txt").createNewFile();
+        new File(this.directory + "/groups.txt").createNewFile();
+
+        writer.close();
     }
 
     public boolean loadProject(){
@@ -46,9 +54,21 @@ public class FileIOManager{
         return selected;
     }
 
-    public String getProject(){
-        // Return project name
-        return directory.substring((System.getProperty("user.dir") + "/saves/").length());
+    public String[] getProject() {
+        // Return project configs
+        String[] output = new String[2];
+        // Project Name
+        output[0] = directory.substring((System.getProperty("user.dir") + "/saves/").length());
+        // Table size
+        try {
+            BufferedReader configReader = new BufferedReader(new FileReader(this.directory + "/config.txt"));
+            output[1] = configReader.readLine();
+            configReader.close();
+        } catch(IOException e){
+            System.out.println("Can't open readers");
+        }
+
+        return output;
     }
 
   public void saveStudents(ArrayList<Student> students, String projectName){

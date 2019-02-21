@@ -10,7 +10,6 @@ public class DashboardLayout extends CustomPanel {
     private FileIOManager io;
 
     private DynamicLabel projectTitle, tableSizeLabel;
-    private int tableSize = 0;
 
     public DashboardLayout(int x, int y, FileIOManager fileManager){
         super(x, y, "Dashboard", "");
@@ -114,8 +113,7 @@ public class DashboardLayout extends CustomPanel {
 
                         if(!newTitle.isEmpty() && !newTableSize.isEmpty()){
                             try {
-                                tableSize = Integer.parseInt(newTableSize);
-                                io.createProject(nameField.getText());
+                                io.createProject(newTitle, newTableSize);
                                 showFrame(2);
                             } catch (Exception j){
 
@@ -195,8 +193,8 @@ public class DashboardLayout extends CustomPanel {
 
         //Update frame 2 content, it's a custy solution tho
         if(x == 2){
-            projectTitle.setText("Current Project: " + io.getProject());
-            tableSizeLabel.setText("Tables Size: " + tableSize);
+            projectTitle.setText("Current Project: " + io.getProject()[0]);
+            tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
         }
         frames[x].setVisible(true);
     }

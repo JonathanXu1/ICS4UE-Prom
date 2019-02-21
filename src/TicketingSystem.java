@@ -9,20 +9,12 @@ import javax.swing.*;
 
 //Keyboard imports
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 //Graphics &GUI imports
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 //Util
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Random;
 
 public class TicketingSystem extends JFrame {
     //Class variables
@@ -33,7 +25,6 @@ public class TicketingSystem extends JFrame {
     private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-    private String projectName;
     private FileIOManager io = new FileIOManager(this);
 
     //Main
