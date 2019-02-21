@@ -2,10 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class StudentManagerLayout extends CustomPanel{
     private int x, y;
     private JPanel[] frames = new JPanel[2];
+    private FileIOManager io;
 
     public StudentManagerLayout(int x, int y){
         super(x, y, "Student Manager", "Add and modify students");
@@ -25,7 +27,7 @@ public class StudentManagerLayout extends CustomPanel{
             frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
             DynamicLabel header = new DynamicLabel("Current Students", x, y/10, Color.BLACK);
             JPanel row1 = new JPanel();
-            Table table = new Table();
+            Table table = new Table(io.loadStudents());
             table.setSize(600,200);;
             JScrollPane scrollPane = new JScrollPane(table);
             frames[0].add(scrollPane);
@@ -134,4 +136,7 @@ public class StudentManagerLayout extends CustomPanel{
 
             frames[x].setVisible(true);
         }
+        public void setIO(FileIOManager io){
+        this.io = io;
+    }
 }

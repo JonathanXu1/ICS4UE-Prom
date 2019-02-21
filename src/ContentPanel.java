@@ -53,5 +53,6 @@ public class ContentPanel extends JTabbedPane {
         this.setEnabledAt(1, true);
         this.setEnabledAt(2, true);
         this.setEnabledAt(3, true);
+        editStudent.setIO(io);
     }
 }
