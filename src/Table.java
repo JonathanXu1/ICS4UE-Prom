@@ -10,7 +10,7 @@ public class Table extends JPanel {
     public Table(){
         setLayout(new FlowLayout());
 
-        this.students = students;
+
         String[] columnNames = {"Student Number",
                 "First",
                 "Last",
@@ -47,5 +47,6 @@ public class Table extends JPanel {
     }
     public void loadStudents(ArrayList<Student> students){
         this.students = students;
+
     }
 }
