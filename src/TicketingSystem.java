@@ -34,7 +34,7 @@ public class TicketingSystem extends JFrame {
     }
 
     //Constructor - this runs first
-    TicketingSystem() throws IOException, FontFormatException{
+    public TicketingSystem() throws IOException, FontFormatException{
         super("Prom Ticketing System");
 
         // Set the frame to full screen

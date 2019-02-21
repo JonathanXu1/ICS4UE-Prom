@@ -36,63 +36,38 @@ public class StudentManagerLayout extends CustomPanel{
         private void addFrame1(){
             frames[0] = new JPanel();
             frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
-            DynamicLabel header = new DynamicLabel("Current Students", x, y/10, Color.BLACK);
 
             JPanel row1 = new JPanel();
-            table = new Table();
-            table.setSize(1000,1500);;
-            JScrollPane scrollPane = new JScrollPane(table);
-            frames[0].add(scrollPane);
+                DynamicLabel header = new DynamicLabel("Current Students", x, y/10, Color.BLACK);
 
-                JButton newStudent = new JButton("New Student");
-                newStudent.addActionListener(new ActionListener() {
+                JButton saveBtn = new JButton("Save");
+                saveBtn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                    }
+                });
+                JButton manageBtn = new JButton("Manage");
+                JButton newStudentBtn = new JButton("New Student");
+                newStudentBtn.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         showFrame(1);
                     }
                 });
-                newStudent.setPreferredSize(new Dimension(x / 4, y / 8));
-            /* Not sure how we want to implement drop down bar
-            JButton manageStudents = new JButton("Manage");
-            manageStudents.addActionListener( new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
+            row1.add(header);
+            row1.add(saveBtn);
+            row1.add(manageBtn);
+            row1.add(newStudentBtn);
 
-                }
-            });
-            */
-                JButton save = new JButton("Save");
-                save.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+            table = new Table(x/2,y/2);
+            JScrollPane scrollPane = new JScrollPane(table);
 
-                    }
-                });
-                row1.add(newStudent);
-                row1.setBackground(null);
+            frames[0].add(row1);
+            frames[0].add(scrollPane);
 
-                newStudent.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Code for student information
-                    }
-                });
-
-                JButton exit = new JButton("Exit");
-                exit.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.exit(0);
-                    }
-                });
-
-                frames[0].add(header);
-                frames[0].add(row1);
-                frames[0].add(exit);
-
-                this.add(frames[0], BorderLayout.CENTER);
-            }
+            this.add(frames[0], BorderLayout.CENTER);
+        }
 
         // New student display
         private void addFrame2(){
@@ -102,17 +77,63 @@ public class StudentManagerLayout extends CustomPanel{
             JPanel initPane = new JPanel();
             initPane.setBackground(Color.WHITE);
             initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
-                DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/20, Color.BLACK);
-                JTextField nameField = new JTextField(15);
-                nameField.setPreferredSize(new Dimension(x, y/20));
-                DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/20, Color.BLACK);
-                JTextField numField = new JTextField(15);
-                numField.setPreferredSize(new Dimension(x,y/20));
-            initPane.add(nameLabel);
-            initPane.add(nameField);
-            initPane.add(numLabel);
-            initPane.add(numField);
-            JPanel row1 = new JPanel();
+                JPanel row1 = new JPanel();
+                JPanel namePanel = new JPanel();
+                namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
+                    DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/20, Color.BLACK);
+                    JTextField nameField = new JTextField(15);
+                    nameField.setPreferredSize(new Dimension(x, y/20));
+                namePanel.add(nameLabel);
+                namePanel.add(nameField);
+
+                JPanel numberPanel = new JPanel();
+                numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.PAGE_AXIS));
+                    DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/20, Color.BLACK);
+                    JTextField numField = new JTextField(15);
+                    numField.setPreferredSize(new Dimension(x,y/20));
+                namePanel.add(numLabel);
+                namePanel.add(numField);
+
+                row1.add(namePanel);
+                row1.add(numberPanel);
+
+
+                JPanel row2 = new JPanel();
+                JPanel dietPanel = new JPanel();
+                dietPanel.setLayout(new BoxLayout(dietPanel, BoxLayout.PAGE_AXIS));
+                    DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/20, Color.BLACK);
+                    JPanel dietSelector = new JPanel();
+                    //TODO: Fix hardcode
+                    dietSelector.setPreferredSize(new Dimension(x/8, y/4));
+                    dietSelector.setBackground(Color.GRAY);
+                dietPanel.add(dietLabel);
+                dietPanel.add(dietSelector);
+
+                JPanel likesPanel = new JPanel();
+                likesPanel.setLayout(new BoxLayout(likesPanel, BoxLayout.PAGE_AXIS));
+                    JPanel row3 = new JPanel();
+                        DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/20, Color.BLACK);
+                        JButton deleteBtn = new JButton("Delete");
+                        JButton addBtn = new JButton("Add");
+                    row3.add(likesLabel);
+                    row3.add(deleteBtn);
+                    row3.add(addBtn);
+                    JPanel likesSelector = new JPanel();
+                    //TODO: Fix hardcode
+                    likesSelector.setPreferredSize(new Dimension(x/8, y/4));
+                    likesSelector.setBackground(Color.GRAY);
+                likesPanel.add(row3);
+                likesPanel.add(likesSelector);
+
+                row2.add(dietPanel);
+                row2.add(likesPanel);
+
+            initPane.add(row1);
+            initPane.add(row2);
+
+
+            JPanel row4 = new JPanel();
+
             JButton cancelBtn = new JButton("Cancel");
             cancelBtn.addActionListener(new ActionListener(){
                 @Override
@@ -136,15 +157,16 @@ public class StudentManagerLayout extends CustomPanel{
                     if(!name.isEmpty() && !studentNumber.isEmpty()){
                         Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                         students.add(newStudent);
+                        table.loadStudents(students);
                         showFrame(0);
                     }
                 }
             });
-            row1.add(cancelBtn);
-            row1.add(saveBtn);
+            row4.add(cancelBtn);
+            row4.add(saveBtn);
             frames[1].add(header);
             frames[1].add(initPane);
-            frames[1].add(row1);
+            frames[1].add(row4);
 
             this.add(frames[1], BorderLayout.CENTER);
         }

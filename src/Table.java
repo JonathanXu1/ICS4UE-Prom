@@ -7,8 +7,9 @@ public class Table extends JPanel {
     private JTable table;
 
 
-    public Table(){
+    public Table(int x, int y){
         setLayout(new FlowLayout());
+        this.setPreferredSize(new Dimension(x, y));
     }
 
 
