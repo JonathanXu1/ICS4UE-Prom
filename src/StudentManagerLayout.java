@@ -136,9 +136,8 @@ public class StudentManagerLayout extends CustomPanel{
                     if(!name.isEmpty() && !studentNumber.isEmpty()){
                         Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                         students.add(newStudent);
-                        showFrame(2);
+                        showFrame(0);
                     }
-                    showFrame(0);
                 }
             });
             row1.add(cancelBtn);
