@@ -5,10 +5,10 @@ class Student {
   private ArrayList<String> dietaryRestrictions;
   private ArrayList<String> friendStudentNumbers;
   Student(String name, String studentNumber, ArrayList<String> dietaryRestrictions, ArrayList<String> friendStudentNumbers){
-  this.name = name;
-  this.studentNumber = studentNumber;
-  this.dietaryRestrictions = dietaryRestrictions;
-  this.friendStudentNumbers = friendStudentNumbers;
+    this.name = name;
+    this.studentNumber = studentNumber;
+    this.dietaryRestrictions = dietaryRestrictions;
+    this.friendStudentNumbers = friendStudentNumbers;
   }
   public String getName(){
     return this.name;
