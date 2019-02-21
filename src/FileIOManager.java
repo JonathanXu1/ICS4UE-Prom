@@ -36,7 +36,7 @@ public class FileIOManager{
 
             writer.close();
         } catch (IOException e){
-            System.out.println("Error creating project");
+            e.printStackTrace();
         }
     }
 
@@ -69,7 +69,7 @@ public class FileIOManager{
             output[1] = configReader.readLine();
             configReader.close();
         } catch(IOException e){
-            System.out.println("Can't open readers");
+            e.printStackTrace();
         }
 
         return output;
@@ -89,10 +89,10 @@ public class FileIOManager{
       e.printStackTrace();
      }
   }
-  public ArrayList<Student> loadStudents(String projectName){
+  public ArrayList<Student> loadStudents(){
     ArrayList <Student> students = new ArrayList<Student>();
       try{
-        BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/saves/" + projectName + "/saves/students.txt"));
+        BufferedReader br = new BufferedReader(new FileReader(directory + "/students.txt"));
         String currentLine, name, number;
         ArrayList<String> dietaryRestrictions = new ArrayList<String>();
         ArrayList<String> friendStudentNumbers = new ArrayList<String>();
