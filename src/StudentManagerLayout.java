@@ -37,7 +37,7 @@ public class StudentManagerLayout extends CustomPanel{
 
             JPanel row1 = new JPanel();
             table = new Table();
-            table.setSize(600,200);;
+            table.setSize(1000,1500);;
             JScrollPane scrollPane = new JScrollPane(table);
             frames[0].add(scrollPane);
 
