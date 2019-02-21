@@ -75,9 +75,9 @@ public class FileIOManager{
         return output;
     }
 
-  public void saveStudents(ArrayList<Student> students, String projectName){
+  public void saveStudents(ArrayList<Student> students){
       try{
-        BufferedWriter bw = new BufferedWriter (new FileWriter (System.getProperty("user.dir") +"/saves/" + projectName + "students.txt"));
+        BufferedWriter bw = new BufferedWriter (new FileWriter (directory + "/students.txt"));
         for (int i = 0; i < students.size(); i++){
           bw.write(students.get(i).getName()+"\t");
           bw.write(students.get(i).getStudentNumber()+"\t");
