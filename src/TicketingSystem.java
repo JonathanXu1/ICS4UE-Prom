@@ -25,6 +25,7 @@ public class TicketingSystem extends JFrame {
     private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
+    //TODO: move io constructor to dashboard
     private FileIOManager io = new FileIOManager(this);
 
     //Main
@@ -55,6 +56,7 @@ public class TicketingSystem extends JFrame {
 
         //Set up look and feel
         UIManager.put("TabbedPane.selected", Color.decode("#8F8F8F"));
+        /*
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -64,7 +66,7 @@ public class TicketingSystem extends JFrame {
             }
         } catch (Exception e) {
             // If Nimbus is not available, you can set the GUI to another look and feel.
-        }
+        }*/
 
         //Set up the inner panels (where we put our graphics)``
         headerPanel = new HeaderPanel("Prom Design", MAX_WIDTH, MAX_HEIGHT/10, 1);

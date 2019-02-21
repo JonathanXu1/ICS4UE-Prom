@@ -1,21 +1,26 @@
 import javax.swing.*;
-import java.awt.Dimension;
+import java.awt.*;
 
 public class CustomButton extends JButton {
 
-    public CustomButton(String text, int colorId, int textColor){
-        super(text);
+    public CustomButton(String text, int colorScheme, int x, int y){
+        Color bg = Color.RED;
+        Color textColor = Color.RED;
+        if(colorScheme == 1){ //Styled like the dashboard buttons
+            bg = Color.decode("#BDA7D4");
+            textColor = Color.WHITE;
+        } else if (colorScheme == 2){
+            bg = Color.decode("#8780B8");
+            textColor = Color.WHITE;
+        }
+        this.setBackground(bg);
 
-        /*
-        DynamicLabel label = new DynamicLabel(text, this.getWidth(), this.getHeight(), textColor);
-        System.out.println(this.getWidth());
-        System.out.println(this.getHeight());
+        //this.setBorder(null);
+        //this.setPreferredSize(new Dimension(x, y));
+        this.setLayout(new GridBagLayout());
+
+        DynamicLabel label = new DynamicLabel(text, x, y, textColor);
         this.add(label);
-        */
     }
-    public CustomButton(String text, int x, int y, int colorId){
-        super(text);
 
-        this.setPreferredSize(new Dimension(x, y));
-    }
 }

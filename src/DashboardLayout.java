@@ -33,7 +33,7 @@ public class DashboardLayout extends CustomPanel {
         DynamicLabel header = new DynamicLabel("Welcome to the Seating Arranger!", x, y/10, Color.BLACK);
         JPanel row1 = new JPanel();
 
-        JButton newProject = new JButton("New Project");
+        CustomButton newProject = new CustomButton("New Project", 1, x/6, y);
         newProject.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
@@ -43,7 +43,7 @@ public class DashboardLayout extends CustomPanel {
         });
         newProject.setPreferredSize(new Dimension(x/4, y/8));
 
-        JButton loadProject = new JButton("Load Project");
+        CustomButton loadProject = new CustomButton("Load Project", 1, x/6, y);
         loadProject.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
@@ -60,7 +60,8 @@ public class DashboardLayout extends CustomPanel {
         row1.setBackground(null);
 
                                      
-        JButton exit = new JButton("Exit");
+        CustomButton exit = new CustomButton("Exit", 2,x/30, y);
+
         exit.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
@@ -96,7 +97,7 @@ public class DashboardLayout extends CustomPanel {
             initPane.add(tableLabel);
             initPane.add(tableField);
             JPanel row1 = new JPanel();
-                JButton cancelBtn = new JButton("Cancel");
+                CustomButton cancelBtn = new CustomButton("Cancel", 2,  x/20, y);
                 cancelBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -104,7 +105,7 @@ public class DashboardLayout extends CustomPanel {
                         showFrame(0);
                     }
                 });
-                JButton saveBtn = new JButton("Save");
+                CustomButton saveBtn = new CustomButton("Save", 2,  x/30, y);
                 saveBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -154,7 +155,7 @@ public class DashboardLayout extends CustomPanel {
         tableSizeLabel = new DynamicLabel("Tables Size: NULL", x, y/20, Color.BLACK);
 
         JPanel row3 = new JPanel();
-            JButton loadAnother = new JButton("Load Another Project");
+            CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x/6, y);
             loadAnother.addActionListener( new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e)
@@ -164,7 +165,7 @@ public class DashboardLayout extends CustomPanel {
                     }
                 }
             });
-            JButton exit = new JButton("Exit");
+            CustomButton exit = new CustomButton("Exit", 2,  x/30, y);
             exit.addActionListener( new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e)
