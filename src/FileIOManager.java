@@ -22,18 +22,22 @@ public class FileIOManager{
         chooser.setAcceptAllFileFilterUsed(false);
     }
 
-    public void createProject(String projectName, String tableSize) throws IOException{
-        //Creates project folder
-        this.directory = System.getProperty("user.dir") + "/saves/" + projectName;
-        new File(this.directory).mkdirs();
+    public void createProject(String projectName, String tableSize){
+        try {
+            //Creates project folder
+            this.directory = System.getProperty("user.dir") + "/saves/" + projectName;
+            new File(this.directory).mkdirs();
 
-        // Initializes storage files
-        BufferedWriter writer = new BufferedWriter(new FileWriter(this.directory + "/config.txt"));
-        writer.write(tableSize);
-        new File(this.directory + "/students.txt").createNewFile();
-        new File(this.directory + "/groups.txt").createNewFile();
+            // Initializes storage files
+            BufferedWriter writer = new BufferedWriter(new FileWriter(this.directory + "/config.txt"));
+            writer.write(tableSize);
+            new File(this.directory + "/students.txt").createNewFile();
+            new File(this.directory + "/groups.txt").createNewFile();
 
-        writer.close();
+            writer.close();
+        } catch (IOException e){
+            System.out.println("Error creating project");
+        }
     }
 
     public boolean loadProject(){

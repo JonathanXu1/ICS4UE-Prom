@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -8,14 +7,16 @@ public class DashboardLayout extends CustomPanel {
     private int x, y;
     private JPanel[] frames = new JPanel[3];
     private FileIOManager io;
+    private ContentPanel contentPanel;
 
     private DynamicLabel projectTitle, tableSizeLabel;
 
-    public DashboardLayout(int x, int y, FileIOManager fileManager){
+    public DashboardLayout(int x, int y, FileIOManager fileManager, ContentPanel contentPanel){
         super(x, y, "Dashboard", "");
         this.x = x;
         this.y = y;
         this.io = fileManager;
+        this.contentPanel = contentPanel;
         //this.setLayout(new OverlayLayout(this));
 
         addFrame1();
@@ -195,6 +196,7 @@ public class DashboardLayout extends CustomPanel {
         if(x == 2){
             projectTitle.setText("Current Project: " + io.getProject()[0]);
             tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
+            contentPanel.enableTabs();
         }
         frames[x].setVisible(true);
     }
