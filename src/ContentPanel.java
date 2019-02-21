@@ -33,7 +33,7 @@ public class ContentPanel extends JTabbedPane {
     public void addChildren(){
         //TODO: Fix hardcode
         dashboard = new DashboardLayout(this.getWidth()-300, this.getHeight(), io, this);
-        editStudent = new StudentManagerLayout(this.getWidth()-300, this.getHeight());
+        editStudent = new StudentManagerLayout(this.getWidth()-300, this.getHeight(), io);
         seatGen = new SeatingGenLayout(this.getWidth()-300, this.getHeight());
         tableLayout = new TableLayout(this.getWidth()-300, this.getHeight());
 
@@ -53,6 +53,6 @@ public class ContentPanel extends JTabbedPane {
         this.setEnabledAt(1, true);
         this.setEnabledAt(2, true);
         this.setEnabledAt(3, true);
-        editStudent.setIO(io);
+        editStudent.loadStudents();
     }
 }
