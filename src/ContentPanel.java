@@ -13,12 +13,19 @@ public class ContentPanel extends JTabbedPane {
 
 
     public ContentPanel(int x, int y, FileIOManager fileManager){
+        // JTabbedPane styling
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.decode("#C4C4C4"));
         this.setTabPlacement(LEFT);
-
         DynamicLabel placeholder = new DynamicLabel("Placeholder", x/12, y, Color.BLACK);
         this.setFont(placeholder.getFont());
+        String[] css = {
+                "margin:0;background:#C4C4C4;",
+                "padding:10px;",
+                "width:110px;height:10px;border-radius:3px;"
+                        + "text-align:center;border:none;"
+        };
+
 
         this.io = fileManager;
     }

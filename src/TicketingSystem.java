@@ -53,10 +53,23 @@ public class TicketingSystem extends JFrame {
         genv.registerFont(robotoLight);
         genv.registerFont(robotoRegular);
 
+        //Set up look and feel
+        UIManager.put("TabbedPane.selected", Color.decode("#8F8F8F"));
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // If Nimbus is not available, you can set the GUI to another look and feel.
+        }
 
         //Set up the inner panels (where we put our graphics)``
         headerPanel = new HeaderPanel("Prom Design", MAX_WIDTH, MAX_HEIGHT/10, 1);
         this.add(headerPanel, BorderLayout.NORTH);
+
         contentPanel = new ContentPanel(MAX_WIDTH, MAX_HEIGHT/10*9, io);
         this.add(contentPanel, BorderLayout.CENTER);
 
