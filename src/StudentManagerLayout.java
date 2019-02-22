@@ -11,14 +11,14 @@ public class StudentManagerLayout extends CustomPanel{
     private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
 
-    private Table table;
+    private StudentChart chart;
     private ArrayList<Student> students;
     private int selectedRow = -1;
 
     private JButton manageBtn;
 
     public StudentManagerLayout(int x, int y, FileIOManager io){
-        super(x, y, "Student Manager", "Add and modify students here.");
+        super(x, y, "Student Manager", "Add and modify students");
         this.x = x;
         this.y = y;
        // this.setLayout(new OverlayLayout(this));
@@ -32,7 +32,7 @@ public class StudentManagerLayout extends CustomPanel{
 
     public void loadStudents(){
         this.students = io.loadStudents();
-        table.loadStudents(students);
+        chart.loadStudents(students);
     }
 
     public void changeSelected(int index){
@@ -81,10 +81,10 @@ public class StudentManagerLayout extends CustomPanel{
         row1.add(manageBtn);
         row1.add(newStudentBtn);
 
-        table = new Table(x/10*9,y/5*4, this);
+        chart = new StudentChart(x/10*9,y/5*4, this);
 
         frames[0].add(row1);
-        frames[0].add(table);
+        frames[0].add(chart);
 
         this.add(frames[0], BorderLayout.CENTER);
     }
@@ -177,7 +177,7 @@ public class StudentManagerLayout extends CustomPanel{
                 if(!name.isEmpty() && !studentNumber.isEmpty()){
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                     students.add(newStudent);
-                    table.loadStudents(students);
+                    chart.loadStudents(students);
                     showFrame(0);
                 }
             }

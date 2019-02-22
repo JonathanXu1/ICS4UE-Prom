@@ -5,19 +5,16 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-public class Table extends JPanel {
+public class StudentChart extends Chart {
     private static JTable table;
     private static DefaultTableModel model;
     private int selectedIndex = -1;
 
     private StudentManagerLayout studentManager;
 
-    public Table(int x, int y, StudentManagerLayout manager){
+    public StudentChart(int x, int y, StudentManagerLayout manager){
+        super(x,y);
         this.studentManager = manager;
-
-        setLayout(new FlowLayout());
-        this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(null);
 
         String[] columnNames = {"Student Number",
                 "First",
