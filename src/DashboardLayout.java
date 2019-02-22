@@ -29,36 +29,43 @@ public class DashboardLayout extends CustomPanel {
     //Default welcome screen
     private void addFrame1(){
         frames[0] = new CustomPanel();
+        frames[0].setPreferredSize(new Dimension(x, y));
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
-        DynamicLabel header = new DynamicLabel("Welcome to the Seating Arranger!", x, y/10, Color.BLACK);
+
         CustomPanel row1 = new CustomPanel();
+            DynamicLabel header = new DynamicLabel("Welcome to the Seating Arranger!", x/2, y, Color.BLACK);
+        row1.add(header);
 
-        CustomButton newProject = new CustomButton("New Project", 1, x/6, y);
-        newProject.addActionListener( new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                showFrame(1);
-            }
-        });
-        newProject.setPreferredSize(new Dimension(x/4, y/8));
-
-        CustomButton loadProject = new CustomButton("Load Project", 1, x/6, y);
-        loadProject.addActionListener( new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                if(io.loadProject()){
-                    showFrame(2);
+        CustomPanel row2 = new CustomPanel();
+            CustomButton newProject = new CustomButton("New Project", 1, x/6, y);
+            newProject.addActionListener( new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    showFrame(1);
                 }
-            }
-        });
+            });
+            newProject.setPreferredSize(new Dimension(x/4, y/8));
+            CustomButton loadProject = new CustomButton("Load Project", 1, x/6, y);
+            loadProject.addActionListener( new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    if(io.loadProject()){
+                        showFrame(2);
+                    }
+                }
+            });
 
-        loadProject.setPreferredSize(new Dimension(x/4, y/8));
-        row1.add(newProject);
-        row1.add(loadProject);
-                                     
-        CustomButton exit = new CustomButton("Exit", 2,x/30, y);
+            loadProject.setPreferredSize(new Dimension(x/4, y/8));
+        row2.add(newProject);
+        row2.add(Box.createRigidArea(new Dimension(x/8,0)));
+        row2.add(loadProject);
+
+        CustomPanel row3 = new CustomPanel();
+        row3.setLayout(new FlowLayout(FlowLayout.RIGHT));
+            CustomButton exit = new CustomButton("Exit", 2,x/30, y);
+        row3.add(exit);
 
         exit.addActionListener( new ActionListener(){
             @Override
@@ -68,9 +75,11 @@ public class DashboardLayout extends CustomPanel {
             }
         });
 
-        frames[0].add(header);
+        frames[0].add(Box.createRigidArea(new Dimension(0,y/8)));
         frames[0].add(row1);
-        frames[0].add(exit);
+        frames[0].add(row2);
+        frames[0].add(Box.createVerticalGlue());
+        frames[0].add(row3);
 
         this.add(frames[0], BorderLayout.CENTER);
     }
@@ -78,6 +87,7 @@ public class DashboardLayout extends CustomPanel {
     // New project screen
     private void addFrame2(){
         frames[1] = new CustomPanel();
+        frames[1].setPreferredSize(new Dimension(x, y));
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
             DynamicLabel header = new DynamicLabel("New Project", x, y/15, Color.BLACK);
@@ -134,6 +144,7 @@ public class DashboardLayout extends CustomPanel {
     // Loaded project screen
     private void addFrame3(){
         frames[2] = new CustomPanel();
+        frames[2].setPreferredSize(new Dimension(x, y));
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
