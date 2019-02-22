@@ -22,7 +22,13 @@ public class Table extends JPanel {
 
         Object[][] emptyRow = {};
 
-        model = new DefaultTableModel(emptyRow, columnNames);
+        model = new DefaultTableModel(emptyRow, columnNames){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells unEditable
+                return false;
+            }
+        };;
 
         table = new JTable(model);
         table.setPreferredScrollableViewportSize(new Dimension(500, 100));
@@ -49,19 +55,6 @@ public class Table extends JPanel {
             if(!existsInTable(data[i])){
                 model.addRow(data[i]);
             }
-
-            /*
-            DefaultTableModel unEditable = new DefaultTableModel(data, columnNames) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //all cells unEditable
-                    return false;
-                }
-            };
-
-            table.setModel(unEditable);
-            */
-
         }
     }
 

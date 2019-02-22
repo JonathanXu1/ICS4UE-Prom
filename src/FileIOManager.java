@@ -44,11 +44,17 @@ public class FileIOManager{
         boolean selected = true;
 
         if (chooser.showOpenDialog(main) == JFileChooser.APPROVE_OPTION) {
-            System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
-            System.out.println("getSelectedFile() : " +  chooser.getSelectedFile());
+            //System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
+            //System.out.println("getSelectedFile() : " +  chooser.getSelectedFile());
+            boolean isValid = new File(chooser.getSelectedFile(), "config.txt").exists();
+            if(isValid){
+                String selection = chooser.getSelectedFile().getAbsolutePath();
+                this.directory = selection;
+            } else {
+                JOptionPane.showMessageDialog(chooser, "Invalid folder. Please select a valid project folder.");
+                selected = false;
+            }
 
-            String selection = chooser.getSelectedFile().getAbsolutePath();
-            this.directory = selection;
         }
         else {
             System.out.println("No Selection ");

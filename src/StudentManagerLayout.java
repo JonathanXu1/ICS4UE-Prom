@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class StudentManagerLayout extends CustomPanel{
     private int x, y;
-    private JPanel[] frames = new JPanel[2];
+    private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
 
     private Table table;
@@ -34,10 +34,11 @@ public class StudentManagerLayout extends CustomPanel{
 
     // Default Student Display
     private void addFrame1(){
-        frames[0] = new JPanel();
+        frames[0] = new CustomPanel();
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
 
         CustomPanel row1 = new CustomPanel();
+        row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
             DynamicLabel header = new DynamicLabel("Current Students", x, y/30, Color.BLACK);
 
             JButton saveBtn = new JButton("Save");
@@ -56,6 +57,7 @@ public class StudentManagerLayout extends CustomPanel{
                 }
             });
         row1.add(header);
+        row1.add(Box.createHorizontalGlue());
         row1.add(saveBtn);
         row1.add(manageBtn);
         row1.add(newStudentBtn);
@@ -70,7 +72,7 @@ public class StudentManagerLayout extends CustomPanel{
 
     // New student display
     private void addFrame2(){
-        frames[1] = new JPanel();
+        frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
         JPanel initPane = new JPanel();
         initPane.setBackground(Color.WHITE);
@@ -78,7 +80,7 @@ public class StudentManagerLayout extends CustomPanel{
             CustomPanel row1 = new CustomPanel();
             CustomPanel namePanel = new CustomPanel();
             namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
-                DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/20, Color.BLACK);
+                DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/30, Color.BLACK);
                 JTextField nameField = new JTextField(15);
                 nameField.setPreferredSize(new Dimension(x, y/20));
             namePanel.add(nameLabel);
@@ -86,7 +88,7 @@ public class StudentManagerLayout extends CustomPanel{
 
             CustomPanel numberPanel = new CustomPanel();
             numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.PAGE_AXIS));
-                DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/20, Color.BLACK);
+                DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/30, Color.BLACK);
                 JTextField numField = new JTextField(15);
                 numField.setPreferredSize(new Dimension(x,y/20));
             namePanel.add(numLabel);
@@ -99,9 +101,9 @@ public class StudentManagerLayout extends CustomPanel{
             CustomPanel row2 = new CustomPanel();
             CustomPanel dietPanel = new CustomPanel();
             dietPanel.setLayout(new BoxLayout(dietPanel, BoxLayout.PAGE_AXIS));
-                DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/20, Color.BLACK);
+                DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/30, Color.BLACK);
                 JPanel dietSelector = new JPanel();
-                //TODO: Fix hardcode
+                //TODO: Make real
                 dietSelector.setPreferredSize(new Dimension(x/8, y/4));
                 dietSelector.setBackground(Color.GRAY);
             dietPanel.add(dietLabel);
@@ -109,15 +111,15 @@ public class StudentManagerLayout extends CustomPanel{
 
             CustomPanel likesPanel = new CustomPanel();
             likesPanel.setLayout(new BoxLayout(likesPanel, BoxLayout.PAGE_AXIS));
-                JPanel row3 = new JPanel();
-                    DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/20, Color.BLACK);
+                CustomPanel row3 = new CustomPanel();
+                    DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/30, Color.BLACK);
                     JButton deleteBtn = new JButton("Delete");
                     JButton addBtn = new JButton("Add");
                 row3.add(likesLabel);
                 row3.add(deleteBtn);
                 row3.add(addBtn);
                 JPanel likesSelector = new JPanel();
-                //TODO: Fix hardcode
+                //TODO: Make real
                 likesSelector.setPreferredSize(new Dimension(x/8, y/4));
                 likesSelector.setBackground(Color.GRAY);
             likesPanel.add(row3);
