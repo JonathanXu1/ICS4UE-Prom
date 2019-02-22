@@ -11,7 +11,7 @@ public class StudentManagerLayout extends CustomPanel{
     private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
 
-    private Table table;
+    private StudentChart chart;
     private ArrayList<Student> students;
 
     public StudentManagerLayout(int x, int y, FileIOManager io){
@@ -29,7 +29,7 @@ public class StudentManagerLayout extends CustomPanel{
 
     public void loadStudents(){
         this.students = io.loadStudents();
-        table.loadStudents(students);
+        chart.loadStudents(students);
     }
 
     // Default Student Display
@@ -62,10 +62,10 @@ public class StudentManagerLayout extends CustomPanel{
         row1.add(manageBtn);
         row1.add(newStudentBtn);
 
-        table = new Table(x/10*9,y/5*4);
+        chart = new StudentChart(x/10*9,y/5*4);
 
         frames[0].add(row1);
-        frames[0].add(table);
+        frames[0].add(chart);
 
         this.add(frames[0], BorderLayout.CENTER);
     }
@@ -158,7 +158,7 @@ public class StudentManagerLayout extends CustomPanel{
                 if(!name.isEmpty() && !studentNumber.isEmpty()){
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                     students.add(newStudent);
-                    table.loadStudents(students);
+                    chart.loadStudents(students);
                     showFrame(0);
                 }
             }

@@ -10,6 +10,8 @@ public class SeatingGenLayout extends CustomPanel {
     private ArrayList<Student> students;
     private JPanel[] frames = new JPanel[2];
     private int tableSize;
+    private TableChart chart;
+    //private ArrayList<Table> tables;
 
     public void loadStudents(){
         this.students = io.loadStudents();
@@ -24,7 +26,7 @@ public class SeatingGenLayout extends CustomPanel {
         addFrame1();
         addFrame2();
 
-        //showFrame(0);
+        showFrame(0);
     }
     private void addFrame1() {
         frames[0] = new JPanel();
@@ -32,12 +34,13 @@ public class SeatingGenLayout extends CustomPanel {
 
         JPanel row1 = new JPanel();
             JButton generate = new JButton("Generate Seating!");
-        // seating = new SeatingAlg();
+             // seating = new SeatingAlg();
             generate.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                //seating.generateTables(students, tableSize );
-                showFrame(1);
+                // tables = seating.generateTables(students, tableSize );
+                //
+                    showFrame(1);
             }
         });
     row1.add(generate);
@@ -46,6 +49,7 @@ public class SeatingGenLayout extends CustomPanel {
     }
 
     private void addFrame2(){
+        //chart = new TableChart(x/10*9,y/5*4,tables);
         frames[1] = new JPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
         JPanel initPane = new JPanel();

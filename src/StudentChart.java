@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
-public class Table extends JPanel {
+public class StudentChart extends Chart {
     private static JTable table;
     private static DefaultTableModel model;
 
-    public Table(int x, int y){
-        setLayout(new FlowLayout());
-        this.setPreferredSize(new Dimension(x, y));
-        this.setBackground(null);
-
+    StudentChart(int x, int y){
+        super(x,y);
 
         String[] columnNames = {"Student Number",
                 "First",
