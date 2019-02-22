@@ -78,10 +78,6 @@ public class TicketingSystem extends JFrame {
         this.pack();
         contentPanel.addChildren();
 
-         //Add listeners
-        CustomKeyListener keyListener = new CustomKeyListener();
-        this.addKeyListener(keyListener);
-
         this.requestFocusInWindow(); //make sure the frame has focus
 
         this.setVisible(true);
