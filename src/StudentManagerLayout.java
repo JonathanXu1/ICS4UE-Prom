@@ -15,7 +15,7 @@ public class StudentManagerLayout extends CustomPanel{
     private ArrayList<Student> students;
     private int selectedRow = -1;
 
-    private JButton manageBtn;
+    private JButton editStudentBtn, deleteStudentBtn;
 
     public StudentManagerLayout(int x, int y, FileIOManager io){
         super(x, y, "Student Manager", "Add and modify students");
@@ -38,9 +38,11 @@ public class StudentManagerLayout extends CustomPanel{
     public void changeSelected(int index){
         this.selectedRow = index;
         if(this.selectedRow >= 0){
-            manageBtn.setEnabled(true);
+            editStudentBtn.setEnabled(true);
+            deleteStudentBtn.setEnabled(true);
         } else{
-            manageBtn.setEnabled(false);
+            editStudentBtn.setEnabled(false);
+            deleteStudentBtn.setEnabled(false);
         }
     }
 
@@ -60,12 +62,20 @@ public class StudentManagerLayout extends CustomPanel{
                     io.saveStudents(students);
                 }
             });
-            manageBtn = new JButton("Manage");
-            manageBtn.setEnabled(false);
-            manageBtn.addActionListener(new ActionListener() {
+            editStudentBtn = new JButton("Edit Student");
+            editStudentBtn.setEnabled(false);
+            editStudentBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    io.saveStudents(students);
+                }
+            });
+            deleteStudentBtn = new JButton("Delete Student");
+            deleteStudentBtn.setEnabled(false);
+            deleteStudentBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    students.remove(chart.getStudent());
+                    chart.deleteStudent();
                 }
             });
             JButton newStudentBtn = new JButton("New Student");
@@ -78,7 +88,8 @@ public class StudentManagerLayout extends CustomPanel{
         row1.add(header);
         row1.add(Box.createHorizontalGlue());
         row1.add(saveBtn);
-        row1.add(manageBtn);
+        row1.add(editStudentBtn);
+        row1.add(deleteStudentBtn);
         row1.add(newStudentBtn);
 
         chart = new StudentChart(x/10*9,y/5*4, this);

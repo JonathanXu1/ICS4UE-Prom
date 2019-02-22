@@ -71,6 +71,18 @@ public class StudentChart extends Chart {
 
     public void deleteStudent(){
         model.removeRow(table.getSelectedRow());
+        studentManager.changeSelected(-1);
+    }
+
+    public Student getStudent(){
+        int row = table.getSelectedRow();
+        String studentNumber = (String)model.getValueAt(row, 0);
+        String name = model.getValueAt(row, 1) + " " + model.getValueAt(row, 2);
+        ArrayList<String> friends = (ArrayList<String>)model.getValueAt(row, 3);
+        ArrayList<String> diet = (ArrayList<String>)model.getValueAt(row, 4);
+
+        Student selectedStudent = new Student(name, studentNumber, diet, friends);
+        return selectedStudent;
     }
 
     private boolean existsInTable(Object[] entry) {
