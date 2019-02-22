@@ -13,6 +13,9 @@ public class StudentManagerLayout extends CustomPanel{
 
     private Table table;
     private ArrayList<Student> students;
+    private int selectedRow = -1;
+
+    private JButton manageBtn;
 
     public StudentManagerLayout(int x, int y, FileIOManager io){
         super(x, y, "Student Manager", "Add and modify students here.");
@@ -32,6 +35,15 @@ public class StudentManagerLayout extends CustomPanel{
         table.loadStudents(students);
     }
 
+    public void changeSelected(int index){
+        this.selectedRow = index;
+        if(this.selectedRow >= 0){
+            manageBtn.setEnabled(true);
+        } else{
+            manageBtn.setEnabled(false);
+        }
+    }
+
     // Default Student Display
     private void addFrame1(){
         frames[0] = new CustomPanel();
@@ -48,7 +60,14 @@ public class StudentManagerLayout extends CustomPanel{
                     io.saveStudents(students);
                 }
             });
-            JButton manageBtn = new JButton("Manage");
+            manageBtn = new JButton("Manage");
+            manageBtn.setEnabled(false);
+            manageBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    io.saveStudents(students);
+                }
+            });
             JButton newStudentBtn = new JButton("New Student");
             newStudentBtn.addActionListener(new ActionListener() {
                 @Override
@@ -62,7 +81,7 @@ public class StudentManagerLayout extends CustomPanel{
         row1.add(manageBtn);
         row1.add(newStudentBtn);
 
-        table = new Table(x/10*9,y/5*4);
+        table = new Table(x/10*9,y/5*4, this);
 
         frames[0].add(row1);
         frames[0].add(table);

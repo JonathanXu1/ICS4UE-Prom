@@ -1,18 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Vector;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class Table extends JPanel {
     private static JTable table;
     private static DefaultTableModel model;
+    private int selectedIndex = -1;
 
-    public Table(int x, int y){
+    private StudentManagerLayout studentManager;
+
+    public Table(int x, int y, StudentManagerLayout manager){
+        this.studentManager = manager;
+
         setLayout(new FlowLayout());
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(null);
-
 
         String[] columnNames = {"Student Number",
                 "First",
@@ -28,22 +33,31 @@ public class Table extends JPanel {
                 //all cells unEditable
                 return false;
             }
-        };;
+        };
 
         table = new JTable(model);
-        table.setPreferredScrollableViewportSize(new Dimension(500, 100));
+        table.setPreferredScrollableViewportSize(new Dimension(x, y));
         table.setFillsViewportHeight(true);
-        this.setBackground(Color.WHITE);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ListSelectionModel selectionModel = table.getSelectionModel();
+        selectionModel.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                if (e.getValueIsAdjusting())
+                    return;
+                selectedIndex = selectionModel.getAnchorSelectionIndex();
+                studentManager.changeSelected(selectedIndex);
+                System.out.println(selectedIndex);
+            }
+        });
+
+        table.setBackground(Color.WHITE);
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setPreferredSize(new Dimension(x, y));
         this.add(scrollPane);
     }
 
-
     public void loadStudents(ArrayList<Student> students) {
-
-
         Object[][] data = new Object[students.size()][5];
         for (int i = 0; i < students.size(); i++) {
             String[] token = students.get(i).getName().split(" ");
@@ -58,11 +72,16 @@ public class Table extends JPanel {
         }
     }
 
-    public boolean existsInTable(Object[] entry) {
+    public void deleteStudent(){
+        model.removeRow(table.getSelectedRow());
+    }
+
+    private boolean existsInTable(Object[] entry) {
 
         // Get row and column count
         int rowCount = table.getRowCount();
         int colCount = table.getColumnCount();
+        //TODO: Compare only student numbers instead of everything
 
         // Get Current Table Entry
         String curEntry = "";
