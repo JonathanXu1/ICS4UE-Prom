@@ -33,8 +33,7 @@ public class TableChart extends Chart {
         scrollPane.setPreferredSize(new Dimension(x, y));
         this.add(scrollPane);
     }
-
-/* Tests when table is given
+    /*
     public void loadTable(ArrayList<Table> tables) {
         String[] columnNames = new String[tables.size()];
         Object[][] data = new Object[tables.getSize()][tables.size()];
