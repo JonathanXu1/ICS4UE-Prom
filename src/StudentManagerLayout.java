@@ -15,7 +15,7 @@ public class StudentManagerLayout extends CustomPanel{
     private ArrayList<Student> students;
 
     public StudentManagerLayout(int x, int y, FileIOManager io){
-        super(x, y, "Student Manager", "Add and modify students here.");
+        super(x, y, "Student Manager", "Add and modify students");
         this.x = x;
         this.y = y;
        // this.setLayout(new OverlayLayout(this));

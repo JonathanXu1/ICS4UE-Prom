@@ -19,7 +19,7 @@ public class SeatingGenLayout extends CustomPanel {
     }
 
     public SeatingGenLayout(int x, int y, FileIOManager io) {
-        super(x, y, "Seating Generator", "Group up students into tables.");
+        super(x, y, "Seating Generator", "Creates seating arrangement");
         this.io = io;
         addFrame1();
         addFrame2();
@@ -44,11 +44,30 @@ public class SeatingGenLayout extends CustomPanel {
     frames[0].add(row1);
     this.add(frames[0], BorderLayout.CENTER);
     }
+
     private void addFrame2(){
         frames[1] = new JPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
-        DynamicLabel header = new DynamicLabel("Done Generating", x, y/15, Color.BLACK);
-        
+        JPanel initPane = new JPanel();
+        initPane.setBackground(Color.WHITE);
+        initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
+            CustomPanel row1 = new CustomPanel();
+            CustomPanel namePanel = new CustomPanel();
+            namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
+                DynamicLabel header = new DynamicLabel("Done Generating", x, y/30, Color.BLACK);
+            namePanel.add(header);
+
+        JButton cancelBtn = new JButton("Cancel");
+        cancelBtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                showFrame(0);
+            }
+        });
+        row1.add(namePanel);
+        frames[1].add(row1);
+        this.add(frames[1], BorderLayout.CENTER);
     }
     private void showFrame(int x) {
         for (int i = 0; i < frames.length; i++) {
