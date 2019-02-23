@@ -24,9 +24,8 @@ public class SeatingGenLayout extends CustomPanel {
         super(x, y, "Seating Generator", "Creates seating arrangement");
         this.io = io;
         addFrame1();
-        addFrame2();
-
-        showFrame(0);
+        //addFrame2();
+        //showFrame(0);
     }
     private void addFrame1() {
         frames[0] = new JPanel();
@@ -39,7 +38,6 @@ public class SeatingGenLayout extends CustomPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                 //tables = seating.generateTables(students, tableSize);
-
                     showFrame(1);
             }
         });
@@ -47,7 +45,7 @@ public class SeatingGenLayout extends CustomPanel {
     frames[0].add(row1);
     this.add(frames[0], BorderLayout.CENTER);
     }
-
+/*
     private void addFrame2(){
         String tokens[] = io.getProject();
         tableSize = Integer.parseInt(tokens[1]);
@@ -56,7 +54,7 @@ public class SeatingGenLayout extends CustomPanel {
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
         this.add(frames[1], BorderLayout.CENTER);
-    }
+    }*/
     private void showFrame(int x) {
         for (int i = 0; i < frames.length; i++) {
             frames[i].setVisible(false);
