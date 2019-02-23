@@ -42,7 +42,7 @@ public class StudentChart extends Chart {
                 if (e.getValueIsAdjusting())
                     return;
                 selectedIndex = selectionModel.getAnchorSelectionIndex();
-                studentManager.changeSelected(selectedIndex);
+                studentManager.changeSelected(true);
                 System.out.println(selectedIndex);
             }
         });
@@ -71,7 +71,7 @@ public class StudentChart extends Chart {
 
     public void deleteStudent(){
         model.removeRow(table.getSelectedRow());
-        studentManager.changeSelected(-1);
+        studentManager.changeSelected(false);
     }
 
     public Student getStudent(){

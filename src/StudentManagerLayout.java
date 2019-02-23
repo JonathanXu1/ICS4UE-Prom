@@ -13,7 +13,6 @@ public class StudentManagerLayout extends CustomPanel{
 
     private StudentChart chart;
     private ArrayList<Student> students;
-    private int selectedRow = -1;
 
     private JButton editStudentBtn, deleteStudentBtn;
 
@@ -35,9 +34,8 @@ public class StudentManagerLayout extends CustomPanel{
         chart.loadStudents(students);
     }
 
-    public void changeSelected(int index){
-        this.selectedRow = index;
-        if(this.selectedRow >= 0){
+    public void changeSelected(boolean selected){
+        if(selected){
             editStudentBtn.setEnabled(true);
             deleteStudentBtn.setEnabled(true);
         } else{
