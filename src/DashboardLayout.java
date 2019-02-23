@@ -9,7 +9,7 @@ public class DashboardLayout extends CustomPanel {
     private FileIOManager io;
     private ContentPanel contentPanel;
 
-    private DynamicLabel projectTitle, tableSizeLabel;
+    private DynamicLabel projectTitle, tableSizeLabel, studentHeaderStatus;
 
     public DashboardLayout(int x, int y, FileIOManager fileManager, ContentPanel contentPanel){
         super(x, y, "Dashboard", "");
@@ -86,7 +86,6 @@ public class DashboardLayout extends CustomPanel {
     // New project screen
     private void addFrame2(){
         frames[1] = new CustomPanel();
-        frames[1].setBackground(Color.RED);
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
             DynamicLabel header = new DynamicLabel("New Project", x, y/15, Color.BLACK);
@@ -104,7 +103,7 @@ public class DashboardLayout extends CustomPanel {
             initPane.add(tableLabel);
             initPane.add(tableField);
             // TODO: Find way to make button row @ bottom of page
-            CustomPanel row1 = new CustomPanel(x, y/20);
+            CustomPanel row1 = new CustomPanel(x/3, y/20);
             //row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
                 CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/40);
                 cancelBtn.addActionListener(new ActionListener(){
@@ -153,14 +152,14 @@ public class DashboardLayout extends CustomPanel {
 
         CustomPanel row1 = new CustomPanel();
             DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
-            DynamicLabel studentHeaderStatus = new DynamicLabel("NULL", x, y/20, Color.RED);
+            studentHeaderStatus = new DynamicLabel("Empty", x, y/20, Color.RED);
         row1.add(studentHeader);
         row1.add(studentHeaderStatus);
         DynamicLabel students = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
 
         CustomPanel row2 = new CustomPanel();
             DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
-            DynamicLabel seatingHeaderStatus = new DynamicLabel("NULL", x, y/20, Color.RED);
+            DynamicLabel seatingHeaderStatus = new DynamicLabel("Not Generated", x, y/20, Color.RED);
         row2.add(seatingHeader);
         row2.add(seatingHeaderStatus);
         DynamicLabel tables = new DynamicLabel("Tables: NULL", x, y/30, Color.BLACK);
@@ -210,6 +209,14 @@ public class DashboardLayout extends CustomPanel {
         if(x == 2){
             projectTitle.setText("Current Project: " + io.getProject()[0]);
             tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
+            if(io.getProject()[2].equals("0")){
+                studentHeaderStatus.setText("Empty");
+                studentHeaderStatus.setForeground(Color.RED);
+            } else {
+                studentHeaderStatus.setText("Available");
+                studentHeaderStatus.setForeground(Color.GREEN);
+            }
+
             contentPanel.enableTabs();
         }
         frames[x].setVisible(true);

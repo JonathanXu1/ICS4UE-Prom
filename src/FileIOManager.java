@@ -67,7 +67,7 @@ public class FileIOManager{
 
     public String[] getProject() {
         // Return project configs
-        String[] output = new String[2];
+        String[] output = new String[3];
         // Project Name
         output[0] = directory.substring((System.getProperty("user.dir") + "/saves/").length());
         // Table size
@@ -78,6 +78,9 @@ public class FileIOManager{
         } catch(IOException e){
             e.printStackTrace();
         }
+        // Student size
+        output[2] = Integer.toString(loadStudents().size());
+        // Groups
 
         return output;
     }
@@ -118,5 +121,10 @@ public class FileIOManager{
               e.printStackTrace();
            }
         return students;
+    }
+
+    public ArrayList<Table> loadGroups(){
+        ArrayList<Table> tableGroup = new ArrayList<Table>();
+        return tableGroup;
     }
 }

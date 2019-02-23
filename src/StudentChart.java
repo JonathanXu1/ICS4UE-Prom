@@ -41,6 +41,7 @@ public class StudentChart extends Chart {
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setRowHeight(y/30);
         table.setShowGrid(false);
+        table.setAutoCreateRowSorter(true);
         ListSelectionModel selectionModel = table.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
