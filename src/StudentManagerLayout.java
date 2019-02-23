@@ -102,6 +102,7 @@ public class StudentManagerLayout extends CustomPanel{
     private void addFrame2(){
         frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
+        // Initalize pane
         JPanel initPane = new JPanel();
         initPane.setBackground(Color.WHITE);
         initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));

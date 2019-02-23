@@ -6,12 +6,15 @@ import java.util.ArrayList;
 
 public class SeatingGenLayout extends CustomPanel {
     private int x,y;
+    private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
-    private ArrayList<Student> students;
-    private JPanel[] frames = new JPanel[2];
+
     private int tableSize;
-    private TableChart chart;
-   // private ArrayList<Table> tables;
+    private ArrayList<Table> tables;
+    private StudentChart chart;
+    private ArrayList<Student> students;
+    private SeatingAlg seating = new SeatingAlg();
+
 
     public void loadStudents(){
         this.students = io.loadStudents();
@@ -22,40 +25,47 @@ public class SeatingGenLayout extends CustomPanel {
 
     public SeatingGenLayout(int x, int y, FileIOManager io) {
         super(x, y, "Seating Generator", "Creates seating arrangement");
+        this.x = x;
+        this.y = y;
         this.io = io;
-        addFrame1();
-        //addFrame2();
 
-        //showFrame(0);
+        addFrame1();
+        addFrame2();
+
+        showFrame(0);
     }
+
     private void addFrame1() {
-        frames[0] = new JPanel();
+        frames[0] = new CustomPanel();
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
 
-        JPanel row1 = new JPanel();
+        CustomPanel row1 = new CustomPanel();
+        row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
+
             JButton generate = new JButton("Generate Seating!");
-            //seating = new SeatingAlg();
             generate.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                //tables = seating.generateTables(students, tableSize);
-                    showFrame(1);
+                tables = seating.generateTables(students, tableSize);
+                showFrame(1);
             }
         });
     row1.add(generate);
     frames[0].add(row1);
     this.add(frames[0], BorderLayout.CENTER);
     }
-/*
+
     private void addFrame2(){
-        String tokens[] = io.getProject();
-        tableSize = Integer.parseInt(tokens[1]);
-        chart = new TableChart(x/10*9,y/5*4, tableSize);
-        frames[1] = new JPanel();
+        frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
+        JPanel initPane = new JPanel();
+        initPane.setBackground(Color.WHITE);
+        initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
+
 
         this.add(frames[1], BorderLayout.CENTER);
-    }*/
+    }
+
     private void showFrame(int x) {
         for (int i = 0; i < frames.length; i++) {
             frames[i].setVisible(false);
