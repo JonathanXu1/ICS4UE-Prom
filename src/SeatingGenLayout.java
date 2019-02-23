@@ -24,9 +24,9 @@ public class SeatingGenLayout extends CustomPanel {
         super(x, y, "Seating Generator", "Creates seating arrangement");
         this.io = io;
         addFrame1();
-        addFrame2();
+        //addFrame2();
 
-        showFrame(0);
+        //showFrame(0);
     }
     private void addFrame1() {
         frames[0] = new JPanel();
