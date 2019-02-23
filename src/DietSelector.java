@@ -21,9 +21,9 @@ public class DietSelector extends CustomPanel {
         this.addOption("Soy Allergy");
         this.addOption("Fish Allergy");
         this.addOption("Shellfish Allergy");
-        this.addOption("Allergy");
+        this.addOption("Dairy Allergy");
         this.addOption("Nut Allergy");
-        this.addOption("Allergy");
+        this.addOption("Wheat Allergy");
 
         otherField = new JTextField(15);
         this.add(otherField);
