@@ -11,7 +11,7 @@ public class SeatingGenLayout extends CustomPanel {
     private JPanel[] frames = new JPanel[2];
     private int tableSize;
     private TableChart chart;
-    //private ArrayList<Table> tables;
+   // private ArrayList<Table> tables;
 
     public void loadStudents(){
         this.students = io.loadStudents();
@@ -34,12 +34,12 @@ public class SeatingGenLayout extends CustomPanel {
 
         JPanel row1 = new JPanel();
             JButton generate = new JButton("Generate Seating!");
-             // seating = new SeatingAlg();
+            //seating = new SeatingAlg();
             generate.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                // tables = seating.generateTables(students, tableSize );
-                //
+                //tables = seating.generateTables(students, tableSize);
+
                     showFrame(1);
             }
         });
@@ -49,28 +49,12 @@ public class SeatingGenLayout extends CustomPanel {
     }
 
     private void addFrame2(){
-        //chart = new TableChart(x/10*9,y/5*4,tables);
+        String tokens[] = io.getProject();
+        tableSize = Integer.parseInt(tokens[1]);
+        chart = new TableChart(x/10*9,y/5*4, tableSize);
         frames[1] = new JPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
-        JPanel initPane = new JPanel();
-        initPane.setBackground(Color.WHITE);
-        initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
-            CustomPanel row1 = new CustomPanel();
-            CustomPanel namePanel = new CustomPanel();
-            namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
-                DynamicLabel header = new DynamicLabel("Done Generating", x, y/30, Color.BLACK);
-            namePanel.add(header);
 
-        JButton cancelBtn = new JButton("Cancel");
-        cancelBtn.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                showFrame(0);
-            }
-        });
-        row1.add(namePanel);
-        frames[1].add(row1);
         this.add(frames[1], BorderLayout.CENTER);
     }
     private void showFrame(int x) {
