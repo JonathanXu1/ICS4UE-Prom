@@ -130,10 +130,7 @@ public class StudentManagerLayout extends CustomPanel{
             CustomPanel dietPanel = new CustomPanel();
             dietPanel.setLayout(new BoxLayout(dietPanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/30, Color.BLACK);
-                JPanel dietSelector = new JPanel();
-                //TODO: Make real
-                dietSelector.setPreferredSize(new Dimension(x/8, y/4));
-                dietSelector.setBackground(Color.GRAY);
+                DietSelector dietSelector = new DietSelector(x/8, y/4);
             dietPanel.add(dietLabel);
             dietPanel.add(dietSelector);
 
@@ -178,8 +175,7 @@ public class StudentManagerLayout extends CustomPanel{
             {
                 String name = nameField.getText();
                 String studentNumber = numField.getText();
-                ArrayList<String> dietaryRestrictions = new ArrayList<String>();
-                dietaryRestrictions.add("N/A");
+                ArrayList<String> dietaryRestrictions = dietSelector.getDiet();
                 ArrayList<String> friends = new ArrayList<String>();
                 friends. add("335548079");
 
@@ -187,6 +183,10 @@ public class StudentManagerLayout extends CustomPanel{
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                     students.add(newStudent);
                     chart.loadStudents(students);
+
+                    nameField.setText("");
+                    numField.setText("");
+                    dietSelector.clear();
                     showFrame(0);
                 }
             }
