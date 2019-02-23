@@ -15,7 +15,7 @@ public class StudentManagerLayout extends CustomPanel{
     private FriendSelector likesSelector;
     private ArrayList<Student> students;
 
-    private JButton editStudentBtn, deleteStudentBtn;
+    private CustomButton editStudentBtn, deleteStudentBtn;
 
     public StudentManagerLayout(int x, int y, FileIOManager io){
         super(x, y, "Student Manager", "Add and modify students");
@@ -49,22 +49,23 @@ public class StudentManagerLayout extends CustomPanel{
         CustomPanel row1 = new CustomPanel();
         row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
             DynamicLabel header = new DynamicLabel("Current Students", x, y/30, Color.BLACK);
-
-            JButton saveBtn = new JButton("Save");
+            CustomPanel buttonRow = new CustomPanel();
+            buttonRow.setLayout(new FlowLayout(FlowLayout.RIGHT));
+            CustomButton saveBtn = new CustomButton("Save", 2, x, y/40);
             saveBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     io.saveStudents(students);
                 }
             });
-            editStudentBtn = new JButton("Edit Student");
+            editStudentBtn = new CustomButton("Edit Student", 2, x, y/40);
             editStudentBtn.setEnabled(false);
             editStudentBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                 }
             });
-            deleteStudentBtn = new JButton("Delete Student");
+            deleteStudentBtn = new CustomButton("Delete Student", 2, x, y/40);
             deleteStudentBtn.setEnabled(false);
             deleteStudentBtn.addActionListener(new ActionListener() {
                 @Override
@@ -73,19 +74,20 @@ public class StudentManagerLayout extends CustomPanel{
                     chart.deleteStudent();
                 }
             });
-            JButton newStudentBtn = new JButton("New Student");
+            CustomButton newStudentBtn = new CustomButton("New Student", 2, x, y/40);
             newStudentBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     showFrame(1);
                 }
             });
+        buttonRow.add(saveBtn);
+        buttonRow.add(editStudentBtn);
+        buttonRow.add(deleteStudentBtn);
+        buttonRow.add(newStudentBtn);
         row1.add(header);
         row1.add(Box.createHorizontalGlue());
-        row1.add(saveBtn);
-        row1.add(editStudentBtn);
-        row1.add(deleteStudentBtn);
-        row1.add(newStudentBtn);
+        row1.add(buttonRow);
 
         chart = new StudentChart(x/10*9,y/5*4, this);
 

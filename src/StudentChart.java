@@ -36,7 +36,11 @@ public class StudentChart extends Chart {
         table = new JTable(model);
         table.setPreferredScrollableViewportSize(new Dimension(x, y));
         table.setFillsViewportHeight(true);
+        DynamicLabel placeholder = new DynamicLabel("placeholder", x/10, y/40, Color.BLACK);
+        table.setFont(placeholder.getFont());
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setRowHeight(y/30);
+        table.setShowGrid(false);
         ListSelectionModel selectionModel = table.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
