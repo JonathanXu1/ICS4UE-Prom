@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.Arrays;
 
 public class FileIOManager{
     private String directory;
@@ -81,47 +82,41 @@ public class FileIOManager{
         return output;
     }
 
-  public void saveStudents(ArrayList<Student> students){
-      try{
-        BufferedWriter bw = new BufferedWriter (new FileWriter (directory + "/students.txt"));
-        for (int i = 0; i < students.size(); i++){
-          bw.write(students.get(i).getName()+"\t");
-          bw.write(students.get(i).getStudentNumber()+"\t");
-          bw.write(students.get(i).getDietaryRestrictions()+"\t");
-          bw.write(students.get(i).getFriendStudentNumbers()+"\n");
-        }
-      bw.close();
-     }catch(IOException e){
-      e.printStackTrace();
-     }
-  }
-  public ArrayList<Student> loadStudents(){
-    ArrayList <Student> students = new ArrayList<Student>();
-      try{
-        BufferedReader br = new BufferedReader(new FileReader(directory + "/students.txt"));
-        String currentLine, name, number;
-        ArrayList<String> dietaryRestrictions = new ArrayList<String>();
-        ArrayList<String> friendStudentNumbers = new ArrayList<String>();
-        while ((currentLine = br.readLine()) != null){
-          String[] tokens = currentLine.split("\t");
-          name = tokens[0];
-          number = tokens[1];
-          String[] dRestrict = tokens[2].substring(1,tokens[2].length()-1).split(", ");
-          String[] frNumbers = tokens[3].substring(1,tokens[3].length()-1).split(", ");
-          for (int i = 0; i < dRestrict.length; i++){
-           dietaryRestrictions.add(dRestrict[i]); 
-          }
-          for (int i = 0; i < frNumbers.length; i++){
-           friendStudentNumbers.add(frNumbers[i]); 
-          } 
-          Student temp = new Student(name,number,dietaryRestrictions,friendStudentNumbers);
-          students.add(temp);
-        }
-          br.close();
-       }catch (IOException e){
+    public void saveStudents(ArrayList<Student> students){
+        try{
+            BufferedWriter bw = new BufferedWriter (new FileWriter (directory + "/students.txt"));
+                for (int i = 0; i < students.size(); i++){
+                     bw.write(students.get(i).getName()+"\t");
+                     bw.write(students.get(i).getStudentNumber()+"\t");
+                     bw.write(students.get(i).getDietaryRestrictions()+"\t");
+                     bw.write(students.get(i).getFriendStudentNumbers()+"\n");
+                }
+            bw.close();
+        }catch(IOException e){
           e.printStackTrace();
-       }
-      System.out.println(students);
-     return students;
-  }
+        }
+    }
+    public ArrayList<Student> loadStudents(){
+        ArrayList <Student> students = new ArrayList<Student>();
+            try{
+            BufferedReader br = new BufferedReader(new FileReader(directory + "/students.txt"));
+            String currentLine, name, number;
+
+            while ((currentLine = br.readLine()) != null){
+            String[] tokens = currentLine.split("\t");
+             name = tokens[0];
+             number = tokens[1];
+             String[] dRestrict = tokens[2].substring(1,tokens[2].length()-1).split(", ");
+             String[] frNumbers = tokens[3].substring(1,tokens[3].length()-1).split(", ");
+             ArrayList<String> dRestrictions = new ArrayList<String>(Arrays.asList(dRestrict));
+             ArrayList<String> friNumbers = new ArrayList<String>(Arrays.asList(frNumbers));
+                 students.add(new Student(name,number,dRestrictions,friNumbers));
+             }
+
+            br.close();
+           }catch (IOException e){
+              e.printStackTrace();
+           }
+        return students;
+    }
 }
