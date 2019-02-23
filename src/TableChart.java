@@ -33,16 +33,17 @@ public class TableChart extends Chart {
         scrollPane.setPreferredSize(new Dimension(x, y));
         this.add(scrollPane);
     }
-    /*
+/*
     public void loadTable(ArrayList<Table> tables) {
         String[] columnNames = new String[tables.size()];
-        Object[][] data = new Object[tables.getSize()][tables.size()];
+        Object[][] data = new Object[tableSize][tables.size()];
         for (int i = 0; i < tables.size(); i++){
             columnNames[i] = ("Table " + i);
         }
         for (int j = 0; j < tables.size(); j++) {
-            for (int k = 0; k < tables.getSize(); k++){
-            data[k][j] = tables.get(j).get(k).getStudentNumber();
+            for (int k = 0; k < tables.get(j).getStudents().size(); k++){
+                Student currentStudent = tables.get(j).getStudents().get(k);
+                data[k][j] = currentStudent.getStudentNumber();
             }
         }
     }*/

@@ -107,10 +107,10 @@ public class FileIOManager{
           name = tokens[0];
           number = tokens[1];
           String[] dRestrict = tokens[2].substring(1,tokens[2].length()-1).split(", ");
+          String[] frNumbers = tokens[3].substring(1,tokens[3].length()-1).split(", ");
           for (int i = 0; i < dRestrict.length; i++){
            dietaryRestrictions.add(dRestrict[i]); 
           }
-          String[] frNumbers = tokens[3].substring(1,tokens[3].length()-1).split(", ");
           for (int i = 0; i < frNumbers.length; i++){
            friendStudentNumbers.add(frNumbers[i]); 
           } 

@@ -14,6 +14,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 
 //Util
+import java.io.File;
 import java.io.IOException;
 
 public class TicketingSystem extends JFrame {
@@ -45,6 +46,7 @@ public class TicketingSystem extends JFrame {
 
         //Set up fonts
         //TODO: Load files from assets folder instead of from the production folder
+
         Font robotoThin = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("Roboto-Thin.ttf"));
         Font robotoLight = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("Roboto-Light.ttf").openStream());
         Font robotoRegular = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("Roboto-Regular.ttf").openStream());
