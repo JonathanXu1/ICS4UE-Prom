@@ -75,7 +75,7 @@ public class FriendSelector extends CustomPanel {
             JCheckBox checkbox = new JCheckBox(person);
             checkbox.addActionListener(selectListener);
             selector.add(checkbox);
-            System.out.println(checkExist(person));
+            selector.validate();
         }
     }
 
@@ -86,6 +86,7 @@ public class FriendSelector extends CustomPanel {
                 JCheckBox box = (JCheckBox) comp;
                 if(box.isSelected()){
                     selector.remove(box);
+                    selector.validate();
                 }
             }
         }
@@ -98,7 +99,11 @@ public class FriendSelector extends CustomPanel {
         for (Component comp : components) {
             if (comp instanceof JCheckBox) {
                 JCheckBox box = (JCheckBox) comp;
-                friends.add(box.getText());
+                for(int i = 0; i < students.size(); i++){
+                    if(students.get(i).getName().equals(box.getText())){
+                        friends.add(students.get(i).getStudentNumber());
+                    }
+                }
             }
         }
         return friends;
@@ -106,12 +111,10 @@ public class FriendSelector extends CustomPanel {
 
     private boolean checkExist(String person){
         boolean exists = false;
-
         Component[] components = selector.getComponents();
         for (Component comp : components) {
             if (comp instanceof JCheckBox) {
                 JCheckBox box = (JCheckBox) comp;
-                System.out.println(box.getText());
                 if(box.getText().equals(person)){
                     exists = true;
                 }

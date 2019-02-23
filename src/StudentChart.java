@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 public class StudentChart extends Chart {
     private static JTable table;
     private static DefaultTableModel model;
+    // Might not need this
     private int selectedIndex = -1;
 
     private StudentManagerLayout studentManager;
@@ -61,6 +62,7 @@ public class StudentChart extends Chart {
             data[i][0] = students.get(i).getStudentNumber();
             data[i][1] = token[0];
             data[i][2] = token[1];
+            // TODO: Determine whether to show numbers or names
             data[i][3] = students.get(i).getFriendStudentNumbers();
             data[i][4] = students.get(i).getDietaryRestrictions();
             if(!existsInTable(data[i])){
