@@ -89,6 +89,7 @@ public class DashboardLayout extends CustomPanel {
     // New project screen
     private void addFrame2(){
         frames[1] = new CustomPanel();
+        frames[1].setBackground(Color.RED);
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
             DynamicLabel header = new DynamicLabel("New Project", x, y/15, Color.BLACK);
@@ -105,7 +106,9 @@ public class DashboardLayout extends CustomPanel {
             initPane.add(nameField);
             initPane.add(tableLabel);
             initPane.add(tableField);
-            CustomPanel row1 = new CustomPanel();
+            // TODO: Find way to make button row @ bottom of page
+            CustomPanel row1 = new CustomPanel(x, y/20);
+            //row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
                 CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/40);
                 cancelBtn.addActionListener(new ActionListener(){
                     @Override
@@ -134,6 +137,7 @@ public class DashboardLayout extends CustomPanel {
                     }
                 });
             row1.add(cancelBtn);
+            //row1.add(Box.createHorizontalGlue());
             row1.add(saveBtn);
         frames[1].add(header);
         frames[1].add(initPane);
@@ -166,6 +170,7 @@ public class DashboardLayout extends CustomPanel {
         tableSizeLabel = new DynamicLabel("Tables Size: NULL", x, y/30, Color.BLACK);
 
         CustomPanel row3 = new CustomPanel();
+        //row3.setLayout(new BoxLayout(row3, BoxLayout.LINE_AXIS));
             CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x, y/40);
             loadAnother.addActionListener( new ActionListener(){
                 @Override
@@ -185,6 +190,7 @@ public class DashboardLayout extends CustomPanel {
                 }
             });
         row3.add(loadAnother);
+        //row3.add(Box.createHorizontalGlue());
         row3.add(exit);
 
         frames[2].add(projectTitle);
