@@ -12,6 +12,7 @@ public class StudentManagerLayout extends CustomPanel{
     private FileIOManager io;
 
     private StudentChart chart;
+    private FriendSelector likesSelector;
     private ArrayList<Student> students;
 
     private JButton editStudentBtn, deleteStudentBtn;
@@ -32,16 +33,12 @@ public class StudentManagerLayout extends CustomPanel{
     public void loadStudents(){
         this.students = io.loadStudents();
         chart.loadStudents(students);
+        likesSelector.loadOptions(students);
     }
 
-    public void changeSelected(boolean selected){
-        if(selected){
-            editStudentBtn.setEnabled(true);
-            deleteStudentBtn.setEnabled(true);
-        } else{
-            editStudentBtn.setEnabled(false);
-            deleteStudentBtn.setEnabled(false);
-        }
+    public void changeSelected(boolean state){
+        editStudentBtn.setEnabled(state);
+        deleteStudentBtn.setEnabled(state);
     }
 
     // Default Student Display
@@ -122,37 +119,14 @@ public class StudentManagerLayout extends CustomPanel{
                 numField.setPreferredSize(new Dimension(x,y/20));
             namePanel.add(numLabel);
             namePanel.add(numField);
-
             row1.add(namePanel);
             row1.add(numberPanel);
 
-
             CustomPanel row2 = new CustomPanel();
-            CustomPanel dietPanel = new CustomPanel();
-            dietPanel.setLayout(new BoxLayout(dietPanel, BoxLayout.PAGE_AXIS));
-                DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/30, Color.BLACK);
-                DietSelector dietSelector = new DietSelector(x/8, y/4);
-            dietPanel.add(dietLabel);
-            dietPanel.add(dietSelector);
-
-            CustomPanel likesPanel = new CustomPanel();
-            likesPanel.setLayout(new BoxLayout(likesPanel, BoxLayout.PAGE_AXIS));
-                CustomPanel row3 = new CustomPanel();
-                    DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/30, Color.BLACK);
-                    JButton deleteBtn = new JButton("Delete");
-                    JButton addBtn = new JButton("Add");
-                row3.add(likesLabel);
-                row3.add(deleteBtn);
-                row3.add(addBtn);
-                JPanel likesSelector = new JPanel();
-                //TODO: Make real
-                likesSelector.setPreferredSize(new Dimension(x/8, y/4));
-                likesSelector.setBackground(Color.GRAY);
-            likesPanel.add(row3);
-            likesPanel.add(likesSelector);
-
-            row2.add(dietPanel);
-            row2.add(likesPanel);
+            DietSelector dietSelector = new DietSelector(x/4, y/3);
+            likesSelector = new FriendSelector(x/4, y/3, this);
+            row2.add(dietSelector);
+            row2.add(likesSelector);
 
         initPane.add(row1);
         initPane.add(row2);
@@ -177,8 +151,7 @@ public class StudentManagerLayout extends CustomPanel{
                 String name = nameField.getText();
                 String studentNumber = numField.getText();
                 ArrayList<String> dietaryRestrictions = dietSelector.getDiet();
-                ArrayList<String> friends = new ArrayList<String>();
-                friends. add("335548079");
+                ArrayList<String> friends = likesSelector.getFriends();
 
                 if(!name.isEmpty() && !studentNumber.isEmpty()){
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
@@ -188,6 +161,7 @@ public class StudentManagerLayout extends CustomPanel{
                     nameField.setText("");
                     numField.setText("");
                     dietSelector.clear();
+                    likesSelector.clear();
                     showFrame(0);
                 }
             }

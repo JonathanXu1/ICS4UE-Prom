@@ -24,9 +24,6 @@ public class DashboardLayout extends CustomPanel {
         addFrame3();
 
         showFrame(0);
-        /*
-        JTextField test = new JTextField();
-        this.add(test);*/
     }
 
     //Default welcome screen
