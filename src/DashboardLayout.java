@@ -17,19 +17,21 @@ public class DashboardLayout extends CustomPanel {
         this.y = y;
         this.io = fileManager;
         this.contentPanel = contentPanel;
-        //this.setLayout(new OverlayLayout(this));
+        //this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         addFrame1();
         addFrame2();
         addFrame3();
 
         showFrame(0);
+        /*
+        JTextField test = new JTextField();
+        this.add(test);*/
     }
 
     //Default welcome screen
     private void addFrame1(){
-        frames[0] = new CustomPanel();
-        frames[0].setPreferredSize(new Dimension(x, y));
+        frames[0] = new CustomPanel(x, y);
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
 
         CustomPanel row1 = new CustomPanel();
@@ -87,7 +89,6 @@ public class DashboardLayout extends CustomPanel {
     // New project screen
     private void addFrame2(){
         frames[1] = new CustomPanel();
-        frames[1].setPreferredSize(new Dimension(x, y));
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
             DynamicLabel header = new DynamicLabel("New Project", x, y/15, Color.BLACK);
@@ -96,10 +97,10 @@ public class DashboardLayout extends CustomPanel {
             initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
                 DynamicLabel nameLabel = new DynamicLabel("Project Name", x, y/20, Color.BLACK);
                 JTextField nameField = new JTextField(15);
-                nameField.setPreferredSize(new Dimension(x, y/20));
+                nameField.setPreferredSize(new Dimension(x/2, y/20));
                 DynamicLabel tableLabel = new DynamicLabel("Table Size", x, y/20, Color.BLACK);
                 JTextField tableField = new JTextField(15);
-                tableField.setPreferredSize(new Dimension(x, y/20));
+                tableField.setPreferredSize(new Dimension(x/2, y/20));
             initPane.add(nameLabel);
             initPane.add(nameField);
             initPane.add(tableLabel);
@@ -136,6 +137,7 @@ public class DashboardLayout extends CustomPanel {
             row1.add(saveBtn);
         frames[1].add(header);
         frames[1].add(initPane);
+        frames[1].add(Box.createVerticalGlue());
         frames[1].add(row1);
 
         this.add(frames[1], BorderLayout.CENTER);
@@ -143,11 +145,11 @@ public class DashboardLayout extends CustomPanel {
 
     // Loaded project screen
     private void addFrame3(){
-        frames[2] = new CustomPanel();
-        frames[2].setPreferredSize(new Dimension(x, y));
+        frames[2] = new CustomPanel(x, y);
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
+
         CustomPanel row1 = new CustomPanel();
             DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
             DynamicLabel studentHeaderStatus = new DynamicLabel("NULL", x, y/20, Color.RED);
@@ -192,7 +194,6 @@ public class DashboardLayout extends CustomPanel {
         frames[2].add(tables);
         frames[2].add(tableSizeLabel);
         frames[2].add(row3);
-
 
         this.add(frames[2], BorderLayout.CENTER);
     }

@@ -25,6 +25,7 @@ public class SeatingGenLayout extends CustomPanel {
         this.io = io;
         addFrame1();
         //addFrame2();
+
         //showFrame(0);
     }
     private void addFrame1() {
