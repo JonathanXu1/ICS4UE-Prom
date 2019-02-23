@@ -26,7 +26,6 @@ public class TicketingSystem extends JFrame {
     private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-    //TODO: move io constructor to dashboard
     private FileIOManager io = new FileIOManager(this);
 
     //Main
@@ -45,8 +44,6 @@ public class TicketingSystem extends JFrame {
         this.setResizable(false);
 
         //Set up fonts
-        //TODO: Load files from assets folder instead of from the production folder
-
         Font robotoThin = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("Roboto-Thin.ttf"));
         Font robotoLight = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("Roboto-Light.ttf").openStream());
         Font robotoRegular = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("Roboto-Regular.ttf").openStream());
