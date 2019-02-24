@@ -1,22 +1,22 @@
+// Panel to navigate between features
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class NavPanel extends CustomPanel{
+    // Class variables
     private ContentPanel mainPanel;
     private ButtonGroup group;
-
+    // Constructor
     public NavPanel(int x, int y, ContentPanel mainPanel){
         super(x, y);
-
         this.setLayout(new GridLayout(10,1));
         this.setBackground(Color.decode("#C4C4C4"));
-
         this.mainPanel = mainPanel;
 
+        // Buttons to access different frames
         CustomRadioButton dashboard, students, seatingGen, tableView;
-
         dashboard = new CustomRadioButton("Dashboard");
         dashboard.setSelected(true);
         students = new CustomRadioButton("Student Manager");

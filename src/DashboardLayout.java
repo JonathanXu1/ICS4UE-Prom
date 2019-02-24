@@ -1,9 +1,11 @@
+// Layout for dashboard to appear upon open
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class DashboardLayout extends CustomPanel {
+    // Class variables
     private int x, y;
     private CustomPanel[] frames = new CustomPanel[3];
     private FileIOManager io;
@@ -11,6 +13,7 @@ public class DashboardLayout extends CustomPanel {
 
     private DynamicLabel projectTitle, tableSizeLabel, studentHeaderStatus, numOfStudents;
 
+    // Constructor
     public DashboardLayout(int x, int y, FileIOManager fileManager, ContentPanel contentPanel){
         super(x, y, "Dashboard", "");
         this.x = x;
@@ -35,6 +38,7 @@ public class DashboardLayout extends CustomPanel {
             DynamicLabel header = new DynamicLabel("Welcome to the Seating Arranger!", x/2, y, Color.BLACK);
         row1.add(header);
 
+        // Buttons for generating new project and loading old ones
         CustomPanel row2 = new CustomPanel();
             CustomButton newProject = new CustomButton("New Project", 1, x/6, y);
             newProject.addActionListener( new ActionListener(){
@@ -55,17 +59,17 @@ public class DashboardLayout extends CustomPanel {
                     }
                 }
             });
-
             loadProject.setPreferredSize(new Dimension(x/4, y/8));
+
         row2.add(newProject);
         row2.add(Box.createRigidArea(new Dimension(x/8,0)));
         row2.add(loadProject);
 
+        // Button to close program
         CustomPanel row3 = new CustomPanel();
         row3.setLayout(new FlowLayout(FlowLayout.RIGHT));
             CustomButton exit = new CustomButton("Exit", 2,x/30, y);
         row3.add(exit);
-
         exit.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
@@ -74,12 +78,12 @@ public class DashboardLayout extends CustomPanel {
             }
         });
 
+        // Connects all the buttons and labels to the frame
         frames[0].add(Box.createRigidArea(new Dimension(0,y/8)));
         frames[0].add(row1);
         frames[0].add(row2);
         frames[0].add(Box.createVerticalGlue());
         frames[0].add(row3);
-
         this.add(frames[0], BorderLayout.CENTER);
     }
 
@@ -92,6 +96,7 @@ public class DashboardLayout extends CustomPanel {
             JPanel initPane = new JPanel();
             initPane.setBackground(Color.WHITE);
             initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
+            // Takes in a project name and table size
                 DynamicLabel nameLabel = new DynamicLabel("Project Name", x, y/20, Color.BLACK);
                 JTextField nameField = new JTextField(15);
                 nameField.setPreferredSize(new Dimension(x/2, y/20));
@@ -102,7 +107,8 @@ public class DashboardLayout extends CustomPanel {
             initPane.add(nameField);
             initPane.add(tableLabel);
             initPane.add(tableField);
-            // TODO: Find way to make button row @ bottom of page
+
+            // Buttons to save or cancel the project
             CustomPanel row1 = new CustomPanel(x/3, y/20);
             //row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
                 CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/40);
@@ -135,11 +141,12 @@ public class DashboardLayout extends CustomPanel {
             row1.add(cancelBtn);
             //row1.add(Box.createHorizontalGlue());
             row1.add(saveBtn);
+
+        // Adds fields and label to frame
         frames[1].add(header);
         frames[1].add(initPane);
         frames[1].add(Box.createVerticalGlue());
         frames[1].add(row1);
-
         this.add(frames[1], BorderLayout.CENTER);
     }
 
@@ -148,8 +155,8 @@ public class DashboardLayout extends CustomPanel {
         frames[2] = new CustomPanel(x, y);
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
+        // Display project name, tables, and students
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
-
         CustomPanel row1 = new CustomPanel();
             DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
             studentHeaderStatus = new DynamicLabel("Empty", x, y/20, Color.RED);
@@ -165,6 +172,7 @@ public class DashboardLayout extends CustomPanel {
         DynamicLabel tables = new DynamicLabel("Tables: NULL", x, y/30, Color.BLACK);
         tableSizeLabel = new DynamicLabel("Tables Size: NULL", x, y/30, Color.BLACK);
 
+        // Loads a different project
         CustomPanel row3 = new CustomPanel();
         //row3.setLayout(new BoxLayout(row3, BoxLayout.LINE_AXIS));
             CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x, y/40);
@@ -177,18 +185,21 @@ public class DashboardLayout extends CustomPanel {
                     }
                 }
             });
-            CustomButton exit = new CustomButton("Exit", 2,  x, y/40);
-            exit.addActionListener( new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e)
+
+        // Exits program
+        CustomButton exit = new CustomButton("Exit", 2,  x, y/40);
+        exit.addActionListener( new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e)
                 {
                     System.exit(0);
                 }
-            });
+        });
         row3.add(loadAnother);
         //row3.add(Box.createHorizontalGlue());
         row3.add(exit);
 
+        // Adds buttons and information to the frame
         frames[2].add(projectTitle);
         frames[2].add(row1);
         frames[2].add(numOfStudents);
@@ -196,10 +207,9 @@ public class DashboardLayout extends CustomPanel {
         frames[2].add(tables);
         frames[2].add(tableSizeLabel);
         frames[2].add(row3);
-
         this.add(frames[2], BorderLayout.CENTER);
     }
-
+    // Controls which frame to display
     private void showFrame(int x){
         for(int i = 0; i < frames.length; i++){
             frames[i].setVisible(false);

@@ -1,8 +1,8 @@
 /**
- Shape Game
- A basic shape game
- Jonathan Xu
- February 6, 2019
+ TicketingSystem
+ Prom/Semi Ticking UI
+ David Bao, Jonathan Xu
+ February 23, 2019
  **/
 
 import javax.swing.*;
