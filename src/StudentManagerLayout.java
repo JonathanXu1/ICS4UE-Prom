@@ -72,7 +72,7 @@ public class StudentManagerLayout extends CustomPanel{
             deleteStudentBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    students.remove(chart.getStudent());
+                    students.remove(chart.getStudent(students));
                     chart.deleteStudent();
                 }
             });
