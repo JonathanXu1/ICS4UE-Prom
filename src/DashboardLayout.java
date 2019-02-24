@@ -9,7 +9,7 @@ public class DashboardLayout extends CustomPanel {
     private FileIOManager io;
     private ContentPanel contentPanel;
 
-    private DynamicLabel projectTitle, tableSizeLabel, studentHeaderStatus;
+    private DynamicLabel projectTitle, tableSizeLabel, studentHeaderStatus, numOfStudents;
 
     public DashboardLayout(int x, int y, FileIOManager fileManager, ContentPanel contentPanel){
         super(x, y, "Dashboard", "");
@@ -155,7 +155,7 @@ public class DashboardLayout extends CustomPanel {
             studentHeaderStatus = new DynamicLabel("Empty", x, y/20, Color.RED);
         row1.add(studentHeader);
         row1.add(studentHeaderStatus);
-        DynamicLabel students = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
+        numOfStudents = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
 
         CustomPanel row2 = new CustomPanel();
             DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
@@ -191,7 +191,7 @@ public class DashboardLayout extends CustomPanel {
 
         frames[2].add(projectTitle);
         frames[2].add(row1);
-        frames[2].add(students);
+        frames[2].add(numOfStudents);
         frames[2].add(row2);
         frames[2].add(tables);
         frames[2].add(tableSizeLabel);
@@ -207,18 +207,22 @@ public class DashboardLayout extends CustomPanel {
 
         //Update frame 2 content, it's a custy solution tho
         if(x == 2){
-            projectTitle.setText("Current Project: " + io.getProject()[0]);
-            tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
-            if(io.getProject()[2].equals("0")){
-                studentHeaderStatus.setText("Empty");
-                studentHeaderStatus.setForeground(Color.RED);
-            } else {
-                studentHeaderStatus.setText("Available");
-                studentHeaderStatus.setForeground(Color.GREEN);
-            }
-
-            contentPanel.enableTabs();
+            updateDashboard();
         }
         frames[x].setVisible(true);
+    }
+
+    public void updateDashboard(){
+        projectTitle.setText("Current Project: " + io.getProject()[0]);
+        tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
+        if(io.getProject()[2].equals("0")){
+            studentHeaderStatus.setText("Empty");
+            studentHeaderStatus.setForeground(Color.RED);
+        } else {
+            studentHeaderStatus.setText("Available");
+            studentHeaderStatus.setForeground(Color.GREEN);
+        }
+        numOfStudents.setText("Students: " + io.getProject()[2]);
+        contentPanel.enableTabs();
     }
 }

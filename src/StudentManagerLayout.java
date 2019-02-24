@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -119,6 +121,12 @@ public class StudentManagerLayout extends CustomPanel{
                 DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/30, Color.BLACK);
                 JTextField numField = new JTextField(15);
                 numField.setPreferredSize(new Dimension(x,y/20));
+                numField.addKeyListener(new KeyAdapter() {
+                    public void keyTyped(KeyEvent e) {
+                        if (numField.getText().length() >= 9 ) // limit textfield to 3 characters
+                            e.consume();
+                    }
+                });
             namePanel.add(numLabel);
             namePanel.add(numField);
             row1.add(namePanel);
