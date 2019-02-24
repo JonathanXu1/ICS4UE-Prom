@@ -62,16 +62,16 @@ public class StudentChart extends Chart {
 
     public void loadStudents(ArrayList<Student> students) {
         Object[][] data = new Object[students.size()][5];
-        for (int i = 0; i < students.size(); i++) {
-            String[] token = students.get(i).getName().split(" ");
-            data[i][0] = students.get(i).getStudentNumber();
-            data[i][1] = token[0];
-            data[i][2] = token[1];
+        for (int row = 0; row < students.size(); row++) {
+            String[] token = students.get(row).getName().split(" ");
+            data[row][0] = students.get(row).getStudentNumber();
+            data[row][1] = token[0];
+            data[row][2] = token[1];
             // TODO: Determine whether to show numbers or names
-            data[i][3] = students.get(i).getFriendStudentNumbers();
-            data[i][4] = students.get(i).getDietaryRestrictions();
-            if(!existsInTable(data[i])){
-                model.addRow(data[i]);
+            data[row][3] = students.get(row).getFriendStudentNumbers();
+            data[row][4] = students.get(row).getDietaryRestrictions();
+            if(!existsInTable(data[row])){
+                model.addRow(data[row]);
             }
         }
     }
