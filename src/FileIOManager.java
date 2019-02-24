@@ -1,3 +1,4 @@
+// Stores or recalls information into saves folder
 import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
@@ -9,11 +10,13 @@ import java.io.File;
 import java.util.Arrays;
 
 public class FileIOManager{
+    // Class variables
     private String directory;
     private  JFileChooser chooser;
 
     private TicketingSystem main;
 
+    // Constructor
     public FileIOManager(TicketingSystem main){
         this.main = main;
         chooser = new JFileChooser();
@@ -22,7 +25,7 @@ public class FileIOManager{
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         chooser.setAcceptAllFileFilterUsed(false);
     }
-
+    // Creates new project in saves
     public void createProject(String projectName, String tableSize){
         try {
             //Creates project folder
@@ -41,6 +44,7 @@ public class FileIOManager{
         }
     }
 
+    // Loads previous project saved
     public boolean loadProject(){
         boolean selected = true;
 
@@ -64,7 +68,7 @@ public class FileIOManager{
 
         return selected;
     }
-
+    //Returns students and table size from project
     public String[] getProject() {
         // Return project configs
         String[] output = new String[3];
@@ -84,7 +88,7 @@ public class FileIOManager{
 
         return output;
     }
-
+    // Stores students into file
     public void saveStudents(ArrayList<Student> students){
         try{
             BufferedWriter bw = new BufferedWriter (new FileWriter (directory + "/students.txt"));
@@ -99,6 +103,7 @@ public class FileIOManager{
           e.printStackTrace();
         }
     }
+    // Loads student information from file
     public ArrayList<Student> loadStudents(){
         ArrayList <Student> students = new ArrayList<Student>();
             try{
@@ -122,7 +127,7 @@ public class FileIOManager{
            }
         return students;
     }
-
+    // Returns the table groups assigned
     public ArrayList<Table> loadGroups(){
         ArrayList<Table> tableGroup = new ArrayList<Table>();
         return tableGroup;
