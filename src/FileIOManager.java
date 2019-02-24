@@ -88,6 +88,60 @@ public class FileIOManager{
 
         return output;
     }
+    // Stores groups into file
+    public void saveGroups(ArrayList<Table> tables){
+        try{
+            BufferedWriter bw = new BufferedWriter (new FileWriter (directory + "/groups.txt"));
+            for (int i = 0; i < tables.size(); i++){
+                bw.write(tables.get(i).getStudents().size() + "\t");
+                for (int j = 0; j < tables.get(i).getStudents().size(); j++){
+                    bw.write(tables.get(i).getStudents().get(j).getName() + "\t");
+                    bw.write(tables.get(i).getStudents().get(j).getStudentNumber() + "\t");
+                    bw.write(tables.get(i).getStudents().get(j).getDietaryRestrictions() + "\t");
+                    bw.write(tables.get(i).getStudents().get(j).getFriendStudentNumbers()+"\t");
+                }
+                bw.write("\n");
+            }
+            bw.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    // Loads groups from file
+    public ArrayList<Table> loadGroups(){
+        ArrayList <Table> tables = new ArrayList<Table>();
+        ArrayList <Student> students = new ArrayList<Student>();
+        String[] projectInfo = getProject();
+
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(directory + "/groups.txt"));
+            String currentLine, name, number;
+            int quantity;
+            while ((currentLine = br.readLine()) != null){
+                String[] tokens = currentLine.split("\t");
+                quantity = Integer.parseInt(tokens[0]);
+                for (int i = 0; i < quantity; i+=4) {
+                    name = tokens[i];
+                    number = tokens[i + 1];
+                    String[] dRestrict = tokens[i + 2].substring(1, tokens[i + 2].length() - 1).split(", ");
+                    String[] frNumbers = tokens[i + 3].substring(1, tokens[i + 3].length() - 1).split(", ");
+                    ArrayList<String> dRestrictions = new ArrayList<String>(Arrays.asList(dRestrict));
+                    ArrayList<String> friNumbers = new ArrayList<String>(Arrays.asList(frNumbers));
+                    students.add(new Student(name, number, dRestrictions, friNumbers));
+                }
+                Table temp = new Table(Integer.parseInt(projectInfo[0]));
+                temp.setStudents(students);
+                tables.add(temp);
+            }
+
+            br.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return tables;
+    }
+
     // Stores students into file
     public void saveStudents(ArrayList<Student> students){
         try{
@@ -126,10 +180,5 @@ public class FileIOManager{
               e.printStackTrace();
            }
         return students;
-    }
-    // Returns the table groups assigned
-    public ArrayList<Table> loadGroups(){
-        ArrayList<Table> tableGroup = new ArrayList<Table>();
-        return tableGroup;
     }
 }

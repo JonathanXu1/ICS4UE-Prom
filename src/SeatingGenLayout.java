@@ -50,6 +50,7 @@ public class SeatingGenLayout extends CustomPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                 tables = seating.generateTables(students, tableSize);
+                io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
                 showFrame(1);
             }
