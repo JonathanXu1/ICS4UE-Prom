@@ -1,9 +1,7 @@
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class TableLayout extends CustomPanel {
     private boolean enabled;
@@ -45,5 +43,14 @@ public class TableLayout extends CustomPanel {
             frames[i].setVisible(false);
         }
         frames[x].setVisible(true);
+        JButton display = new JButton("Display Floor Plan!");
+        this.add(display);
+
+        display.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }

@@ -31,7 +31,6 @@ public class StudentManagerLayout extends CustomPanel{
 
         addFrame1();
         addFrame2();
-
         showFrame(0);
     }
 
