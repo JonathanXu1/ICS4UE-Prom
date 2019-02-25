@@ -43,6 +43,9 @@ public class StudentChart extends Chart {
         table.setRowHeight(y/30);
         table.setShowGrid(false);
         table.setAutoCreateRowSorter(true);
+        table.getTableHeader().setBackground(Color.decode("#BDA7D4"));
+        table.getTableHeader().setFont(placeholder.getFont());
+
         ListSelectionModel selectionModel = table.getSelectionModel();
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
