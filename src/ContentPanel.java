@@ -19,24 +19,15 @@ public class ContentPanel extends JTabbedPane {
         this.setTabPlacement(LEFT);
         DynamicLabel placeholder = new DynamicLabel("Placeholder", x/12, y, Color.BLACK);
         this.setFont(placeholder.getFont());
-        //TODO: Figure out whether to delete this
-        String[] css = {
-                "margin:0;background:#C4C4C4;",
-                "padding:10px;",
-                "width:110px;height:10px;border-radius:3px;"
-                        + "text-align:center;border:none;"
-        };
-
 
         this.io = fileManager;
     }
 
     public void addChildren(){
-        //TODO: Fix hardcode
-        dashboard = new DashboardLayout(this.getWidth()-300, this.getHeight(), io, this);
-        editStudent = new StudentManagerLayout(this.getWidth()-300, this.getHeight(), io);
-        seatGen = new SeatingGenLayout(this.getWidth()-300, this.getHeight(), io);
-        tableLayout = new TableLayout(this.getWidth()-300, this.getHeight());
+        dashboard = new DashboardLayout(this.getWidth()/5*4, this.getHeight(), io, this);
+        editStudent = new StudentManagerLayout(this.getWidth()/5*4, this.getHeight(), io);
+        seatGen = new SeatingGenLayout(this.getWidth()/5*4, this.getHeight(), io);
+        tableLayout = new TableLayout(this.getWidth()/5*4, this.getHeight());
 
         this.addTab("Dashboard", dashboard);
         this.addTab("Student Manager", editStudent);

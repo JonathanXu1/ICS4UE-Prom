@@ -83,6 +83,7 @@ public class StudentManagerLayout extends CustomPanel{
             newStudentBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    setFrameMode(0);
                     showFrame(1);
                 }
             });
@@ -106,7 +107,7 @@ public class StudentManagerLayout extends CustomPanel{
     private void addFrame2(){
         frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
-        // Initalize pane
+        // Initialize pane
         JPanel initPane = new JPanel();
         initPane.setBackground(Color.WHITE);
         initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
@@ -211,6 +212,15 @@ public class StudentManagerLayout extends CustomPanel{
         frames[1].add(row5);
 
         this.add(frames[1], BorderLayout.CENTER);
+    }
+
+    public void setFrameMode(int x){
+        // New Student
+        if(x == 0){
+
+        } else { // Edit student
+
+        }
     }
 
     private void showFrame(int x) {
