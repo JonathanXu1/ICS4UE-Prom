@@ -74,6 +74,7 @@ public class FriendSelector extends CustomPanel {
         if(!checkExist(person)){
             JCheckBox checkbox = new JCheckBox(person);
             checkbox.addActionListener(selectListener);
+            checkbox.setSelected(true);
             selector.add(checkbox);
             selector.validate();
         }

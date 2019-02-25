@@ -68,6 +68,8 @@ public class StudentManagerLayout extends CustomPanel{
             editStudentBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    setEditorMode(1);
+                    showFrame(1);
                 }
             });
             deleteStudentBtn = new CustomButton("Delete Student", 2, x, y/40);
@@ -83,7 +85,7 @@ public class StudentManagerLayout extends CustomPanel{
             newStudentBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    setFrameMode(0);
+                    setEditorMode(0);
                     showFrame(1);
                 }
             });
@@ -143,7 +145,7 @@ public class StudentManagerLayout extends CustomPanel{
             row2.add(likesSelector);
         // Error Jlabel
         CustomPanel row4 = new CustomPanel();
-        DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I am depressed and I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
+        DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
         row4.add(errorLabel);
         errorLabel.setText("");
         initPane.add(row1);
@@ -214,12 +216,12 @@ public class StudentManagerLayout extends CustomPanel{
         this.add(frames[1], BorderLayout.CENTER);
     }
 
-    public void setFrameMode(int x){
+    public void setEditorMode(int x){
         // New Student
         if(x == 0){
-
+            super.changeHeader("New Student", "Create a new student.");
         } else { // Edit student
-
+            super.changeHeader("Edit Student", "Edit an existing student.");
         }
     }
 
@@ -228,6 +230,9 @@ public class StudentManagerLayout extends CustomPanel{
             frames[i].setVisible(false);
         }
 
+        if(x == 0){
+            super.changeHeader("Student Manager", "Add and modify students here.");
+        }
         frames[x].setVisible(true);
     }
 }
