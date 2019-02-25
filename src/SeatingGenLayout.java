@@ -33,7 +33,6 @@ public class SeatingGenLayout extends CustomPanel {
 
         addFrame1();
         addFrame2();
-
         showFrame(0);
     }
     // Displays button to generate seating
@@ -43,25 +42,40 @@ public class SeatingGenLayout extends CustomPanel {
 
         CustomPanel row1 = new CustomPanel();
         row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
-            // Runs seating algorithm
+        // Runs seating algorithm
         chart = new TableChart(x/10*9,y/5*4);
-            JButton generate = new JButton("Generate Seating!");
+
+        JButton generate = new JButton("Generate/Re-Generate Seating");
             generate.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                tables = seating.generateTables(students, tableSize);
-                io.saveGroups(tables);
-                chart.loadTable(tables, tableSize);
-                showFrame(1);
+                   tables = seating.generateTables(students, tableSize);
+                   chart.loadTable(tables, tableSize);
+                    showFrame(1);
             }
         });
+
+        JButton loadSeating = new JButton("Load Seating");
+            loadSeating.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                     tables = io.loadTablesfromFile();
+                     chart.loadTable(tables, tableSize);
+                     showFrame(1);
+            }
+        });
+
     // Adds these options to the frame
+
     row1.add(generate);
+    row1.add(loadSeating);
     frames[0].add(row1);
+
     this.add(frames[0], BorderLayout.CENTER);
     }
+
     // Shows students placed into tables
-    private void addFrame2(){
+    private void addFrame2() {
         frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
         JPanel initPane = new JPanel();
@@ -69,14 +83,40 @@ public class SeatingGenLayout extends CustomPanel {
         initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
 
         frames[1].add(chart);
-        this.add(frames[1], BorderLayout.CENTER);
+        CustomPanel row1 = new CustomPanel();
+            CustomButton saveSeating = new CustomButton("Save Seating", 2, x / 10, y / 40);
+            saveSeating.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    io.saveGroups(tables);
+                }
+            });
+            saveSeating.setPreferredSize(new Dimension(x/4, y/8));
 
+            CustomButton showFloorPlan = new CustomButton("Show Floor Plan", 2, x / 10, y / 40);
+            showFloorPlan.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    FloorPlan floorDisplay = new FloorPlan();
+                    floorDisplay.generateFloorPlan(tables);
+                    floorDisplay.displayFloorPlan();
+                }
+            });
+            showFloorPlan.setPreferredSize(new Dimension(x/4, y/8));
+        row1.add(saveSeating);
+        row1.add(showFloorPlan);
+        frames[1].add(row1);
+        this.add(frames[1], BorderLayout.CENTER);
     }
+
     // Controls which frame is displayed
     private void showFrame(int x) {
         for (int i = 0; i < frames.length; i++) {
             frames[i].setVisible(false);
         }
         frames[x].setVisible(true);
+    }
+    public ArrayList<Table> getTables(){
+        return tables;
     }
 }
