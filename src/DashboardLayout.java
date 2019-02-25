@@ -103,13 +103,18 @@ public class DashboardLayout extends CustomPanel {
                 DynamicLabel tableLabel = new DynamicLabel("Table Size", x, y/20, Color.BLACK);
                 JTextField tableField = new JTextField(15);
                 tableField.setPreferredSize(new Dimension(x/2, y/20));
+
+            DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I am depressed and I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
+            errorLabel.setText("");
             initPane.add(nameLabel);
             initPane.add(nameField);
             initPane.add(tableLabel);
             initPane.add(tableField);
+            initPane.add(errorLabel);
+
 
             // Buttons to save or cancel the project
-            CustomPanel row1 = new CustomPanel(x/3, y/20);
+            CustomPanel row2 = new CustomPanel(x/3, y/20);
             //row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
                 CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/40);
                 cancelBtn.addActionListener(new ActionListener(){
@@ -126,27 +131,41 @@ public class DashboardLayout extends CustomPanel {
                     {
                         String newTitle = nameField.getText();
                         String newTableSize = tableField.getText();
+                        boolean isValid = true;
+                        errorLabel.setText("");
 
-                        if(!newTitle.isEmpty() && !newTableSize.isEmpty()){
+                        if(newTitle.isEmpty()){
+                            errorLabel.setText(errorLabel.getText() + " Please enter a title.");
+                            isValid = false;
+                        }
+                        if(newTableSize.isEmpty()){
+                            errorLabel.setText(errorLabel.getText() + " Please enter a table size.");
+                            isValid = false;
+                        } else if (!newTableSize.matches("[0-9]+")){
+                            errorLabel.setText(errorLabel.getText() + " Improper input for table size.");
+                            isValid = false;
+                        }
+
+                        if(isValid){
                             try {
                                 io.createProject(newTitle, newTableSize);
+                                errorLabel.setText("");
                                 showFrame(2);
                             } catch (Exception j){
-
                             }
 
                         }
                     }
                 });
-            row1.add(cancelBtn);
+            row2.add(cancelBtn);
             //row1.add(Box.createHorizontalGlue());
-            row1.add(saveBtn);
+            row2.add(saveBtn);
 
         // Adds fields and label to frame
         frames[1].add(header);
         frames[1].add(initPane);
         frames[1].add(Box.createVerticalGlue());
-        frames[1].add(row1);
+        frames[1].add(row2);
         this.add(frames[1], BorderLayout.CENTER);
     }
 
