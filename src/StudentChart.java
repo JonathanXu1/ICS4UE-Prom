@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -81,14 +82,14 @@ public class StudentChart extends Chart {
         studentManager.changeSelected(false);
     }
 
-    public Student getStudent(){
+    public Student getStudent(ArrayList<Student> originals){
         int row = table.getSelectedRow();
-        String studentNumber = (String)model.getValueAt(row, 0);
-        String name = model.getValueAt(row, 1) + " " + model.getValueAt(row, 2);
-        ArrayList<String> friends = (ArrayList<String>)model.getValueAt(row, 3);
-        ArrayList<String> diet = (ArrayList<String>)model.getValueAt(row, 4);
-
-        Student selectedStudent = new Student(name, studentNumber, diet, friends);
+        Student selectedStudent = null;
+        for(int i = 0; i < originals.size(); i++){
+            if(originals.get(i).getStudentNumber() == model.getValueAt(row, 0)){
+                selectedStudent = originals.get(i);
+            }
+        }
         return selectedStudent;
     }
 
