@@ -94,7 +94,7 @@ public class SeatingGenLayout extends CustomPanel {
             saveSeating.setPreferredSize(new Dimension(x/4, y/8));
 
             CustomButton showFloorPlan = new CustomButton("Show Floor Plan", 2, x / 10, y / 40);
-            /*showFloorPlan.addActionListener(new ActionListener() {
+            showFloorPlan.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -102,7 +102,7 @@ public class SeatingGenLayout extends CustomPanel {
                     floorDisplay.generateFloorPlan(tables);
                     floorDisplay.displayFloorPlan();
                 }
-            });*/
+            });
             showFloorPlan.setPreferredSize(new Dimension(x/4, y/8));
         row1.add(saveSeating);
         row1.add(showFloorPlan);
