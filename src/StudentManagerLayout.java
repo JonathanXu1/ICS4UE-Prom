@@ -5,7 +5,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class StudentManagerLayout extends CustomPanel{
@@ -137,13 +140,17 @@ public class StudentManagerLayout extends CustomPanel{
             likesSelector = new FriendSelector(x/4, y/3, this);
             row2.add(dietSelector);
             row2.add(likesSelector);
-
+        // Error Jlabel
+        CustomPanel row4 = new CustomPanel();
+        DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I am depressed and I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
+        row4.add(errorLabel);
+        errorLabel.setText("");
         initPane.add(row1);
         initPane.add(row2);
+        initPane.add(row4);
 
-
-        CustomPanel row4 = new CustomPanel();
-        //Goes Back
+        CustomPanel row5 = new CustomPanel();
+        // Navigation buttons
         JButton cancelBtn = new JButton("Cancel");
         cancelBtn.addActionListener(new ActionListener(){
             @Override
@@ -163,7 +170,28 @@ public class StudentManagerLayout extends CustomPanel{
                 ArrayList<String> dietaryRestrictions = dietSelector.getDiet();
                 ArrayList<String> friends = likesSelector.getFriends();
 
-                if(!name.isEmpty() && !studentNumber.isEmpty()){
+                errorLabel.setText("");
+                boolean inputVerified = true;
+                if(name.isEmpty()){
+                    errorLabel.setText(errorLabel.getText() + " Name field is empty.");
+                    inputVerified = false;
+                }
+                if(!name.contains(" ")){
+                    errorLabel.setText(errorLabel.getText() + " Last name is required.");
+                    inputVerified = false;
+                }
+                if(name.matches(".*\\d+.*")){
+                    errorLabel.setText(errorLabel.getText() + " Numbers are in name.");
+                    inputVerified = false;
+                }
+                if(studentNumber.isEmpty()){
+                    errorLabel.setText(errorLabel.getText() + " Student number field empty.");
+                    inputVerified = false;
+                } else if(studentNumber.length() < 9 || !studentNumber.matches("[0-9]+")){
+                    errorLabel.setText(errorLabel.getText() + " Improper student number.");
+                    inputVerified = false;
+                }
+                if(inputVerified){
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                     students.add(newStudent);
                     chart.loadStudents(students);
@@ -172,14 +200,15 @@ public class StudentManagerLayout extends CustomPanel{
                     numField.setText("");
                     dietSelector.clear();
                     likesSelector.clear();
+                    errorLabel.setText("");
                     showFrame(0);
                 }
             }
         });
-        row4.add(cancelBtn);
-        row4.add(saveBtn);
+        row5.add(cancelBtn);
+        row5.add(saveBtn);
         frames[1].add(initPane);
-        frames[1].add(row4);
+        frames[1].add(row5);
 
         this.add(frames[1], BorderLayout.CENTER);
     }
