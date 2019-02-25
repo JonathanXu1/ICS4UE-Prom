@@ -11,5 +11,4 @@ public class Chart extends JPanel {
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(null);
     }
-
 }

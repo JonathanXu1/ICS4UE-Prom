@@ -1,4 +1,5 @@
 // Student class according to class UML standards
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 class Student {
   // Class variables
@@ -31,5 +32,11 @@ class Student {
   }
   public ArrayList<String> getFriendStudentNumbers(){
     return this.friendStudentNumbers = friendStudentNumbers;
+  }
+  public void setDietaryRestrictions(ArrayList<String> dietaryRestrictions){
+    this.dietaryRestrictions = dietaryRestrictions;
+  }
+  public void setFriendStudentNumbers(ArrayList<String> friendStudentNumbers){
+    this.friendStudentNumbers = friendStudentNumbers;
   }
 }
