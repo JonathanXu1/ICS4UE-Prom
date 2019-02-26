@@ -7,11 +7,7 @@
  **/
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,8 +28,19 @@ public class SeatingGenLayout extends CustomPanel {
     // Passes students into the generator
     public void loadStudents(){
         this.students = io.loadStudents();
+        tables = io.loadTablesFromFile();
         String[] size = io.getProject();
         this.tableSize = Integer.parseInt(size[1]);
+
+        System.out.println(tables.size());
+
+        if(tables.size() > 0){
+            chart.loadTable(tables, tableSize);
+            tableLayout.updateTables(tables);
+            showFrame(1);
+        } else {
+            showFrame(0);
+        }
     }
     // Constructor
     public SeatingGenLayout(int x, int y, FileIOManager io, TableLayout tableLayout) {
@@ -42,10 +49,11 @@ public class SeatingGenLayout extends CustomPanel {
         this.y = y;
         this.io = io;
         this.tableLayout = tableLayout;
+        this.chart = new TableChart(x/10*9,y/4*3);
+
 
         addFrame1();
         addFrame2();
-        showFrame(0);
     }
 
     // Displays when nothing is generated yet
@@ -56,7 +64,6 @@ public class SeatingGenLayout extends CustomPanel {
         CustomPanel row1 = new CustomPanel();
         row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
         // Runs seating algorithm
-        chart = new TableChart(x/10*9,y/5*4);
 
         CustomButton generate = new CustomButton("Generate Seating!", 2, x/6, y);
         generate.addActionListener(new ActionListener() {
@@ -65,16 +72,7 @@ public class SeatingGenLayout extends CustomPanel {
                 tables = seating.generateTables(students, tableSize);
                 io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
-                showFrame(1);
-            }
-        });
-
-        CustomButton loadSeating = new CustomButton("Display Seating", 2, x/6, y);
-        loadSeating.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tables = io.loadTablesFromFile();
-                chart.loadTable(tables, tableSize);
+                tableLayout.updateTables(tables);
                 showFrame(1);
             }
         });
@@ -82,7 +80,6 @@ public class SeatingGenLayout extends CustomPanel {
         // Adds these options to the frame
 
         row1.add(generate);
-        row1.add(loadSeating);
         frames[0].add(row1);
 
         this.add(frames[0], BorderLayout.CENTER);
@@ -92,34 +89,19 @@ public class SeatingGenLayout extends CustomPanel {
     private void addFrame2() {
         frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
-        JPanel initPane = new JPanel();
-        initPane.setBackground(Color.WHITE);
-        initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
-
         frames[1].add(chart);
-        CustomPanel row1 = new CustomPanel();
-        CustomButton saveSeating = new CustomButton("Save Seating", 2, x / 10, y / 40);
-        saveSeating.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                io.saveGroups(tables);
-            }
-        });
-        saveSeating.setPreferredSize(new Dimension(x/4, y/8));
 
-        CustomButton showFloorPlan = new CustomButton("Show Floor Plan", 2, x / 10, y / 40);
-        showFloorPlan.addActionListener(new ActionListener() {
+        CustomButton regenerateSeatingButton = new CustomButton("Regenerate Seating!", 2,x/6, y/20);
+        regenerateSeatingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FloorPlan floorDisplay = new FloorPlan();
-                floorDisplay.generateFloorPlan(tables);
-                floorDisplay.displayFloorPlan();
+                tables = seating.generateTables(students, tableSize);
+                io.saveGroups(tables);
+                chart.loadTable(tables, tableSize);
             }
         });
-        showFloorPlan.setPreferredSize(new Dimension(x/4, y/8));
-        row1.add(saveSeating);
-        row1.add(showFloorPlan);
-        frames[1].add(row1);
+        frames[1].add(regenerateSeatingButton);
+
         this.add(frames[1], BorderLayout.CENTER);
     }
 
