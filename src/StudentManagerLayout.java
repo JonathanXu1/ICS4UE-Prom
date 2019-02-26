@@ -5,7 +5,7 @@
  * Febuary 16, 2019
  * Layout to see and edit students
  **/
-
+// GUI & Graphics Imports
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -15,28 +15,31 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+// Button Imports
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+// Util
 import java.util.ArrayList;
 
 public class StudentManagerLayout extends CustomPanel{
+    // Class variables
     private int x, y;
     private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
     private DashboardLayout dashboard;
-
+    // Smaller components
     private StudentChart chart;
     private FriendSelector likesSelector;
     private DietSelector dietSelector;
     private JTextField nameField, numField;
-
+    // Students and altering them
     private ArrayList<Student> students;
     private CustomButton editStudentBtn, deleteStudentBtn;
 
     private boolean editingMode = false;
-
+// Constructor
     public StudentManagerLayout(int x, int y, FileIOManager io, DashboardLayout dashboardLayout){
         super(x, y, "Student Manager", "Add and modify students");
         this.x = x;
@@ -45,26 +48,46 @@ public class StudentManagerLayout extends CustomPanel{
         this.io = io;
         this.dashboard = dashboardLayout;
 
+        // Frames to be displayed
         addFrame1();
         addFrame2();
         showFrame(0);
-    }
+    }// End of constructor
 
+    /**------------------------METHODS-----------------**/
+
+    /**
+     * loadStudents
+     * Loads students from save
+     * @return void, class variable is set in method
+     */
     public void loadStudents(){
         this.students = io.loadStudents();
         chart.loadStudents(students);
     }
 
+    /**
+     * changeSelected
+     * Enables the edit and delete buttons
+     * @param state, Boolean, the button are available if true
+     * @return void, no values to return
+     */
     public void changeSelected(boolean state){
         editStudentBtn.setEnabled(state);
         deleteStudentBtn.setEnabled(state);
     }
-
-    // Default Student Display
+    /**
+     * addFrame1
+     * Default student display
+     * @return void, display method
+     */
     private void addFrame1(){
+
+        // Set up frame
         frames[0] = new CustomPanel();
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
 
+        // Components of frame
         CustomPanel row1 = new CustomPanel();
         row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
             DynamicLabel header = new DynamicLabel("Current Students", x, y/30, Color.BLACK);
@@ -104,6 +127,8 @@ public class StudentManagerLayout extends CustomPanel{
                     showFrame(1);
                 }
             });
+
+            // Added to frame
         buttonRow.add(saveBtn);
         buttonRow.add(editStudentBtn);
         buttonRow.add(deleteStudentBtn);
@@ -119,8 +144,11 @@ public class StudentManagerLayout extends CustomPanel{
 
         this.add(frames[0], BorderLayout.CENTER);
     }
-
-    // New student display
+    /**
+     * addFrame2
+     * New student display
+     * @return void, display method
+     */
     private void addFrame2(){
         frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
@@ -244,7 +272,12 @@ public class StudentManagerLayout extends CustomPanel{
 
         this.add(frames[1], BorderLayout.CENTER);
     }
-
+    /**
+     * setEditorMode
+     * Various editing options
+     * @param  x, int representing the mode
+     * @return void, changed necessary variables in method
+     */
     public void setEditorMode(int x){
         likesSelector.loadOptions(students);
         // New Student
@@ -267,7 +300,11 @@ public class StudentManagerLayout extends CustomPanel{
             //System.out.println("editing panel styled");
         }
     }
-
+    /**
+     * showFrame
+     * Displays the correct frame
+     * @return  void, used to select frame
+     */
     private void showFrame(int x) {
         for (int i = 0; i < frames.length; i++) {
             frames[i].setVisible(false);
