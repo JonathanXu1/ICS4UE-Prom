@@ -21,22 +21,20 @@ import java.util.ArrayList;
 //TODO: Fix bug in selector where multiple selected people don't actually delete at once.
 // This 100% happens in the editor view
 //TODO: Add feature so that new students are entered by student number, and name is selected by match instead of dropdown.
-//TODO: When adding friends in the Edit Student tab (not Add), the panel reappears once after hitting OK
 
 public class FriendSelector extends CustomPanel {
     // Class variables
     private int x, y;
-    private StudentManagerLayout studentManager;
     private CustomPanel selector;
     private CustomButton deleteLikesBtn, addBtn;
     private ArrayList<Student> students;
+    private boolean initialized = false;
 
     // Constructor
-    public FriendSelector(int x, int y, StudentManagerLayout studentManager){
+    public FriendSelector(int x, int y){
         super(x, y);
         this.x = x;
         this.y = y;
-        this.studentManager = studentManager;
 
         // Background color and layout
         this.setBackground(Color.WHITE);
@@ -77,29 +75,33 @@ public class FriendSelector extends CustomPanel {
     */
     public void loadOptions(ArrayList<Student> students){
         this.students = students;
-        addBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ArrayList<String> studentNames = new ArrayList<String>();
-                for (Student student : students){
-                    studentNames.add(student.getName());
-                }
+        // Adds click listeners only if this component hasn't been intialized before
+        if (!initialized){
+            addBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ArrayList<String> studentNames = new ArrayList<String>();
+                    for (Student student : students){
+                        studentNames.add(student.getName());
+                    }
 
-                String[] otherList = studentNames.toArray(new String[0]);
-                String s = (String)JOptionPane.showInputDialog(
-                        selector,
-                        "Add any friends you would like to sit with.",
-                        "Selector Dialog",
-                        JOptionPane.PLAIN_MESSAGE,
-                        null,
-                        otherList,
-                        null);
-                //Add listing if it doesn't exist already
-                if ((s != null) && (s.length() > 0)) {
-                    addFriends(s);
+                    String[] otherList = studentNames.toArray(new String[0]);
+                    String s = (String)JOptionPane.showInputDialog(
+                            selector,
+                            "Add any friends you would like to sit with.",
+                            "Selector Dialog",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            otherList,
+                            null);
+                    //Add listing if it doesn't exist already
+                    if ((s != null) && (s.length() > 0)) {
+                        addFriends(s);
+                    }
                 }
-            }
-        });
+            });
+            initialized = true;
+        }
     }
     /**
      * setLikes
@@ -126,7 +128,6 @@ public class FriendSelector extends CustomPanel {
         if(!checkExist(personName)){
             JCheckBox checkbox = new JCheckBox(personName);
             checkbox.addActionListener(selectListener);
-            checkbox.setSelected(true);
             selector.add(checkbox);
             selector.validate();
         }
@@ -143,10 +144,10 @@ public class FriendSelector extends CustomPanel {
                 JCheckBox box = (JCheckBox) comp;
                 if(box.isSelected()){
                     selector.remove(box);
-                    selector.validate();
                 }
             }
         }
+        selector.validate();
         deleteLikesBtn.setEnabled(false);
     }
 

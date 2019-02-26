@@ -9,15 +9,14 @@
 //Graphics & GUI Imports
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
-import javax.swing.JTextField;
-import java.awt.*;
 
 //Utils
+import java.awt.*;
 import java.util.ArrayList;
 
 public class DietSelector extends CustomPanel {
     // Class variables
-    private JTextField otherField;
+    private CustomJTextField otherField;
     private CustomPanel selector;
 
     // Constructor
@@ -49,7 +48,8 @@ public class DietSelector extends CustomPanel {
         addOption("Wheat Allergy");
 
         // Field to accept needs not already mentioned
-        otherField = new JTextField(15);
+        otherField = new CustomJTextField(15, x/3, y);
+        otherField.setBackground(Color.WHITE);
         selector.add(otherField);
 
         this.add(dietLabel);

@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -125,12 +126,14 @@ public class DashboardLayout extends CustomPanel {
             JPanel initPane = new JPanel();
             initPane.setBackground(Color.WHITE);
             initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
+            initPane.setBorder(new EmptyBorder(x/40, x/40, x/40, x/40));
+
             // Takes in a project name and table size
                 DynamicLabel nameLabel = new DynamicLabel("Project Name", x, y/20, Color.BLACK);
-                JTextField nameField = new JTextField(15);
+                CustomJTextField nameField = new CustomJTextField(15, x, y/40);
                 nameField.setPreferredSize(new Dimension(x/2, y/20));
                 DynamicLabel tableLabel = new DynamicLabel("Table Size", x, y/20, Color.BLACK);
-                JTextField tableField = new JTextField(15);
+                CustomJTextField tableField = new CustomJTextField(15, x, y/40);
                 tableField.setPreferredSize(new Dimension(x/2, y/20));
 
             DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
@@ -145,7 +148,7 @@ public class DashboardLayout extends CustomPanel {
             // Buttons to save or cancel the project
             CustomPanel row2 = new CustomPanel(x/3, y/20);
             //row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
-                CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/40);
+                CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/30);
                 cancelBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -155,7 +158,7 @@ public class DashboardLayout extends CustomPanel {
                         showFrame(0);
                     }
                 });
-                CustomButton saveBtn = new CustomButton("Save", 2,  x, y/40);
+                CustomButton saveBtn = new CustomButton("Save", 2,  x, y/30);
                 saveBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -227,41 +230,48 @@ public class DashboardLayout extends CustomPanel {
         tablenum = new DynamicLabel("Number of Tables: NULL", x, y/30, Color.BLACK);
         tableSizeLabel = new DynamicLabel("Table Size: NULL", x, y/30, Color.BLACK);
 
-        // Loads a different project
-        CustomPanel row3 = new CustomPanel();
-        //row3.setLayout(new BoxLayout(row3, BoxLayout.LINE_AXIS));
-            CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x, y/40);
-            loadAnother.addActionListener( new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e)
-                {
-                    if(io.loadProject()){
-                        showFrame(2);
-                    }
-                }
-            });
 
-        // Exits program
-        CustomButton exit = new CustomButton("Exit", 2,  x, y/40);
-        exit.addActionListener( new ActionListener(){
+        // Loads a different project
+        CustomPanel bottomRow = new CustomPanel();
+        bottomRow.setLayout(new BoxLayout(bottomRow, BoxLayout.LINE_AXIS));
+        CustomPanel btnCont1 = new CustomPanel();
+        CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x, y/30);
+        loadAnother.addActionListener( new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
-                {
-                    System.exit(0);
+            {
+                if(io.loadProject()){
+                    showFrame(2);
                 }
+            }
         });
-        row3.add(loadAnother);
-        //row3.add(Box.createHorizontalGlue());
-        row3.add(exit);
+        btnCont1.add(loadAnother);
+
+        // Exits program
+        CustomPanel btnCont2 = new CustomPanel();
+            CustomButton exit = new CustomButton("Exit", 2,  x, y/30);
+            exit.addActionListener( new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e)
+                    {
+                        System.exit(0);
+                    }
+            });
+        btnCont2.add(exit);
+        bottomRow.add(btnCont1);
+        bottomRow.add(Box.createHorizontalGlue());
+        bottomRow.add(btnCont2);
 
         // Adds buttons and information to the frame
         frames[2].add(projectTitle);
+        frames[2].add(Box.createVerticalGlue());
         frames[2].add(row1);
         frames[2].add(numOfStudents);
         frames[2].add(row2);
         frames[2].add(tablenum);
         frames[2].add(tableSizeLabel);
-        frames[2].add(row3);
+        frames[2].add(Box.createVerticalGlue());
+        frames[2].add(bottomRow);
         this.add(frames[2], BorderLayout.CENTER);
     }
 

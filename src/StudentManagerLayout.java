@@ -164,16 +164,14 @@ public class StudentManagerLayout extends CustomPanel{
             CustomPanel namePanel = new CustomPanel();
             namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel nameLabel = new DynamicLabel("Full Name", x/3, y/30, Color.BLACK);
-                nameField = new JTextField(15);
-                nameField.setPreferredSize(new Dimension(x/3, y/20));
+                nameField = new CustomJTextField(15, x/3, y/40);
             namePanel.add(nameLabel);
             namePanel.add(nameField);
 
             CustomPanel numberPanel = new CustomPanel();
             numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel numLabel = new DynamicLabel("Student Number", x/3, y/30, Color.BLACK);
-                numField = new JTextField(15);
-                numField.setPreferredSize(new Dimension(x/3,y/20));
+                numField = new CustomJTextField(15, x/3, y/40);
                 numField.addKeyListener(new KeyAdapter() {
                     public void keyTyped(KeyEvent e) {
                         if (numField.getText().length() >= 9 ) // limit textfield to 3 characters
@@ -188,7 +186,7 @@ public class StudentManagerLayout extends CustomPanel{
             CustomPanel row2 = new CustomPanel();
             row2.setLayout(new BoxLayout(row2, BoxLayout.LINE_AXIS));
             dietSelector = new DietSelector(x/3, y/2);
-            likesSelector = new FriendSelector(x/3, y/2, this);
+            likesSelector = new FriendSelector(x/3, y/2);
             row2.add(dietSelector);
             row2.add(Box.createHorizontalStrut(x/20));
             row2.add(likesSelector);

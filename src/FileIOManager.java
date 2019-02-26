@@ -15,6 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 // Util
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -55,8 +56,9 @@ public class FileIOManager{
             new File(this.directory).mkdirs();
 
             // Initializes storage files
-            BufferedWriter writer = new BufferedWriter(new FileWriter(this.directory + "/config.txt"));
-            writer.write(tableSize);
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(this.directory + "/config.txt")));
+            writer.println(tableSize);
+            writer.println("0"); // 0 for no table layouts generated, 1 for table layouts generated.
             new File(this.directory + "/students.txt").createNewFile();
             new File(this.directory + "/groups.txt").createNewFile();
 
@@ -99,13 +101,14 @@ public class FileIOManager{
     //Returns students and table size from project
     public String[] getProject() {
         // Return project configs
-        String[] output = new String[3];
+        String[] output = new String[4];
         // Project Name
         output[0] = directory.substring((System.getProperty("user.dir") + "/saves/").length());
         // Table size
         try {
             BufferedReader configReader = new BufferedReader(new FileReader(this.directory + "/config.txt"));
             output[1] = configReader.readLine();
+            output[3] = configReader.readLine();
             configReader.close();
         } catch(IOException e){
             e.printStackTrace();
@@ -232,5 +235,18 @@ public class FileIOManager{
             e.printStackTrace();
         }
         return students;
+    }
+
+    public void setGenerated(){
+        String[] old = getProject();
+        try {
+            // Save whether a tablelayout display has been generated
+            PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(this.directory + "/config.txt")));
+            writer.println(old[1]);
+            writer.println(1); // 0 for no table layouts generated, 1 for table layouts generated.
+            writer.close();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
