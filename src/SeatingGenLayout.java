@@ -6,7 +6,7 @@
  * Places students into tables
  **/
 // GUI & Graphics imports
-import javax.swing.BoxLayout;
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +19,7 @@ public class SeatingGenLayout extends CustomPanel {
     private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
     private TableLayout tableLayout;
+    private DashboardLayout dashboard;
     // Variables for the table seating
     private int tableSize;
     private ArrayList<Table> tables;
@@ -27,14 +28,14 @@ public class SeatingGenLayout extends CustomPanel {
     private SeatingAlg seating = new SeatingAlg();
 
     // Constructor
-    public SeatingGenLayout(int x, int y, FileIOManager io, TableLayout tableLayout) {
+    public SeatingGenLayout(int x, int y, FileIOManager io, TableLayout tableLayout, DashboardLayout dashboard) {
         super(x, y, "Seating Generator", "Creates seating arrangement");
         this.x = x;
         this.y = y;
         this.io = io;
         this.tableLayout = tableLayout;
         this.chart = new TableChart(x/10*9,y/4*3);
-
+        this.dashboard = dashboard;
 
         addFrame1();
         addFrame2();
@@ -57,10 +58,12 @@ public class SeatingGenLayout extends CustomPanel {
         generate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                loadStudents();
                 tables = seating.generateTables(students, tableSize);
                 io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
                 tableLayout.updateTables(tables);
+                dashboard.updateDashboardTables(tables);
                 showFrame(1);
             }
         });
@@ -83,16 +86,21 @@ public class SeatingGenLayout extends CustomPanel {
         frames[1].add(chart);
 
         // Generate new seating
+        CustomPanel row1 = new CustomPanel();
         CustomButton regenerateSeatingButton = new CustomButton("Regenerate Seating!", 2,x/6, y/20);
         regenerateSeatingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                loadStudents();
                 tables = seating.generateTables(students, tableSize);
                 io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
+                dashboard.updateDashboardTables(tables);
             }
         });
-        frames[1].add(regenerateSeatingButton);
+        row1.add(regenerateSeatingButton);
+        frames[1].add(Box.createVerticalGlue());
+        frames[1].add(row1);
 
         this.add(frames[1], BorderLayout.CENTER);
     }

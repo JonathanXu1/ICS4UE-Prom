@@ -100,6 +100,7 @@ public class StudentManagerLayout extends CustomPanel{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     io.saveStudents(students);
+                    dashboard.updateDashboardStudents(students);
                 }
             });
             editStudentBtn = new CustomButton("Edit Student", 2, x, y/40);
@@ -118,7 +119,6 @@ public class StudentManagerLayout extends CustomPanel{
                 public void actionPerformed(ActionEvent e) {
                     students.remove(chart.getStudent(students));
                     chart.deleteStudent();
-                    dashboard.updateDashboardStudents(students);
                 }
             });
             CustomButton newStudentBtn = new CustomButton("New Student", 2, x, y/40);
@@ -247,7 +247,6 @@ public class StudentManagerLayout extends CustomPanel{
                 if(inputVerified){
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                     if(editingMode){
-                        System.out.println("ignore");
                         int index = students.indexOf(chart.getStudent(students));
                         students.set(index, newStudent);
                         chart.updateStudent(newStudent);
@@ -255,7 +254,6 @@ public class StudentManagerLayout extends CustomPanel{
                     } else {
                         students.add(newStudent);
                         chart.loadStudents(students);
-                        dashboard.updateDashboardStudents(students);
                     }
 
                     nameField.setText("");

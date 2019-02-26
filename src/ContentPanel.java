@@ -41,9 +41,10 @@ public class ContentPanel extends JTabbedPane {
      */
     public void addChildren(){
         dashboard = new DashboardLayout(this.getWidth()/5*4, this.getHeight(), io, this);
-        editStudent = new StudentManagerLayout(this.getWidth()/5*4, this.getHeight(), io, dashboard);
         tableLayout = new TableLayout(this.getWidth()/5*4, this.getHeight());
-        seatGen = new SeatingGenLayout(this.getWidth()/5*4, this.getHeight(), io, tableLayout);
+        seatGen = new SeatingGenLayout(this.getWidth()/5*4, this.getHeight(), io, tableLayout, dashboard);
+        editStudent = new StudentManagerLayout(this.getWidth()/5*4, this.getHeight(), io, dashboard);
+
 
         this.addTab("Dashboard", dashboard);
         this.addTab("Student Manager", editStudent);
