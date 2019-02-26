@@ -120,11 +120,11 @@ public class FileIOManager{
                 tables.add(new Table(Integer.parseInt(tokens[0])));
                 tables.get(tables.size()-1).setStudents(loadStudentsFromGroup(tokens));
             }
-                br.close();
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-            return tables;
+            br.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return tables;
     }
     // Loads students out of a group
     public ArrayList<Student> loadStudentsFromGroup(String[] tableInfo){
@@ -133,13 +133,13 @@ public class FileIOManager{
         String name, number;
 
         for (int i = 1; i < quantity*4; i+=4) {
-             name = tableInfo[i];
-             number = tableInfo[i + 1];
-             String[] dRestrict = tableInfo[i + 2].substring(1, tableInfo[i + 2].length() - 1).split(", ");
-             String[] frNumbers = tableInfo[i + 3].substring(1, tableInfo[i + 3].length() - 1).split(", ");
-             ArrayList<String> dRestrictions = new ArrayList<String>(Arrays.asList(dRestrict));
-             ArrayList<String> friNumbers = new ArrayList<String>(Arrays.asList(frNumbers));
-             students.add(new Student(name, number, dRestrictions, friNumbers));
+            name = tableInfo[i];
+            number = tableInfo[i + 1];
+            String[] dRestrict = tableInfo[i + 2].substring(1, tableInfo[i + 2].length() - 1).split(", ");
+            String[] frNumbers = tableInfo[i + 3].substring(1, tableInfo[i + 3].length() - 1).split(", ");
+            ArrayList<String> dRestrictions = new ArrayList<String>(Arrays.asList(dRestrict));
+            ArrayList<String> friNumbers = new ArrayList<String>(Arrays.asList(frNumbers));
+            students.add(new Student(name, number, dRestrictions, friNumbers));
         }
         return students;
     }
@@ -148,40 +148,40 @@ public class FileIOManager{
     public void saveStudents(ArrayList<Student> students){
         try{
             BufferedWriter bw = new BufferedWriter (new FileWriter (directory + "/students.txt"));
-                for (int i = 0; i < students.size(); i++){
-                     bw.write(students.get(i).getName()+"\t");
-                     bw.write(students.get(i).getStudentNumber()+"\t");
-                     bw.write(students.get(i).getDietaryRestrictions()+"\t");
-                     bw.write(students.get(i).getFriendStudentNumbers()+"\n");
-                }
+            for (int i = 0; i < students.size(); i++){
+                bw.write(students.get(i).getName()+"\t");
+                bw.write(students.get(i).getStudentNumber()+"\t");
+                bw.write(students.get(i).getDietaryRestrictions()+"\t");
+                bw.write(students.get(i).getFriendStudentNumbers()+"\n");
+            }
             bw.close();
         }catch(IOException e){
-          e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
     // Loads student information from file
     public ArrayList<Student> loadStudents(){
         ArrayList <Student> students = new ArrayList<Student>();
-            try{
+        try{
             BufferedReader br = new BufferedReader(new FileReader(directory + "/students.txt"));
             String currentLine, name, number;
 
             while ((currentLine = br.readLine()) != null){
-            String[] tokens = currentLine.split("\t");
-             name = tokens[0];
-             number = tokens[1];
-             String[] dRestrict = tokens[2].substring(1,tokens[2].length()-1).split(", ");
-             String[] frNumbers = tokens[3].substring(1,tokens[3].length()-1).split(", ");
-             ArrayList<String> dRestrictions = new ArrayList<String>(Arrays.asList(dRestrict));
-             ArrayList<String> friNumbers = new ArrayList<String>(Arrays.asList(frNumbers));
-                 students.add(new Student(name,number,dRestrictions,friNumbers));
-             }
+                String[] tokens = currentLine.split("\t");
+                name = tokens[0];
+                number = tokens[1];
+                String[] dRestrict = tokens[2].substring(1,tokens[2].length()-1).split(", ");
+                String[] frNumbers = tokens[3].substring(1,tokens[3].length()-1).split(", ");
+                ArrayList<String> dRestrictions = new ArrayList<String>(Arrays.asList(dRestrict));
+                ArrayList<String> friNumbers = new ArrayList<String>(Arrays.asList(frNumbers));
+                students.add(new Student(name,number,dRestrictions,friNumbers));
+            }
 
             br.close();
-           }catch (IOException e){
-              e.printStackTrace();
-           }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         return students;
     }
 }

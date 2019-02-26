@@ -23,25 +23,6 @@ public class SeatingGenLayout extends CustomPanel {
         String[] size = new String[2];
         size = io.getProject();
         this.tableSize = Integer.parseInt(size[1]);
-        if (io.loadTablesfromFile().isEmpty()) {
-            CustomButton generate = new CustomButton("Generate", 2, x, y/20);
-            generate.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    tables = seating.generateTables(students, tableSize);
-                    chart.loadTable(tables, tableSize);
-                    frames[1].add(chart);
-                    showFrame(1);
-                }
-            });
-            frames[0].add(generate);
-        }else{
-            tables = io.loadTablesfromFile();
-            chart.loadTable(tables, tableSize);
-            frames[0].add(chart);
-            showFrame(0);
-        }
-
     }
     // Constructor
     public SeatingGenLayout(int x, int y, FileIOManager io) {
@@ -54,7 +35,6 @@ public class SeatingGenLayout extends CustomPanel {
         addFrame2();
         showFrame(0);
     }
-
     // Displays button to generate seating
     private void addFrame1() {
         frames[0] = new CustomPanel();
@@ -65,27 +45,67 @@ public class SeatingGenLayout extends CustomPanel {
         // Runs seating algorithm
         chart = new TableChart(x/10*9,y/5*4);
 
-    frames[0].add(row1);
-    this.add(frames[0], BorderLayout.CENTER);
-    }
-
-
-    private void addFrame2() {
-        frames[1] = new CustomPanel();
-        frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
-
-        CustomPanel row2 = new CustomPanel();
-        row2.setLayout(new BoxLayout(row2, BoxLayout.LINE_AXIS));
-
-        CustomButton reGenerate = new CustomButton("Re-Generate", 2, x, y/20);
-        reGenerate.addActionListener(new ActionListener() {
+        JButton generate = new JButton("Generate/Re-Generate Seating");
+        generate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tables = seating.generateTables(students, tableSize);
+                chart.loadTable(tables, tableSize);
+                showFrame(1);
             }
         });
-        frames[1].add(reGenerate);
-        frames[1].add(row2);
+
+        JButton loadSeating = new JButton("Load Seating");
+        loadSeating.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tables = io.loadTablesfromFile();
+                chart.loadTable(tables, tableSize);
+                showFrame(1);
+            }
+        });
+
+        // Adds these options to the frame
+
+        row1.add(generate);
+        row1.add(loadSeating);
+        frames[0].add(row1);
+
+        this.add(frames[0], BorderLayout.CENTER);
+    }
+
+    // Shows students placed into tables
+    private void addFrame2() {
+        frames[1] = new CustomPanel();
+        frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
+        JPanel initPane = new JPanel();
+        initPane.setBackground(Color.WHITE);
+        initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
+
+        frames[1].add(chart);
+        CustomPanel row1 = new CustomPanel();
+        CustomButton saveSeating = new CustomButton("Save Seating", 2, x / 10, y / 40);
+        saveSeating.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                io.saveGroups(tables);
+            }
+        });
+        saveSeating.setPreferredSize(new Dimension(x/4, y/8));
+
+        CustomButton showFloorPlan = new CustomButton("Show Floor Plan", 2, x / 10, y / 40);
+        showFloorPlan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FloorPlan floorDisplay = new FloorPlan();
+                floorDisplay.generateFloorPlan(tables);
+                floorDisplay.displayFloorPlan();
+            }
+        });
+        showFloorPlan.setPreferredSize(new Dimension(x/4, y/8));
+        row1.add(saveSeating);
+        row1.add(showFloorPlan);
+        frames[1].add(row1);
         this.add(frames[1], BorderLayout.CENTER);
     }
 
