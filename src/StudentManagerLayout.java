@@ -8,7 +8,6 @@
 // GUI & Graphics Imports
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
@@ -159,6 +158,8 @@ public class StudentManagerLayout extends CustomPanel{
         initPane.setBackground(Color.WHITE);
         initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
             CustomPanel row1 = new CustomPanel();
+            row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
+            row1.setBackground(Color.RED);
             CustomPanel namePanel = new CustomPanel();
             namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/30, Color.BLACK);
@@ -184,9 +185,11 @@ public class StudentManagerLayout extends CustomPanel{
             row1.add(numberPanel);
 
             CustomPanel row2 = new CustomPanel();
-            dietSelector = new DietSelector(x/4, y/3);
-            likesSelector = new FriendSelector(x/4, y/3, this);
+            row2.setLayout(new BoxLayout(row2, BoxLayout.LINE_AXIS));
+            dietSelector = new DietSelector(x/3, y/2);
+            likesSelector = new FriendSelector(x/3, y/2, this);
             row2.add(dietSelector);
+            row2.add(Box.createHorizontalStrut(x/20));
             row2.add(likesSelector);
         // Error Jlabel
         CustomPanel row4 = new CustomPanel();
@@ -199,7 +202,7 @@ public class StudentManagerLayout extends CustomPanel{
 
         CustomPanel row5 = new CustomPanel();
         // Navigation buttons
-        JButton cancelBtn = new JButton("Cancel");
+        CustomButton cancelBtn = new CustomButton("Cancel", 2, x, y/35);
         cancelBtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)
@@ -213,7 +216,7 @@ public class StudentManagerLayout extends CustomPanel{
             }
         });
         //Creates a student
-        JButton saveBtn = new JButton("Next");
+        CustomButton saveBtn = new CustomButton("Next", 2, x, y/35);
         saveBtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e)

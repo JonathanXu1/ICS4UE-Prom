@@ -7,17 +7,14 @@
  **/
 
 // Button imports
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // Graphics & GUI imports
 import javax.swing.AbstractButton;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.BoxLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.GridLayout;
 // Utils
 import java.util.ArrayList;
 
@@ -31,7 +28,7 @@ public class FriendSelector extends CustomPanel {
     private int x, y;
     private StudentManagerLayout studentManager;
     private CustomPanel selector;
-    private JButton deleteLikesBtn, addBtn;
+    private CustomButton deleteLikesBtn, addBtn;
     private ArrayList<Student> students;
 
     // Constructor
@@ -42,13 +39,13 @@ public class FriendSelector extends CustomPanel {
         this.studentManager = studentManager;
 
         // Background color and layout
-        this.setBackground(Color.decode("#E4E4E4"));
+        this.setBackground(Color.WHITE);
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         // Button and components
         CustomPanel row1 = new CustomPanel();
-        DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/30, Color.BLACK);
-        deleteLikesBtn = new JButton("Delete");
+        DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/15, Color.BLACK);
+        deleteLikesBtn = new CustomButton("Delete", 2, x, y/20);
         deleteLikesBtn.setEnabled(false);
         deleteLikesBtn.addActionListener(new ActionListener() {
             @Override
@@ -56,7 +53,7 @@ public class FriendSelector extends CustomPanel {
                 removeFriends();
             }
         });
-        addBtn = new JButton("Add");
+        addBtn = new CustomButton("Add", 2, x, y/20);
 
         row1.add(likesLabel);
         row1.add(deleteLikesBtn);
@@ -64,6 +61,8 @@ public class FriendSelector extends CustomPanel {
 
         selector = new CustomPanel();
         selector.setLayout(new GridLayout(0, 2));
+        selector.setBackground(Color.decode("#E4E4E4"));
+        selector.setPreferredSize(new Dimension(x, y/10*9));
 
         this.add(row1);
         this.add(selector);

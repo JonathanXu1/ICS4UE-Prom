@@ -99,7 +99,7 @@ public class SeatingGenLayout extends CustomPanel {
             }
         });
         row1.add(regenerateSeatingButton);
-        frames[1].add(Box.createVerticalGlue());
+        //frames[1].add(Box.createVerticalGlue());
         frames[1].add(row1);
 
         this.add(frames[1], BorderLayout.CENTER);

@@ -10,9 +10,7 @@
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.GridLayout;
+import java.awt.*;
 
 //Utils
 import java.util.ArrayList;
@@ -27,13 +25,15 @@ public class DietSelector extends CustomPanel {
         super (x, y);
 
         // Set the background
-        this.setBackground(Color.decode("#E4E4E4"));
+        this.setBackground(Color.WHITE);
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         // Add the labels
-        DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/30, Color.BLACK);
+        DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/15, Color.BLACK);
         selector = new CustomPanel();
         selector.setLayout(new GridLayout(0, 2));
+        selector.setBackground(Color.decode("#E4E4E4"));
+        selector.setPreferredSize(new Dimension(x, y/10*9));
 
         // Various common dietary needs
         addOption("Vegetarian");
