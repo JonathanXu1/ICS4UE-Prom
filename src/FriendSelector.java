@@ -4,6 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+//TODO: Fix bug in selector where multiple selected people don't actually delete at once.
+// This 100% happens in the editor view
+//TODO: Add feature so that new students are entered by student number, and name is selected by match instead of dropdown.
+
 public class FriendSelector extends CustomPanel {
     private int x, y;
     private StudentManagerLayout studentManager;

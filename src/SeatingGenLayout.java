@@ -10,6 +10,7 @@ public class SeatingGenLayout extends CustomPanel {
     private int x,y;
     private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
+    private TableLayout tableLayout;
 
     private int tableSize;
     private ArrayList<Table> tables;
@@ -20,22 +21,23 @@ public class SeatingGenLayout extends CustomPanel {
     // Passes students into the generator
     public void loadStudents(){
         this.students = io.loadStudents();
-        String[] size = new String[2];
-        size = io.getProject();
+        String[] size = io.getProject();
         this.tableSize = Integer.parseInt(size[1]);
     }
     // Constructor
-    public SeatingGenLayout(int x, int y, FileIOManager io) {
+    public SeatingGenLayout(int x, int y, FileIOManager io, TableLayout tableLayout) {
         super(x, y, "Seating Generator", "Creates seating arrangement");
         this.x = x;
         this.y = y;
         this.io = io;
+        this.tableLayout = tableLayout;
 
         addFrame1();
         addFrame2();
         showFrame(0);
     }
-    // Displays button to generate seating
+
+    // Displays when nothing is generated yet
     private void addFrame1() {
         frames[0] = new CustomPanel();
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
@@ -45,7 +47,7 @@ public class SeatingGenLayout extends CustomPanel {
         // Runs seating algorithm
         chart = new TableChart(x/10*9,y/5*4);
 
-        JButton generate = new JButton("Generate/Re-Generate Seating");
+        CustomButton generate = new CustomButton("Generate Seating!", 2, x/6, y);
         generate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,7 +57,7 @@ public class SeatingGenLayout extends CustomPanel {
             }
         });
 
-        JButton loadSeating = new JButton("Load Seating");
+        CustomButton loadSeating = new CustomButton("Display Seating", 2, x/6, y);
         loadSeating.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

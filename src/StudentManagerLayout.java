@@ -243,6 +243,7 @@ public class StudentManagerLayout extends CustomPanel{
             numField.setEditable(true);
             super.changeHeader("New Student", "Create a new student.");
         } else { // Edit student
+            //TODO: Uncheck all the add friend options when they are loaded
             editingMode = true;
             super.changeHeader("Edit Student", "Edit an existing student.");
             System.out.println(students);
