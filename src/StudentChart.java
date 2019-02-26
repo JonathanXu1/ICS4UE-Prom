@@ -19,8 +19,6 @@ import java.util.ArrayList;
 public class StudentChart extends Chart {
     private static JTable table;
     private static DefaultTableModel model;
-    // Might not need this
-    private int selectedIndex = -1;
 
     private StudentManagerLayout studentManager;
 
@@ -61,9 +59,7 @@ public class StudentChart extends Chart {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting())
                     return;
-                selectedIndex = selectionModel.getAnchorSelectionIndex();
                 studentManager.changeSelected(true);
-                System.out.println(selectedIndex);
             }
         });
 
@@ -76,6 +72,7 @@ public class StudentChart extends Chart {
 
     public void loadStudents(ArrayList<Student> students) {
         Object[][] data = new Object[students.size()][5];
+        model.setRowCount(0);
         for (int row = 0; row < students.size(); row++) {
             String[] token = students.get(row).getName().split(" ");
             data[row][0] = students.get(row).getStudentNumber();
@@ -90,17 +87,32 @@ public class StudentChart extends Chart {
         }
     }
 
+    public void updateStudent(Student updatedStudent){
+        int row = table.getSelectedRow();
+        String[] token = updatedStudent.getName().split(" ");
+
+        model.setValueAt(token[0], row, 1);
+        model.setValueAt(token[1], row, 2);
+        model.setValueAt(updatedStudent.getFriendStudentNumbers(), row, 3);
+        //System.out.println(updatedStudent.getFriendStudentNumbers());
+        model.setValueAt(updatedStudent.getDietaryRestrictions(), row, 4);
+    }
+
     public void deleteStudent(){
         model.removeRow(table.getSelectedRow());
         studentManager.changeSelected(false);
     }
 
-    public Student getStudent(ArrayList<Student> originals){
+    public Student getStudent(ArrayList<Student> reference){
         int row = table.getSelectedRow();
         Student selectedStudent = null;
-        for(int i = 0; i < originals.size(); i++){
-            if(originals.get(i).getStudentNumber() == model.getValueAt(row, 0)){
-                selectedStudent = originals.get(i);
+        for(Student target : reference){
+            System.out.println(target.getStudentNumber());
+            System.out.println(model.getValueAt(row, 0));
+            System.out.println();
+            if(target.getStudentNumber().equals(model.getValueAt(row, 0))){
+                selectedStudent = target;
+                System.out.println("goteem");
             }
         }
         return selectedStudent;

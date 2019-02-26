@@ -73,7 +73,6 @@ public class FileIOManager{
             System.out.println("No Selection ");
             selected = false;
         }
-
         return selected;
     }
     //Returns students and table size from project

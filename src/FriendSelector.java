@@ -63,12 +63,13 @@ public class FriendSelector extends CustomPanel {
         addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<String> others = new ArrayList<String>();
-                for (int i = 0; i < students.size(); i++){
-                    others.add(students.get(i).getName());
+                ArrayList<String> studentNames = new ArrayList<String>();
+                for (Student student : students){
+                    studentNames.add(student.getName());
                 }
-                String[] otherList = others.toArray(new String[0]);
-                String s = (String) JOptionPane.showInputDialog(
+
+                String[] otherList = studentNames.toArray(new String[0]);
+                String s = (String)JOptionPane.showInputDialog(
                         selector,
                         "Add any friends you would like to sit with.",
                         "Selector Dialog",
@@ -84,9 +85,19 @@ public class FriendSelector extends CustomPanel {
         });
     }
 
-    public void addFriends(String person){
-        if(!checkExist(person)){
-            JCheckBox checkbox = new JCheckBox(person);
+    public void setLikes(ArrayList<String> otherNumbers){
+        for (String otherNumber : otherNumbers){
+            for (Student student : students){
+                if(student.getStudentNumber().equals(otherNumber)){
+                    addFriends(student.getName());
+                }
+            }
+        }
+    }
+
+    public void addFriends(String personName){
+        if(!checkExist(personName)){
+            JCheckBox checkbox = new JCheckBox(personName);
             checkbox.addActionListener(selectListener);
             checkbox.setSelected(true);
             selector.add(checkbox);
@@ -114,9 +125,9 @@ public class FriendSelector extends CustomPanel {
         for (Component comp : components) {
             if (comp instanceof JCheckBox) {
                 JCheckBox box = (JCheckBox) comp;
-                for(int i = 0; i < students.size(); i++){
-                    if(students.get(i).getName().equals(box.getText())){
-                        friends.add(students.get(i).getStudentNumber());
+                for(Student student : students){
+                    if(student.getName().equals(box.getText())){
+                        friends.add(student.getStudentNumber());
                     }
                 }
             }
