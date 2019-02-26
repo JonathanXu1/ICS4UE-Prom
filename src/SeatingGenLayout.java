@@ -61,6 +61,7 @@ public class SeatingGenLayout extends CustomPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tables = seating.generateTables(students, tableSize);
+                io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
                 showFrame(1);
             }
@@ -70,7 +71,7 @@ public class SeatingGenLayout extends CustomPanel {
         loadSeating.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tables = io.loadTablesfromFile();
+                tables = io.loadTablesFromFile();
                 chart.loadTable(tables, tableSize);
                 showFrame(1);
             }

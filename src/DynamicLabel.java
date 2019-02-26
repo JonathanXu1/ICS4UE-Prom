@@ -5,14 +5,16 @@
  * Febuary 14, 2019
  * Layout for text to show
  **/
-
+// Graphics and GUI Imports
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 
 public class DynamicLabel extends JLabel {
+    // Class variables
     private static Font labelFont = new Font("Roboto Light", Font.PLAIN, 12);
 
+    // Constructor
     public DynamicLabel(String content, int width, int height, Color color){
         super(content);
 
@@ -33,5 +35,5 @@ public class DynamicLabel extends JLabel {
 
         this.setForeground(color);
 
-    }
+    }// End of constructor
 }

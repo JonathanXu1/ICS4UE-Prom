@@ -66,40 +66,55 @@ public class DietSelector extends CustomPanel {
 * Controls which frame to display
 * @return void, only a display method
 */
-public ArrayList<String> getDiet(){
-    ArrayList<String> output = new ArrayList<String>();
-    Component[] components = selector.getComponents();
-    for (Component comp : components) {
-        if (comp instanceof JCheckBox) {
-            JCheckBox box = (JCheckBox) comp;
-            if (box.isSelected()) {
-                String text = box.getText();
-                output.add(text);
+    public ArrayList<String> getDiet(){
+        ArrayList<String> output = new ArrayList<String>();
+        Component[] components = selector.getComponents();
+        for (Component comp : components) {
+            if (comp instanceof JCheckBox) {
+                JCheckBox box = (JCheckBox) comp;
+                if (box.isSelected()) {
+                    String text = box.getText();
+                    output.add(text);
+                }
             }
         }
+        if(!otherField.getText().isEmpty()){
+            output.add(otherField.getText());
+        }
+        return output;
     }
-    if(!otherField.getText().isEmpty()){
-        output.add(otherField.getText());
-    }
-    return output;
-}
 
+/**
+* addOption
+* Controls which frame to display
+* @param name,
+* @return void, only a display method
+*/
 private void addOption(String name){
     JCheckBox checkbox = new JCheckBox(name);
     selector.add(checkbox);
 }
-
-public void clear(){
-    Component[] components = selector.getComponents();
-    for (Component comp : components) {
-        if (comp instanceof JCheckBox) {
-            JCheckBox box = (JCheckBox) comp;
-            box.setSelected(false);
+/**
+ * clear
+ * Empties fields after use
+ * @return void, updates components
+ */
+    public void clear(){
+        Component[] components = selector.getComponents();
+        for (Component comp : components) {
+            if (comp instanceof JCheckBox) {
+                JCheckBox box = (JCheckBox) comp;
+                box.setSelected(false);
+            }
         }
-    }
     otherField.setText("");
     }
-
+    /**
+     * setDiet
+     * Sets the diet of the new student
+     * @param diet, an ArrayList of the student's dietary restrictions
+     * @return void, set the variable through itself
+     */
     public void setDiet(ArrayList<String> diet){
         Component[] components = selector.getComponents();
         for(int i = 0; i < diet.size(); i++){
