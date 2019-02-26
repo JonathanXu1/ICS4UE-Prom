@@ -1,10 +1,20 @@
-import javax.swing.*;
-import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+/**
+ * StudentChart.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 19, 2019
+ * Puts students into chart display
+ **/
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.util.ArrayList;
 
 public class StudentChart extends Chart {
     private static JTable table;

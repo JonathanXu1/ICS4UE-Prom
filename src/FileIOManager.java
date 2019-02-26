@@ -1,19 +1,26 @@
-// Stores or recalls information into saves folder
-import javax.swing.*;
-import java.io.BufferedWriter;
+/**
+ * FileIOManager.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 17, 2019
+ * Stores and recalls info from file
+ **/
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FileIOManager{
     // Class variables
     private String directory;
-    private  JFileChooser chooser;
+    private JFileChooser chooser;
 
     private TicketingSystem main;
 

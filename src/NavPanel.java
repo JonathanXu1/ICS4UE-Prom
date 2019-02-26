@@ -1,8 +1,17 @@
-// Panel to navigate between features
-import java.awt.*;
+/**
+ * NavLayout.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 15, 2019
+ * Panel to navigate between features
+ **/
+
+import javax.swing.Box;
+import javax.swing.ButtonGroup;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 public class NavPanel extends CustomPanel{
     // Class variables

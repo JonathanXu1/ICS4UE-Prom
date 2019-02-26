@@ -1,10 +1,16 @@
-import java.awt.FlowLayout;
+/**
+ * HeaderPanel.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 14, 2019
+ * Template for the header of each panel
+ **/
 import java.awt.Color;
+import java.awt.FlowLayout;
 
 public class HeaderPanel extends CustomPanel {
     public HeaderPanel(String content, int x, int y, int colorScheme){
         super(x, y);
-
 
         Color bg = Color.decode("#8780B8");
         Color text = Color.BLACK;

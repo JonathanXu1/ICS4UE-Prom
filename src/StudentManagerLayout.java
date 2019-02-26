@@ -1,14 +1,24 @@
-import javax.swing.*;
-import java.awt.*;
+/**
+ * StudentManagerLayout.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 16, 2019
+ * Layout to see and edit students
+ **/
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class StudentManagerLayout extends CustomPanel{
