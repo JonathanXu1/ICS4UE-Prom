@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -157,22 +158,22 @@ public class StudentManagerLayout extends CustomPanel{
         JPanel initPane = new JPanel();
         initPane.setBackground(Color.WHITE);
         initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
+        initPane.setBorder(new EmptyBorder(x/40, x/40, x/40, x/40));
             CustomPanel row1 = new CustomPanel();
-            row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
-            row1.setBackground(Color.RED);
+            //row1.setBackground(Color.RED);
             CustomPanel namePanel = new CustomPanel();
             namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
-                DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/30, Color.BLACK);
+                DynamicLabel nameLabel = new DynamicLabel("Full Name", x/3, y/30, Color.BLACK);
                 nameField = new JTextField(15);
-                nameField.setPreferredSize(new Dimension(x, y/20));
+                nameField.setPreferredSize(new Dimension(x/3, y/20));
             namePanel.add(nameLabel);
             namePanel.add(nameField);
 
             CustomPanel numberPanel = new CustomPanel();
             numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.PAGE_AXIS));
-                DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/30, Color.BLACK);
+                DynamicLabel numLabel = new DynamicLabel("Student Number", x/3, y/30, Color.BLACK);
                 numField = new JTextField(15);
-                numField.setPreferredSize(new Dimension(x,y/20));
+                numField.setPreferredSize(new Dimension(x/3,y/20));
                 numField.addKeyListener(new KeyAdapter() {
                     public void keyTyped(KeyEvent e) {
                         if (numField.getText().length() >= 9 ) // limit textfield to 3 characters

@@ -31,7 +31,7 @@ public class DietSelector extends CustomPanel {
         // Add the labels
         DynamicLabel dietLabel = new DynamicLabel("Dietary Restrictions", x, y/15, Color.BLACK);
         selector = new CustomPanel();
-        selector.setLayout(new GridLayout(0, 2));
+        selector.setLayout(new GridLayout(6, 2));
         selector.setBackground(Color.decode("#E4E4E4"));
         selector.setPreferredSize(new Dimension(x, y/10*9));
 

@@ -74,8 +74,6 @@ public class FileIOManager{
     public boolean loadProject(){
         boolean selected = true;
         if (chooser.showOpenDialog(main) == JFileChooser.APPROVE_OPTION) {
-            //System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
-            //System.out.println("getSelectedFile() : " +  chooser.getSelectedFile());
             boolean isValid = new File(chooser.getSelectedFile(), "config.txt").exists();
             if(isValid){
                 String selection = chooser.getSelectedFile().getAbsolutePath();
