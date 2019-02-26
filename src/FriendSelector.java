@@ -1,5 +1,19 @@
-import javax.swing.*;
-import java.awt.*;
+/**
+ * FriendSelector.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 19, 2019
+ * Adds friends when creating new students
+ **/
+
+import javax.swing.AbstractButton;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -57,6 +71,7 @@ public class FriendSelector extends CustomPanel {
                 for (Student student : students){
                     studentNames.add(student.getName());
                 }
+
                 String[] otherList = studentNames.toArray(new String[0]);
                 String s = (String)JOptionPane.showInputDialog(
                         selector,

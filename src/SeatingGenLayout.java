@@ -1,6 +1,17 @@
-// Seats the students into tables
-import javax.swing.*;
-import java.awt.*;
+/**
+ * SeatingGenLayout.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 17, 2019
+ * Places students into tables
+ **/
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -52,6 +63,7 @@ public class SeatingGenLayout extends CustomPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tables = seating.generateTables(students, tableSize);
+                io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
                 showFrame(1);
             }
@@ -61,7 +73,7 @@ public class SeatingGenLayout extends CustomPanel {
         loadSeating.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tables = io.loadTablesfromFile();
+                tables = io.loadTablesFromFile();
                 chart.loadTable(tables, tableSize);
                 showFrame(1);
             }

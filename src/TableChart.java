@@ -1,6 +1,16 @@
-import javax.swing.*;
-import java.awt.*;
+/**
+ * TableChart.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 20, 2019
+ * Layout for tables of students to show
+ **/
+
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class TableChart extends Chart {

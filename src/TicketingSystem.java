@@ -1,20 +1,19 @@
 /**
- TicketingSystem
- Prom/Semi Ticking UI
- David Bao, Jonathan Xu
- February 23, 2019
+ * TicketingSystem.java
+ * Version 1.0
+ * @author David Bao, Jonathan Xu
+ * February 13, 2019
+ * Basis for ticketing system UML
  **/
 
-import javax.swing.*;
-
-//Keyboard imports
-import java.awt.*;
-
-//Graphics &GUI imports
 import javax.swing.JFrame;
-
-//Util
-import java.io.File;
+import javax.swing.UIManager;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.io.IOException;
 
 public class TicketingSystem extends JFrame {
@@ -55,6 +54,7 @@ public class TicketingSystem extends JFrame {
 
         //Set up look and feel
         UIManager.put("TabbedPane.selected", Color.decode("#8F8F8F"));
+
         /*
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -82,6 +82,5 @@ public class TicketingSystem extends JFrame {
 
 
     }
-
 
 }

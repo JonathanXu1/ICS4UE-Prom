@@ -1,8 +1,23 @@
-// Layout for dashboard to appear upon open
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
+/**
+ * DashboardLayout.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 15, 2019
+ * Layout for dashboard to appear in
+ **/
+// Graphics & GUI Imports
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+// Button Imports
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+//Util
 import java.util.ArrayList;
 
 public class DashboardLayout extends CustomPanel {
@@ -11,7 +26,6 @@ public class DashboardLayout extends CustomPanel {
     private CustomPanel[] frames = new CustomPanel[3];
     private FileIOManager io;
     private ContentPanel contentPanel;
-
     private DynamicLabel projectTitle, tableSizeLabel, studentHeaderStatus, numOfStudents;
 
     // Constructor
@@ -28,14 +42,20 @@ public class DashboardLayout extends CustomPanel {
         addFrame3();
 
         showFrame(0);
-    }
+    }// End of constructor
 
-    //Default welcome screen
+    /**----------------------------METHODS-------------------------**/
+    /**
+     * addFrame1
+     * Displays the default frame
+     * @return void, method is only used for display
+     */
     private void addFrame1(){
+        // Create new panel
         frames[0] = new CustomPanel(x, y);
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
-
         CustomPanel row1 = new CustomPanel();
+        // Contents of panel
             DynamicLabel header = new DynamicLabel("Welcome to the Seating Arranger!", x/2, y, Color.BLACK);
         row1.add(header);
 
@@ -62,6 +82,7 @@ public class DashboardLayout extends CustomPanel {
             });
             loadProject.setPreferredSize(new Dimension(x/4, y/8));
 
+            // Add components to frame
         row2.add(newProject);
         row2.add(Box.createRigidArea(new Dimension(x/8,0)));
         row2.add(loadProject);
@@ -88,8 +109,13 @@ public class DashboardLayout extends CustomPanel {
         this.add(frames[0], BorderLayout.CENTER);
     }
 
-    // New project screen
+    /**
+     * addFrame2
+     * Displays the new project screen
+     * @return void, students are added in method not returned
+     */
     private void addFrame2(){
+        // Setup frame
         frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
@@ -107,12 +133,12 @@ public class DashboardLayout extends CustomPanel {
 
             DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I am depressed and I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
             errorLabel.setText("");
+            // Add components to inner tabs
             initPane.add(nameLabel);
             initPane.add(nameField);
             initPane.add(tableLabel);
             initPane.add(tableField);
             initPane.add(errorLabel);
-
 
             // Buttons to save or cancel the project
             CustomPanel row2 = new CustomPanel(x/3, y/20);
@@ -172,8 +198,13 @@ public class DashboardLayout extends CustomPanel {
         this.add(frames[1], BorderLayout.CENTER);
     }
 
-    // Loaded project screen
+    /**
+     * addFrame3
+     * Displays screen for loaded projects
+     * @return void, displays the frame, nothing to return
+     */
     private void addFrame3(){
+        // Setup new frame
         frames[2] = new CustomPanel(x, y);
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
@@ -185,7 +216,7 @@ public class DashboardLayout extends CustomPanel {
         row1.add(studentHeader);
         row1.add(studentHeaderStatus);
         numOfStudents = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
-
+        // Elements that need to be generate or are already generated
         CustomPanel row2 = new CustomPanel();
             DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
             DynamicLabel seatingHeaderStatus = new DynamicLabel("Not Generated", x, y/20, Color.RED);
@@ -231,7 +262,13 @@ public class DashboardLayout extends CustomPanel {
         frames[2].add(row3);
         this.add(frames[2], BorderLayout.CENTER);
     }
-    // Controls which frame to display
+
+    /**
+     * showFrame
+     * Controls which frame to display
+     * @param x, the number of the panel to be displayed
+     * @return void, only a display method
+     */
     private void showFrame(int x){
         for(int i = 0; i < frames.length; i++){
             frames[i].setVisible(false);
@@ -244,6 +281,11 @@ public class DashboardLayout extends CustomPanel {
         frames[x].setVisible(true);
     }
 
+    /**
+     * updateDashboard
+     * Updates from the io
+     * @return void, changes the information, nothing to return
+     */
     public void updateDashboard(){
         projectTitle.setText("Current Project: " + io.getProject()[0]);
         tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
@@ -258,6 +300,12 @@ public class DashboardLayout extends CustomPanel {
         contentPanel.enableTabs();
     }
 
+    /**
+     * updateDashboard
+     * Updates from the student manager
+     * @param students, arraylist of students from manager
+     * @return void, only a display method
+     */
     // TODO: clean up naming or save students automatically
     public void updateDashboard(ArrayList<Student> students){
         if(students.size() == 0){

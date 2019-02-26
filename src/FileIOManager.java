@@ -1,20 +1,31 @@
-// Stores or recalls information into saves folder
-import javax.swing.*;
-import java.io.BufferedWriter;
+/**
+ * FileIOManager.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 17, 2019
+ * Stores and recalls info from file
+ **/
+
+// File IO Imports
+import javax.swing.JFileChooser;
 import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+// Util
+import java.util.ArrayList;
 import java.util.Arrays;
+
+// GUI Import
+import javax.swing.JOptionPane;
 
 public class FileIOManager{
     // Class variables
     private String directory;
-    private  JFileChooser chooser;
-
+    private JFileChooser chooser;
     private TicketingSystem main;
 
     // Constructor
@@ -25,7 +36,17 @@ public class FileIOManager{
         chooser.setDialogTitle("Open a Project");
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         chooser.setAcceptAllFileFilterUsed(false);
-    }
+    }// End of constructor
+
+    /**-------------------METHODS---------------------**/
+
+    /**
+     * createProject
+     * Creates new project in saves
+     * @param projectName, String of the name of the project currently being made
+     * @param tableSize, Integer of the size of the table
+     * @return void, creates file no need to return
+     */
     // Creates new project in saves
     public void createProject(String projectName, String tableSize){
         try {
@@ -45,10 +66,13 @@ public class FileIOManager{
         }
     }
 
-    // Loads previous project saved
+    /**
+     * loadProject
+     * Loads saved project
+     * @return boolean, if true the selected folder is valid project, false if it is not
+     */
     public boolean loadProject(){
         boolean selected = true;
-
         if (chooser.showOpenDialog(main) == JFileChooser.APPROVE_OPTION) {
             //System.out.println("getCurrentDirectory(): " +  chooser.getCurrentDirectory());
             //System.out.println("getSelectedFile() : " +  chooser.getSelectedFile());
@@ -68,6 +92,12 @@ public class FileIOManager{
         }
         return selected;
     }
+
+    /**
+     * getProject
+     * Get the information from a project
+     * @return String[], array of the name, size, and students of a project
+     */
     //Returns students and table size from project
     public String[] getProject() {
         // Return project configs
@@ -85,10 +115,14 @@ public class FileIOManager{
         // Student size
         output[2] = Integer.toString(loadStudents().size());
         // Groups
-
         return output;
     }
-    // Stores groups into file
+
+    /**
+     * saveGroups
+     * Stores the generated groups into a file
+     * @return void, puts the groups into a file
+     */
     public void saveGroups(ArrayList<Table> tables){
         try{
             BufferedWriter bw = new BufferedWriter (new FileWriter (directory + "/groups.txt"));
@@ -107,9 +141,13 @@ public class FileIOManager{
             e.printStackTrace();
         }
     }
-
+    /**
+     * loadTablesFromFile
+     * Loads tables out of file
+     * @return ArrayList</Table>, ArrayList of tables with students in them
+     */
     // Loads tables out of file
-    public ArrayList<Table> loadTablesfromFile() {
+    public ArrayList<Table> loadTablesFromFile() {
         String[] projectInfo = getProject();
         ArrayList<Table> tables = new ArrayList<Table>();
         try {
@@ -126,6 +164,12 @@ public class FileIOManager{
         }
         return tables;
     }
+    /**
+     * loadStudentsFromGroup
+     * Controls which frame to display
+     * @param x, the number of the panel to be displayed
+     * @return void, only a display method
+     */
     // Loads students out of a group
     public ArrayList<Student> loadStudentsFromGroup(String[] tableInfo){
         ArrayList <Student> students = new ArrayList<Student>();

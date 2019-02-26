@@ -1,5 +1,10 @@
-// Student class according to class UML standards
-import java.lang.reflect.Array;
+/**
+ * Student.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 18, 2019
+ * Student class following UML standards
+ **/
 import java.util.ArrayList;
 class Student {
   // Class variables

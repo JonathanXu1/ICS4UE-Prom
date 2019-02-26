@@ -1,6 +1,14 @@
+/**
+ * TableLayout.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 18, 2019
+ * Layout to run the floor plan
+ **/
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

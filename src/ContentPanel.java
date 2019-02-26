@@ -1,18 +1,27 @@
-import javax.swing.*;
-import java.awt.*;
+/**
+ * ContentPanel.java
+ * Version 1.0;
+ * @author Bao, Xu
+ * Febuary 13, 2019
+ * Template to create panels with information on them
+ **/
+
+// Graphics & GUI imports
+import javax.swing.JTabbedPane;
+import java.awt.Color;
+import java.awt.Dimension;
 
 public class ContentPanel extends JTabbedPane {
-    // Layouts
+    // Class variables
     private DashboardLayout dashboard;
     private StudentManagerLayout editStudent;
     private SeatingGenLayout seatGen;
     private TableLayout tableLayout;
-
-    // File manager
     private FileIOManager io;
 
-
+    // Constructor
     public ContentPanel(int x, int y, FileIOManager fileManager){
+
         // JTabbedPane styling
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.decode("#C4C4C4"));
@@ -21,8 +30,15 @@ public class ContentPanel extends JTabbedPane {
         this.setFont(placeholder.getFont());
 
         this.io = fileManager;
-    }
+    }// End of constructor
 
+    /**---------------------------METHODS----------------------------**/
+
+    /**
+     * addChildren
+     * This method initializes the features
+     * @return void, just needs to create
+     */
     public void addChildren(){
         dashboard = new DashboardLayout(this.getWidth()/5*4, this.getHeight(), io, this);
         editStudent = new StudentManagerLayout(this.getWidth()/5*4, this.getHeight(), io, dashboard);
@@ -40,6 +56,11 @@ public class ContentPanel extends JTabbedPane {
         this.setEnabledAt(3, false);
     }
 
+    /**
+     * enableTabs
+     * This method provides access once a project is selected
+     * @return void, method only enables already created tabs
+     */
     // Enable other tabs when project is set up/loaded
     public void enableTabs(){
         this.setEnabledAt(1, true);
