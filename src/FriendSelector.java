@@ -21,6 +21,10 @@ import java.awt.GridLayout;
 // Utils
 import java.util.ArrayList;
 
+//TODO: Fix bug in selector where multiple selected people don't actually delete at once.
+// This 100% happens in the editor view
+//TODO: Add feature so that new students are entered by student number, and name is selected by match instead of dropdown.
+
 public class FriendSelector extends CustomPanel {
     // Class variables
     private int x, y;

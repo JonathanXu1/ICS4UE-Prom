@@ -7,18 +7,17 @@
  **/
 
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class TableLayout extends CustomPanel {
-    private boolean enabled;
+    private boolean tablesAvailable;
     private int x,y;
     private CustomPanel[] frames = new CustomPanel[1];
-    public void enableButton(){
-
-    }
+    private CustomButton showFloorPlan;
+    private ArrayList<Table> tables;
+    private FloorPlan floorDisplay;
 
     public TableLayout(int x, int y) {
         super(x, y, "Table Display", "Show diagram of tables");
@@ -27,39 +26,42 @@ public class TableLayout extends CustomPanel {
         addFrame1();
         showFrame(0);
     }
+
+    public void updateTables(ArrayList<Table> tables){
+        this.tables = tables;
+        if(tables.size() > 0){
+            tablesAvailable = true;
+            showFloorPlan.setEnabled(true);
+        } else {
+            tablesAvailable = false;
+            showFloorPlan.setEnabled(false);
+        }
+    }
+
     public void addFrame1(){
         frames[0] = new CustomPanel();
         frames[0].setLayout(new BoxLayout(frames[0], BoxLayout.PAGE_AXIS));
-/*
-        if(enabled){
-            CustomButton showFloorPlan = new CustomButton("Show Floor Plan", 2, x / 10, y / 40);
-            showFloorPlan.addActionListener(new ActionListener() {
 
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //FloorPlan floorDisplay = new FloorPlan();
-                   // floorDisplay.generateFloorPlan(tables);
-                   // floorDisplay.displayFloorPlan();
-                }
-            });
-            showFloorPlan.setPreferredSize(new Dimension(x/4, y/8));
-            //row1.add(showFloorPlan);
-        }*/
-
+        showFloorPlan = new CustomButton("Display Floor Plan", 2, x / 6, y);
+        showFloorPlan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                floorDisplay = new FloorPlan();
+                floorDisplay.generateFloorPlan(tables);
+                floorDisplay.displayFloorPlan();
+            }
+        });
+        if(!tablesAvailable){
+            showFloorPlan.setEnabled(false);
+        }
+        //row1.add(showFloorPlan)
+        frames[0].add(showFloorPlan);
+        this.add(frames[0]);
     }
     private void showFrame(int x) {
         for (int i = 0; i < frames.length; i++) {
             frames[i].setVisible(false);
         }
         frames[x].setVisible(true);
-        JButton display = new JButton("Display Floor Plan!");
-        this.add(display);
-
-        display.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
     }
 }
