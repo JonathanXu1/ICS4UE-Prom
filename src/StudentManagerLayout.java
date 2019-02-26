@@ -291,7 +291,7 @@ public class StudentManagerLayout extends CustomPanel{
             //TODO: Uncheck all the add friend options when they are loaded
             editingMode = true;
             super.changeHeader("Edit Student", "Edit an existing student.");
-            System.out.println(students);
+            //System.out.println(students);
             Student selectedStudent = chart.getStudent(students);
             //System.out.println(selectedStudent);
             numField.setText(selectedStudent.getStudentNumber());
