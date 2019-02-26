@@ -21,6 +21,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+//TODO: Add button to generate test student data
+
 public class StudentManagerLayout extends CustomPanel{
     private int x, y;
     private CustomPanel[] frames = new CustomPanel[2];

@@ -20,13 +20,15 @@ import java.awt.event.ActionListener;
 //Util
 import java.util.ArrayList;
 
+//TODO: Align elements
+
 public class DashboardLayout extends CustomPanel {
     // Class variables
     private int x, y;
     private CustomPanel[] frames = new CustomPanel[3];
     private FileIOManager io;
     private ContentPanel contentPanel;
-    private DynamicLabel projectTitle, tableSizeLabel, studentHeaderStatus, numOfStudents;
+    private DynamicLabel projectTitle, studentHeaderStatus, numOfStudents, seatingHeaderStatus, tablenum, tableSizeLabel;
 
     // Constructor
     public DashboardLayout(int x, int y, FileIOManager fileManager, ContentPanel contentPanel){
@@ -131,7 +133,7 @@ public class DashboardLayout extends CustomPanel {
                 JTextField tableField = new JTextField(15);
                 tableField.setPreferredSize(new Dimension(x/2, y/20));
 
-            DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I am depressed and I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
+            DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
             errorLabel.setText("");
             // Add components to inner tabs
             initPane.add(nameLabel);
@@ -219,11 +221,11 @@ public class DashboardLayout extends CustomPanel {
         // Elements that need to be generate or are already generated
         CustomPanel row2 = new CustomPanel();
             DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
-            DynamicLabel seatingHeaderStatus = new DynamicLabel("Not Generated", x, y/20, Color.RED);
+            seatingHeaderStatus = new DynamicLabel("Not Generated", x, y/20, Color.RED);
         row2.add(seatingHeader);
         row2.add(seatingHeaderStatus);
-        DynamicLabel tables = new DynamicLabel("Tables: NULL", x, y/30, Color.BLACK);
-        tableSizeLabel = new DynamicLabel("Tables Size: NULL", x, y/30, Color.BLACK);
+        tablenum = new DynamicLabel("Number of Tables: NULL", x, y/30, Color.BLACK);
+        tableSizeLabel = new DynamicLabel("Table Size: NULL", x, y/30, Color.BLACK);
 
         // Loads a different project
         CustomPanel row3 = new CustomPanel();
@@ -257,7 +259,7 @@ public class DashboardLayout extends CustomPanel {
         frames[2].add(row1);
         frames[2].add(numOfStudents);
         frames[2].add(row2);
-        frames[2].add(tables);
+        frames[2].add(tablenum);
         frames[2].add(tableSizeLabel);
         frames[2].add(row3);
         this.add(frames[2], BorderLayout.CENTER);
@@ -288,7 +290,7 @@ public class DashboardLayout extends CustomPanel {
      */
     public void updateDashboard(){
         projectTitle.setText("Current Project: " + io.getProject()[0]);
-        tableSizeLabel.setText("Tables Size: " + io.getProject()[1]);
+
         if(io.getProject()[2].equals("0")){
             studentHeaderStatus.setText("Empty");
             studentHeaderStatus.setForeground(Color.RED);
@@ -298,6 +300,16 @@ public class DashboardLayout extends CustomPanel {
         }
         numOfStudents.setText("Students: " + io.getProject()[2]);
         contentPanel.enableTabs();
+
+        if(io.loadTablesFromFile().size() > 0){
+            seatingHeaderStatus.setText("Generated");
+            seatingHeaderStatus.setForeground(Color.GREEN);
+        } else {
+            seatingHeaderStatus.setText("Not Generated");
+            seatingHeaderStatus.setForeground(Color.RED);
+        }
+        tablenum.setText("Number of Tables: " + io.loadTablesFromFile().size());
+        tableSizeLabel.setText("Table Size: " + io.getProject()[1]);
     }
 
     /**
