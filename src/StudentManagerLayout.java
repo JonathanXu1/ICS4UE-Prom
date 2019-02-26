@@ -118,7 +118,7 @@ public class StudentManagerLayout extends CustomPanel{
                 public void actionPerformed(ActionEvent e) {
                     students.remove(chart.getStudent(students));
                     chart.deleteStudent();
-                    dashboard.updateDashboard(students);
+                    dashboard.updateDashboardStudents(students);
                 }
             });
             CustomButton newStudentBtn = new CustomButton("New Student", 2, x, y/40);
@@ -255,7 +255,7 @@ public class StudentManagerLayout extends CustomPanel{
                     } else {
                         students.add(newStudent);
                         chart.loadStudents(students);
-                        dashboard.updateDashboard(students);
+                        dashboard.updateDashboardStudents(students);
                     }
 
                     nameField.setText("");

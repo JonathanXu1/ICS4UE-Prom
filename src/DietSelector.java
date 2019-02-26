@@ -19,15 +19,12 @@ import java.util.ArrayList;
 
 public class DietSelector extends CustomPanel {
     // Class variables
-    private int x, y;
     private JTextField otherField;
     private CustomPanel selector;
 
     // Constructor
     DietSelector(int x, int y){
         super (x, y);
-        this.x = x;
-        this.y = y;
 
         // Set the background
         this.setBackground(Color.decode("#E4E4E4"));

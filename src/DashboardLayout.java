@@ -293,20 +293,20 @@ public class DashboardLayout extends CustomPanel {
 
         if(io.getProject()[2].equals("0")){
             studentHeaderStatus.setText("Empty");
-            studentHeaderStatus.setForeground(Color.RED);
+            studentHeaderStatus.setForeground(Color.decode("#D54F4F"));
         } else {
             studentHeaderStatus.setText("Available");
-            studentHeaderStatus.setForeground(Color.GREEN);
+            studentHeaderStatus.setForeground(Color.decode("#4C8861"));
         }
         numOfStudents.setText("Students: " + io.getProject()[2]);
         contentPanel.enableTabs();
 
         if(io.loadTablesFromFile().size() > 0){
             seatingHeaderStatus.setText("Generated");
-            seatingHeaderStatus.setForeground(Color.GREEN);
+            seatingHeaderStatus.setForeground(Color.decode("#4C8861"));
         } else {
             seatingHeaderStatus.setText("Not Generated");
-            seatingHeaderStatus.setForeground(Color.RED);
+            seatingHeaderStatus.setForeground(Color.decode("#D54F4F"));
         }
         tablenum.setText("Number of Tables: " + io.loadTablesFromFile().size());
         tableSizeLabel.setText("Table Size: " + io.getProject()[1]);
@@ -319,14 +319,26 @@ public class DashboardLayout extends CustomPanel {
      * @return void, only a display method
      */
     // TODO: clean up naming or save students automatically
-    public void updateDashboard(ArrayList<Student> students){
+    public void updateDashboardStudents(ArrayList<Student> students){
         if(students.size() == 0){
             studentHeaderStatus.setText("Empty");
-            studentHeaderStatus.setForeground(Color.RED);
+            studentHeaderStatus.setForeground(Color.decode("#D54F4F"));
         } else {
             studentHeaderStatus.setText("Available");
-            studentHeaderStatus.setForeground(Color.GREEN);
+            studentHeaderStatus.setForeground(Color.decode("#4C8861"));
         }
         numOfStudents.setText("Students: " + students.size());
+    }
+
+    //TODO: call this somewhere
+    public void updateDashboardTables(ArrayList<Table> tables){
+        if(tables.size() > 0){
+            seatingHeaderStatus.setText("Generated");
+            seatingHeaderStatus.setForeground(Color.decode("#4C8861"));
+        } else {
+            seatingHeaderStatus.setText("Not Generated");
+            seatingHeaderStatus.setForeground(Color.decode("#D54F4F"));
+        }
+        tablenum.setText("Number of Tables: " + tables.size());
     }
 }
