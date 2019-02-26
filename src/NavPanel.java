@@ -5,11 +5,12 @@
  * Febuary 15, 2019
  * Panel to navigate between features
  **/
-
+// Graphics & GUI Imports
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import java.awt.Color;
 import java.awt.GridLayout;
+// Button imports
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,7 +45,7 @@ public class NavPanel extends CustomPanel{
             public void actionPerformed(ActionEvent e)
             {
                 CustomRadioButton btn = (CustomRadioButton) e.getSource();
-                /*
+                /* Tests out different options for navigation
                 if(btn.getText().equals("Dashboard")){
                     mainPanel.changePanel(0);
                 } else if(btn.getText().equals("Student Manager")){
@@ -68,6 +69,6 @@ public class NavPanel extends CustomPanel{
         this.add(tableView);
 
         this.add(Box.createVerticalGlue());
-    }
+    }// End of constructor
 
 }
