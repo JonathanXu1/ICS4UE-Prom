@@ -10,8 +10,10 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 // Button Imports
@@ -197,6 +199,7 @@ public class DashboardLayout extends CustomPanel {
         frames[1].add(initPane);
         frames[1].add(Box.createVerticalGlue());
         frames[1].add(row2);
+
         this.add(frames[1], BorderLayout.CENTER);
     }
 
@@ -207,28 +210,29 @@ public class DashboardLayout extends CustomPanel {
      */
     private void addFrame3(){
         // Setup new frame
-        frames[2] = new CustomPanel(x, y);
+        frames[2] = new CustomPanel(x,y);
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
         // Display project name, tables, and students
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
-        CustomPanel row1 = new CustomPanel();
+        CustomPanel row1 = new CustomPanel(x,y);
             DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
             studentHeaderStatus = new DynamicLabel("Empty", x, y/20, Color.RED);
         row1.add(studentHeader);
         row1.add(studentHeaderStatus);
         numOfStudents = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
         // Elements that need to be generate or are already generated
-        CustomPanel row2 = new CustomPanel();
+        CustomPanel row2 = new CustomPanel(x,y);
             DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
             seatingHeaderStatus = new DynamicLabel("Not Generated", x, y/20, Color.RED);
+
         row2.add(seatingHeader);
         row2.add(seatingHeaderStatus);
         tablenum = new DynamicLabel("Number of Tables: NULL", x, y/30, Color.BLACK);
         tableSizeLabel = new DynamicLabel("Table Size: NULL", x, y/30, Color.BLACK);
 
         // Loads a different project
-        CustomPanel row3 = new CustomPanel();
+        CustomPanel row3 = new CustomPanel(x,y);
         //row3.setLayout(new BoxLayout(row3, BoxLayout.LINE_AXIS));
             CustomButton loadAnother = new CustomButton("Load Another Project", 2,  x, y/40);
             loadAnother.addActionListener( new ActionListener(){
@@ -318,7 +322,6 @@ public class DashboardLayout extends CustomPanel {
      * @param students, arraylist of students from manager
      * @return void, only a display method
      */
-    // TODO: clean up naming or save students automatically
     public void updateDashboardStudents(ArrayList<Student> students){
         if(students.size() == 0){
             studentHeaderStatus.setText("Empty");
@@ -330,7 +333,6 @@ public class DashboardLayout extends CustomPanel {
         numOfStudents.setText("Students: " + students.size());
     }
 
-    //TODO: call this somewhere
     public void updateDashboardTables(ArrayList<Table> tables){
         if(tables.size() > 0){
             seatingHeaderStatus.setText("Generated");

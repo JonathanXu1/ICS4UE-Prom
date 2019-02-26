@@ -1,9 +1,0 @@
-Make sure to have the following in your main in this order
-FloorPlan plan = new FloorPlan();      
-plan.generateFloorPlan(tables);
-while (true) {
-	plan.displayFloorPlan();
-}
-Important:
-Do not download until 8:00 (2019/02/21). It should be fully functional by then.
-The res folder is for the fonts and text files. Put them in the same folder that you place your src folder (so not inside the src).

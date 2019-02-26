@@ -96,7 +96,6 @@ public class StudentChart extends Chart {
             data[row][0] = students.get(row).getStudentNumber();
             data[row][1] = token[0];
             data[row][2] = token[1];
-            // TODO: Determine whether to show numbers or names
             data[row][3] = students.get(row).getFriendStudentNumbers();
             data[row][4] = students.get(row).getDietaryRestrictions();
             if(!existsInTable(data[row])){
@@ -143,12 +142,12 @@ public class StudentChart extends Chart {
         Student selectedStudent = null;
         // Searches for student
         for(Student target : reference){
-            System.out.println(target.getStudentNumber());
-            System.out.println(model.getValueAt(row, 0));
-            System.out.println();
+            //System.out.println(target.getStudentNumber());
+            //System.out.println(model.getValueAt(row, 0));
+            //System.out.println();
             if(target.getStudentNumber().equals(model.getValueAt(row, 0))){
                 selectedStudent = target;
-                System.out.println("goteem");
+                //System.out.println("goteem");
             }
         }
         return selectedStudent;

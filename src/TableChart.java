@@ -42,8 +42,7 @@ public class TableChart extends Chart {
 
         // adds the chart to the pane
         table = new JTable(model);
-        //TODO: make smaller
-        table.setPreferredScrollableViewportSize(new Dimension(x, y));
+        table.setPreferredScrollableViewportSize(new Dimension(x/2, y/2));
         table.setFillsViewportHeight(true);
         DynamicLabel placeholder = new DynamicLabel("placeholder", x/10, y/20, Color.BLACK);
         table.setFont(placeholder.getFont());
