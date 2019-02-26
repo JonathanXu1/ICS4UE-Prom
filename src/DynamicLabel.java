@@ -35,5 +35,5 @@ public class DynamicLabel extends JLabel {
 
         this.setForeground(color);
 
-    }// End of constructor
+    }
 }

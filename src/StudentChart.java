@@ -5,17 +5,21 @@
  * Febuary 19, 2019
  * Puts students into chart display
  **/
+
 // GUI & Graphics Imports
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.Dimension;
 // Util
 import java.util.ArrayList;
+
+//TODO: Selecting students (edit/delete) messes up when tables are sorted
 
 public class StudentChart extends Chart {
     // Class variables

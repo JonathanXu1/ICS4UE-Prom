@@ -8,9 +8,14 @@
 // GUI & Graphics imports
 import java.awt.Color;
 import java.awt.Dimension;
+// Table Imports
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 // Utils
 import java.util.ArrayList;
 
@@ -18,10 +23,13 @@ public class TableChart extends Chart {
     // Class variables
     private static JTable table;
     private static DefaultTableModel model;
+    private int x, y;
 
     // Constructor
     TableChart(int x, int y){
         super(x,y);
+        this.x = x;
+        this.y = y;
         String[] columnNames = {};
         Object[][] emptyRow = {};
         // Makes the model for the chart
@@ -31,14 +39,20 @@ public class TableChart extends Chart {
                 //all cells unEditable
                 return false;
             }
-        };;
+        };
 
         // adds the chart to the pane
         table = new JTable(model);
-        table.setPreferredScrollableViewportSize(new Dimension(500, 100));
+        //TODO: make smaller
+        table.setPreferredScrollableViewportSize(new Dimension(x, y));
         table.setFillsViewportHeight(true);
-
-        this.setBackground(Color.WHITE);
+        DynamicLabel placeholder = new DynamicLabel("placeholder", x/10, y/20, Color.BLACK);
+        table.setFont(placeholder.getFont());
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setRowHeight(y/20);
+        table.setShowGrid(false);
+        table.getTableHeader().setBackground(Color.decode("#BDA7D4"));
+        table.getTableHeader().setFont(placeholder.getFont());
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setPreferredSize(new Dimension(x, y));
@@ -54,8 +68,14 @@ public class TableChart extends Chart {
      * @return String, student's number
      */
     public void loadTable(ArrayList<Table> tables, int tableSize) {
+        model.setColumnCount(0);
+        model.setRowCount(0);
         for (int i = 0; i < tables.size(); i++){
             model.addColumn("Table " + (i + 1));
+        }
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            column.setPreferredWidth(x/5);
         }
 
         int col = tables.size();

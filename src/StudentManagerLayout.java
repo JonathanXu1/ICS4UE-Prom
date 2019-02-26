@@ -23,6 +23,8 @@ import java.awt.event.KeyEvent;
 // Util
 import java.util.ArrayList;
 
+//TODO: Add button to generate test student data
+
 public class StudentManagerLayout extends CustomPanel{
     // Class variables
     private int x, y;

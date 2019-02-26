@@ -39,7 +39,7 @@ public class DietSelector extends CustomPanel {
         selector.setLayout(new GridLayout(0, 2));
 
         // Various common dietary needs
-        addOption("Vegatarian");
+        addOption("Vegetarian");
         addOption("Halal");
         addOption("Vegan");
         addOption("Kosher");
