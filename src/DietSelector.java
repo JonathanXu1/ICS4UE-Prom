@@ -71,4 +71,20 @@ public class DietSelector extends CustomPanel {
         }
         otherField.setText("");
     }
+
+    public void setDiet(ArrayList<String> diet){
+        Component[] components = selector.getComponents();
+        for(int i = 0; i < diet.size(); i++){
+            for (Component comp : components) {
+                if (comp instanceof JCheckBox) {
+                    JCheckBox box = (JCheckBox) comp;
+                    if(box.getText().equals(diet.get(i))){
+                        box.setSelected(true);
+                    } else {
+                        otherField.setText(diet.get(i));
+                    }
+                }
+            }
+        }
+    }
 }

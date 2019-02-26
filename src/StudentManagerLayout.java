@@ -15,19 +15,25 @@ public class StudentManagerLayout extends CustomPanel{
     private int x, y;
     private CustomPanel[] frames = new CustomPanel[2];
     private FileIOManager io;
+    private DashboardLayout dashboard;
 
     private StudentChart chart;
     private FriendSelector likesSelector;
-    private ArrayList<Student> students;
+    private DietSelector dietSelector;
+    private JTextField nameField, numField;
 
+    private ArrayList<Student> students;
     private CustomButton editStudentBtn, deleteStudentBtn;
 
-    public StudentManagerLayout(int x, int y, FileIOManager io){
+    private boolean editingMode = false;
+
+    public StudentManagerLayout(int x, int y, FileIOManager io, DashboardLayout dashboardLayout){
         super(x, y, "Student Manager", "Add and modify students");
         this.x = x;
         this.y = y;
        // this.setLayout(new OverlayLayout(this));
         this.io = io;
+        this.dashboard = dashboardLayout;
 
         addFrame1();
         addFrame2();
@@ -38,7 +44,6 @@ public class StudentManagerLayout extends CustomPanel{
     public void loadStudents(){
         this.students = io.loadStudents();
         chart.loadStudents(students);
-        likesSelector.loadOptions(students);
     }
 
     public void changeSelected(boolean state){
@@ -79,6 +84,7 @@ public class StudentManagerLayout extends CustomPanel{
                 public void actionPerformed(ActionEvent e) {
                     students.remove(chart.getStudent(students));
                     chart.deleteStudent();
+                    dashboard.updateDashboard(students);
                 }
             });
             CustomButton newStudentBtn = new CustomButton("New Student", 2, x, y/40);
@@ -117,7 +123,7 @@ public class StudentManagerLayout extends CustomPanel{
             CustomPanel namePanel = new CustomPanel();
             namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel nameLabel = new DynamicLabel("Full Name", x, y/30, Color.BLACK);
-                JTextField nameField = new JTextField(15);
+                nameField = new JTextField(15);
                 nameField.setPreferredSize(new Dimension(x, y/20));
             namePanel.add(nameLabel);
             namePanel.add(nameField);
@@ -125,7 +131,7 @@ public class StudentManagerLayout extends CustomPanel{
             CustomPanel numberPanel = new CustomPanel();
             numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel numLabel = new DynamicLabel("Student Number", x, y/30, Color.BLACK);
-                JTextField numField = new JTextField(15);
+                numField = new JTextField(15);
                 numField.setPreferredSize(new Dimension(x,y/20));
                 numField.addKeyListener(new KeyAdapter() {
                     public void keyTyped(KeyEvent e) {
@@ -139,7 +145,7 @@ public class StudentManagerLayout extends CustomPanel{
             row1.add(numberPanel);
 
             CustomPanel row2 = new CustomPanel();
-            DietSelector dietSelector = new DietSelector(x/4, y/3);
+            dietSelector = new DietSelector(x/4, y/3);
             likesSelector = new FriendSelector(x/4, y/3, this);
             row2.add(dietSelector);
             row2.add(likesSelector);
@@ -159,6 +165,11 @@ public class StudentManagerLayout extends CustomPanel{
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                nameField.setText("");
+                numField.setText("");
+                dietSelector.clear();
+                likesSelector.clear();
+                errorLabel.setText("");
                 showFrame(0);
             }
         });
@@ -196,8 +207,17 @@ public class StudentManagerLayout extends CustomPanel{
                 }
                 if(inputVerified){
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
-                    students.add(newStudent);
-                    chart.loadStudents(students);
+                    if(editingMode){
+                        System.out.println("ignore");
+                        int index = students.indexOf(chart.getStudent(students));
+                        students.set(index, newStudent);
+                        chart.updateStudent(newStudent);
+                        //System.out.println("saved edited student");
+                    } else {
+                        students.add(newStudent);
+                        chart.loadStudents(students);
+                        dashboard.updateDashboard(students);
+                    }
 
                     nameField.setText("");
                     numField.setText("");
@@ -217,11 +237,24 @@ public class StudentManagerLayout extends CustomPanel{
     }
 
     public void setEditorMode(int x){
+        likesSelector.loadOptions(students);
         // New Student
         if(x == 0){
+            editingMode = false;
+            numField.setEditable(true);
             super.changeHeader("New Student", "Create a new student.");
         } else { // Edit student
+            editingMode = true;
             super.changeHeader("Edit Student", "Edit an existing student.");
+            System.out.println(students);
+            Student selectedStudent = chart.getStudent(students);
+            //System.out.println(selectedStudent);
+            numField.setText(selectedStudent.getStudentNumber());
+            numField.setEditable(false);
+            nameField.setText(selectedStudent.getName());
+            dietSelector.setDiet(selectedStudent.getDietaryRestrictions());
+            likesSelector.setLikes(selectedStudent.getFriendStudentNumbers());
+            //System.out.println("editing panel styled");
         }
     }
 

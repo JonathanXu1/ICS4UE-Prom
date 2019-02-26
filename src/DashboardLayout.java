@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class DashboardLayout extends CustomPanel {
     // Class variables
@@ -121,6 +122,8 @@ public class DashboardLayout extends CustomPanel {
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
+                        nameField.setText("");
+                        tableField.setText("");
                         showFrame(0);
                     }
                 });
@@ -253,5 +256,17 @@ public class DashboardLayout extends CustomPanel {
         }
         numOfStudents.setText("Students: " + io.getProject()[2]);
         contentPanel.enableTabs();
+    }
+
+    // TODO: clean up naming or save students automatically
+    public void updateDashboard(ArrayList<Student> students){
+        if(students.size() == 0){
+            studentHeaderStatus.setText("Empty");
+            studentHeaderStatus.setForeground(Color.RED);
+        } else {
+            studentHeaderStatus.setText("Available");
+            studentHeaderStatus.setForeground(Color.GREEN);
+        }
+        numOfStudents.setText("Students: " + students.size());
     }
 }
