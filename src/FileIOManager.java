@@ -7,7 +7,6 @@
  **/
 
 // File IO Imports
-import javax.swing.JFileChooser;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 // GUI Import
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class FileIOManager{
@@ -166,11 +166,10 @@ public class FileIOManager{
     }
     /**
      * loadStudentsFromGroup
-     * Controls which frame to display
-     * @param x, the number of the panel to be displayed
-     * @return void, only a display method
+     * Loads the students from the table they belong to
+     * @param tableInfo, an array of strings with the information of the tables and their students
+     * @return ArrayList</Students>, an ArrayList of students taken from their tables
      */
-    // Loads students out of a group
     public ArrayList<Student> loadStudentsFromGroup(String[] tableInfo){
         ArrayList <Student> students = new ArrayList<Student>();
         int quantity = Integer.parseInt(tableInfo[0]);
@@ -187,7 +186,12 @@ public class FileIOManager{
         }
         return students;
     }
-
+    /**
+     * saveStudents
+     * Stores student into file
+     * @param students, the students that user is trying to save
+     * @return void, saved directly into file
+     */
     // Stores students into file
     public void saveStudents(ArrayList<Student> students){
         try{
@@ -203,8 +207,11 @@ public class FileIOManager{
             e.printStackTrace();
         }
     }
-
-    // Loads student information from file
+    /**
+     * loadStudents
+     * Gets student information from the files
+     * @return ArrayList</Student>, ArrayList of students retrieved
+     */
     public ArrayList<Student> loadStudents(){
         ArrayList <Student> students = new ArrayList<Student>();
         try{

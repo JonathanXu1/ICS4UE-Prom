@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-// Table imports
+// Table GUI imports
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 

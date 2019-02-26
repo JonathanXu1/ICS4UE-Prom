@@ -6,16 +6,19 @@
  * Adds friends when creating new students
  **/
 
+// Button imports
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+// Graphics & GUI imports
 import javax.swing.AbstractButton;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.BoxLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+// Utils
 import java.util.ArrayList;
 
 //TODO: Fix bug in selector where multiple selected people don't actually delete at once.
@@ -24,21 +27,25 @@ import java.util.ArrayList;
 //TODO: When adding friends in the Edit Student tab (not Add), the panel reappears once after hitting OK
 
 public class FriendSelector extends CustomPanel {
+    // Class variables
     private int x, y;
     private StudentManagerLayout studentManager;
     private CustomPanel selector;
     private JButton deleteLikesBtn, addBtn;
     private ArrayList<Student> students;
 
+    // Constructor
     public FriendSelector(int x, int y, StudentManagerLayout studentManager){
         super(x, y);
         this.x = x;
         this.y = y;
         this.studentManager = studentManager;
 
+        // Background color and layout
         this.setBackground(Color.decode("#E4E4E4"));
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
+        // Button and components
         CustomPanel row1 = new CustomPanel();
         DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/30, Color.BLACK);
         deleteLikesBtn = new JButton("Delete");
@@ -49,7 +56,6 @@ public class FriendSelector extends CustomPanel {
                 removeFriends();
             }
         });
-
         addBtn = new JButton("Add");
 
         row1.add(likesLabel);
@@ -61,8 +67,15 @@ public class FriendSelector extends CustomPanel {
 
         this.add(row1);
         this.add(selector);
-    }
+    }// End of constructor
+/**------------------------------METHODS-------------------------**/
 
+    /**
+    * loadOptions
+    * Provides drop down options for student
+    * @param students, an ArrayList of students that will be altered
+    * @return void, changes information of students internally
+    */
     public void loadOptions(ArrayList<Student> students){
         this.students = students;
         addBtn.addActionListener(new ActionListener() {
@@ -89,7 +102,12 @@ public class FriendSelector extends CustomPanel {
             }
         });
     }
-
+    /**
+     * setLikes
+     * Sets which people student wants to sit with
+     * @param otherNumbers, the student numbers of the people they like
+     * @return void, calls other method, nothing to return
+     */
     public void setLikes(ArrayList<String> otherNumbers){
         for (String otherNumber : otherNumbers){
             for (Student student : students){
@@ -99,7 +117,12 @@ public class FriendSelector extends CustomPanel {
             }
         }
     }
-
+    /**
+     * addFriends
+     * Creates a checkbox below of friends
+     * @param personName, the name of the student's friends
+     * @return void, only a display method
+     */
     public void addFriends(String personName){
         if(!checkExist(personName)){
             JCheckBox checkbox = new JCheckBox(personName);
@@ -109,7 +132,11 @@ public class FriendSelector extends CustomPanel {
             selector.validate();
         }
     }
-
+    /**
+     * removeFriends
+     * Takes selected person off friends list
+     * @return void, takes person off, does not need to return anything
+     */
     public void removeFriends(){
         Component[] components = selector.getComponents();
         for (Component comp : components) {
@@ -124,6 +151,11 @@ public class FriendSelector extends CustomPanel {
         deleteLikesBtn.setEnabled(false);
     }
 
+    /**
+     * getFriends
+     * Sends out the friends of a student
+     * @return void, returns the names of their friends
+     */
     public ArrayList<String> getFriends(){
         ArrayList<String> friends = new ArrayList<String>();
         Component[] components = selector.getComponents();
@@ -140,6 +172,11 @@ public class FriendSelector extends CustomPanel {
         return friends;
     }
 
+    /**
+     * checkExist
+     * Makes sure the student is in project
+     * @return boolean, true if such student is found, false if they are not there
+     */
     private boolean checkExist(String person){
         boolean exists = false;
         Component[] components = selector.getComponents();
@@ -154,6 +191,10 @@ public class FriendSelector extends CustomPanel {
         return exists;
     }
 
+    /**
+     * selectListener
+     * Controls the delete button and enables it when needed
+     */
     private ActionListener selectListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -163,6 +204,11 @@ public class FriendSelector extends CustomPanel {
         }
     };
 
+    /**
+     * clear
+     * Empties the selections on the check box
+     * @return void, changes component, nothing to return
+     */
     public void clear(){
         Component[] components = selector.getComponents();
         for (Component comp : components) {
@@ -172,4 +218,5 @@ public class FriendSelector extends CustomPanel {
             }
         }
     }
+
 }

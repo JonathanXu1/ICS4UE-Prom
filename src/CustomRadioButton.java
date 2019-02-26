@@ -9,8 +9,9 @@
 // Graphics Imports
 import java.awt.Color;
 
-// Button Imports
+// GUI Imports
 import javax.swing.JRadioButton;
+// Button Imports
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
