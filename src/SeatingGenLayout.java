@@ -59,18 +59,20 @@ public class SeatingGenLayout extends CustomPanel {
         CustomPanel row1 = new CustomPanel();
         row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
         // Runs seating algorithm
+
         CustomButton generate = new CustomButton("Generate Seating!", 2, x/6, y);
         generate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loadStudents();
-                tables = seating.generateTables(students, tableSize);
-                io.saveGroups(tables);
-                chart.loadTable(tables, tableSize);
-                tableLayout.updateTables(tables);
-                dashboard.updateDashboardTables(tables);
-                showFrame(1);
-            }
+                    loadStudents();
+                    tables = seating.generateTables(students, tableSize);
+                    tables = seating.generateTables(students, tableSize);
+                    io.saveGroups(tables);
+                    chart.loadTable(tables, tableSize);
+                    tableLayout.updateTables(tables);
+                    dashboard.updateDashboardTables(tables);
+                    showFrame(1);
+                }
         });
 
         // Adds these options to the frame
