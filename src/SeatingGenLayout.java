@@ -7,8 +7,7 @@
  **/
 // GUI & Graphics imports
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // Util
@@ -38,9 +37,6 @@ public class SeatingGenLayout extends CustomPanel {
         this.chart = new TableChart(x/10*9,y/4*3);
         this.dashboard = dashboard;
 
-        UIDefaults uid = UIManager.getDefaults();
-        //uid.put("ScrollBar.thumb", new ColorUIResource(Color.decode("#846D9B")));
-
         addFrame1();
         addFrame2();
     }// End of constructor
@@ -59,20 +55,18 @@ public class SeatingGenLayout extends CustomPanel {
         CustomPanel row1 = new CustomPanel();
         row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
         // Runs seating algorithm
-
         CustomButton generate = new CustomButton("Generate Seating!", 2, x/6, y);
         generate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    loadStudents();
-                    tables = seating.generateTables(students, tableSize);
-                    tables = seating.generateTables(students, tableSize);
-                    io.saveGroups(tables);
-                    chart.loadTable(tables, tableSize);
-                    tableLayout.updateTables(tables);
-                    dashboard.updateDashboardTables(tables);
-                    showFrame(1);
-                }
+                loadStudents();
+                tables = seating.generateTables(students, tableSize);
+                io.saveGroups(tables);
+                chart.loadTable(tables, tableSize);
+                tableLayout.updateTables(tables);
+                dashboard.updateDashboardTables(tables);
+                showFrame(1);
+            }
         });
 
         // Adds these options to the frame
@@ -133,12 +127,12 @@ public class SeatingGenLayout extends CustomPanel {
     }
 
     /**
-    * showFrame
-    * Displays the correct frame
-    * @param  x, int representing frame to display
-    * @return void, display method
-    */
-     //Controls which frame is displayed
+     * showFrame
+     * Displays the correct frame
+     * @param  x, int representing frame to display
+     * @return void, display method
+     */
+    //Controls which frame is displayed
     private void showFrame(int x) {
         for (int i = 0; i < frames.length; i++) {
             frames[i].setVisible(false);
