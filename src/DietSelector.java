@@ -18,10 +18,13 @@ public class DietSelector extends CustomPanel {
     // Class variables
     private CustomJTextField otherField;
     private CustomPanel selector;
+    private int x, y;
 
     // Constructor
-    DietSelector(int x, int y){
+    public DietSelector(int x, int y){
         super (x, y);
+        this.x = x;
+        this.y = y;
 
         // Set the background
         this.setBackground(Color.WHITE);
@@ -88,7 +91,7 @@ public class DietSelector extends CustomPanel {
 * @return void, only a display method
 */
 private void addOption(String name){
-    JCheckBox checkbox = new JCheckBox(name);
+    CustomJCheckBox checkbox = new CustomJCheckBox(name, x/2, y/6);
     selector.add(checkbox);
 }
 /**
@@ -104,7 +107,7 @@ private void addOption(String name){
                 box.setSelected(false);
             }
         }
-    otherField.setText("");
+        otherField.setText("");
     }
     /**
      * setDiet

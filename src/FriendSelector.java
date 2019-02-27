@@ -18,8 +18,6 @@ import javax.swing.BoxLayout;
 // Utils
 import java.util.ArrayList;
 
-//TODO: Fix bug in selector where multiple selected people don't actually delete at once.
-// This 100% happens in the editor view
 //TODO: Add feature so that new students are entered by student number, and name is selected by match instead of dropdown.
 
 public class FriendSelector extends CustomPanel {
@@ -111,10 +109,15 @@ public class FriendSelector extends CustomPanel {
      */
     public void setLikes(ArrayList<String> otherNumbers){
         for (String otherNumber : otherNumbers){
+            boolean matched = false;
             for (Student student : students){
                 if(student.getStudentNumber().equals(otherNumber)){
                     addFriends(student.getName());
+                    matched = true;
                 }
+            }
+            if(!matched){
+                addFriends(otherNumber);
             }
         }
     }
@@ -126,7 +129,7 @@ public class FriendSelector extends CustomPanel {
      */
     public void addFriends(String personName){
         if(!checkExist(personName)){
-            JCheckBox checkbox = new JCheckBox(personName);
+            CustomJCheckBox checkbox = new CustomJCheckBox(personName, x/2, y/6);
             checkbox.addActionListener(selectListener);
             selector.add(checkbox);
             selector.validate();
@@ -147,8 +150,9 @@ public class FriendSelector extends CustomPanel {
                 }
             }
         }
-        selector.validate();
         deleteLikesBtn.setEnabled(false);
+        selector.validate();
+        selector.repaint();
     }
 
     /**
@@ -162,9 +166,14 @@ public class FriendSelector extends CustomPanel {
         for (Component comp : components) {
             if (comp instanceof JCheckBox) {
                 JCheckBox box = (JCheckBox) comp;
-                for(Student student : students){
-                    if(student.getName().equals(box.getText())){
-                        friends.add(student.getStudentNumber());
+                // If student number
+                if(box.getText().matches("[0-9]+")){
+                    friends.add(box.getText());
+                } else {
+                    for(Student student : students){
+                        if(student.getName().equals(box.getText())){
+                            friends.add(student.getStudentNumber());
+                        }
                     }
                 }
             }
@@ -174,7 +183,7 @@ public class FriendSelector extends CustomPanel {
 
     /**
      * checkExist
-     * Makes sure the student is in project
+     * Checks to see if a student has already been added as a preference
      * @return boolean, true if such student is found, false if they are not there
      */
     private boolean checkExist(String person){
@@ -210,13 +219,7 @@ public class FriendSelector extends CustomPanel {
      * @return void, changes component, nothing to return
      */
     public void clear(){
-        Component[] components = selector.getComponents();
-        for (Component comp : components) {
-            if (comp instanceof JCheckBox) {
-                JCheckBox box = (JCheckBox) comp;
-                selector.remove(box);
-            }
-        }
+        selector.removeAll();
     }
 
 }
