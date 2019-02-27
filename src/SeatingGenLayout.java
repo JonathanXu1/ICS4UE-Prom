@@ -40,6 +40,7 @@ public class SeatingGenLayout extends CustomPanel {
         addFrame1();
         addFrame2();
     }// End of constructor
+
 /**----------------------------------METHODS----------------------------**/
     /**
      * addFrame1
