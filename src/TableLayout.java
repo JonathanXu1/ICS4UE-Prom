@@ -21,7 +21,7 @@ public class TableLayout extends CustomPanel {
     private boolean tablesAvailable;
     private int x,y;
     private CustomPanel[] frames = new CustomPanel[1];
-    private CustomButton generateFloorPlan, showFloorPlan;
+    private CustomButton generateFloorPlanBtn, showFloorPlan;
     private ArrayList<Table> tables;
     private FloorPlan floorDisplay = null;
 
@@ -45,10 +45,10 @@ public class TableLayout extends CustomPanel {
         this.tables = tables;
         if(tables.size() > 0){
             tablesAvailable = true;
-            generateFloorPlan.setEnabled(true);
+            generateFloorPlanBtn.setEnabled(true);
         } else {
             tablesAvailable = false;
-            generateFloorPlan.setEnabled(false);
+            generateFloorPlanBtn.setEnabled(false);
             showFloorPlan.setEnabled(false);
         }
         if(io.getProject()[3].equals('0')){
@@ -69,9 +69,9 @@ public class TableLayout extends CustomPanel {
 
         CustomPanel row1 = new CustomPanel();
         // Buttons for new floor plan
-        generateFloorPlan = new CustomButton("Generate Floor Plan", 1, x/5, y);
-        generateFloorPlan.setPreferredSize(new Dimension(x/4, y/8));
-        generateFloorPlan.addActionListener(new ActionListener() {
+        generateFloorPlanBtn = new CustomButton("Generate Floor Plan", 1, x/5, y);
+        generateFloorPlanBtn.setPreferredSize(new Dimension(x/4, y/8));
+        generateFloorPlanBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(floorDisplay == null){
@@ -104,10 +104,10 @@ public class TableLayout extends CustomPanel {
             }
         });
         if(!tablesAvailable){
-            generateFloorPlan.setEnabled(false);
+            generateFloorPlanBtn.setEnabled(false);
             showFloorPlan.setEnabled(false);
         }
-        row1.add(generateFloorPlan);
+        row1.add(generateFloorPlanBtn);
         row1.add(Box.createHorizontalStrut(x/8));
         row1.add(showFloorPlan);
 

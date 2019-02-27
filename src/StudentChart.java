@@ -111,7 +111,7 @@ public class StudentChart extends Chart {
      * @return void nothing to return
      */
     public void updateStudent(Student updatedStudent){
-        int row = table.getSelectedRow();
+        int row = table.getRowSorter().convertRowIndexToModel(table.getSelectedRow());
         String[] token = updatedStudent.getName().split(" ");
         // Updates table values
         model.setValueAt(token[0], row, 1);
@@ -127,7 +127,8 @@ public class StudentChart extends Chart {
      * @return void, nothing to return
      */
     public void deleteStudent(){
-        model.removeRow(table.getSelectedRow());
+        int row = table.getRowSorter().convertRowIndexToModel(table.getSelectedRow());
+        model.removeRow(row);
         studentManager.changeSelected(false);
     }
 
@@ -138,7 +139,7 @@ public class StudentChart extends Chart {
      * @return Student, student that is found
      */
     public Student getStudent(ArrayList<Student> reference){
-        int row = table.getSelectedRow();
+        int row = table.getRowSorter().convertRowIndexToModel(table.getSelectedRow());
         Student selectedStudent = null;
         // Searches for student
         for(Student target : reference){
@@ -163,7 +164,6 @@ public class StudentChart extends Chart {
 
         // Get row and column count
         int rowCount = table.getRowCount();
-        int colCount = table.getColumnCount();
         //TODO: Compare only student numbers instead of everything
 
         // Get Current Table Entry
