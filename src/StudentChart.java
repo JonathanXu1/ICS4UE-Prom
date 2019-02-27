@@ -98,7 +98,7 @@ public class StudentChart extends Chart {
             data[row][2] = token[1];
             data[row][3] = students.get(row).getFriendStudentNumbers();
             data[row][4] = students.get(row).getDietaryRestrictions();
-            if(!existsInTable(data[row])){
+            if(!existsInTable(data[row][0])){
                 model.addRow(data[row]);
             }
         }
@@ -159,7 +159,7 @@ public class StudentChart extends Chart {
      * @param entry, the data being search for
      * @return Boolean, true if they are found, false if they are not there
      */
-    private boolean existsInTable(Object[] entry) {
+    public boolean existsInTable(Object entry) {
 
         // Get row and column count
         int rowCount = table.getRowCount();
@@ -167,18 +167,12 @@ public class StudentChart extends Chart {
         //TODO: Compare only student numbers instead of everything
 
         // Get Current Table Entry
-        String curEntry = "";
-        for (Object o : entry) {
-            String e = o.toString();
-            curEntry = curEntry + " " + e;
-        }
+        String curNum = (String)entry;
 
         // Check against all entries
         for (int i = 0; i < rowCount; i++) {
-            String rowEntry = "";
-            for (int j = 0; j < colCount; j++)
-                rowEntry = rowEntry + " " + table.getValueAt(i, j).toString();
-            if (rowEntry.equalsIgnoreCase(curEntry)) {
+            String rowNum = (String)table.getValueAt(i, 0);
+            if (rowNum.equalsIgnoreCase(curNum)) {
                 return true;
             }
         }

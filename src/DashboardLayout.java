@@ -215,14 +215,14 @@ public class DashboardLayout extends CustomPanel {
 
         // Display project name, tables, and students
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
-        CustomPanel row1 = new CustomPanel(x,y);
+        CustomPanel row1 = new CustomPanel();
             DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
             studentHeaderStatus = new DynamicLabel("Empty", x, y/20, Color.RED);
         row1.add(studentHeader);
         row1.add(studentHeaderStatus);
         numOfStudents = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
         // Elements that need to be generate or are already generated
-        CustomPanel row2 = new CustomPanel(x,y);
+        CustomPanel row2 = new CustomPanel();
             DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
             seatingHeaderStatus = new DynamicLabel("Not Generated", x, y/20, Color.RED);
 

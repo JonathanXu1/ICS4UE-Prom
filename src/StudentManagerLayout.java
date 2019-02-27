@@ -245,7 +245,11 @@ public class StudentManagerLayout extends CustomPanel{
                 } else if(studentNumber.length() < 9 || !studentNumber.matches("[0-9]+")){
                     errorLabel.setText(errorLabel.getText() + " Improper student number.");
                     inputVerified = false;
+                } else if(!editingMode && chart.existsInTable(studentNumber)){
+                    errorLabel.setText(errorLabel.getText() + " Student with this number already exists.");
+                    inputVerified = false;
                 }
+
                 if(inputVerified){
                     Student newStudent = new Student(name, studentNumber, dietaryRestrictions, friends);
                     if(editingMode){
