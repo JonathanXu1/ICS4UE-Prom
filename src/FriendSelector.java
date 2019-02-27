@@ -79,7 +79,6 @@ public class FriendSelector extends CustomPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     ArrayList<String> studentNames = new ArrayList<String>();
-                    studentNames.add("<Empty>");
                     for (Student student : students){
                         studentNames.add(student.getName());
                     }
