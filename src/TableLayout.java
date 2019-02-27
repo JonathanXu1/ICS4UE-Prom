@@ -75,7 +75,12 @@ public class TableLayout extends CustomPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 floorDisplay = new FloorPlan();
-                floorDisplay.generateFloorPlan(tables);
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        floorDisplay.generateFloorPlan(tables);
+                    }
+                });
                 io.setGenerated();
                 showFloorPlan.setEnabled(true);
             }
@@ -85,7 +90,12 @@ public class TableLayout extends CustomPanel {
         showFloorPlan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                floorDisplay.displayFloorPlan();
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        floorDisplay.displayFloorPlan();
+                    }
+                });
             }
         });
         if(!tablesAvailable){
