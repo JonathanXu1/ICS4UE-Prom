@@ -108,6 +108,7 @@ public class SeatingGenLayout extends CustomPanel {
                 });
                 io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
+                tableLayout.updateTables(tables);
                 dashboard.updateDashboardTables(tables);
             }
         });
