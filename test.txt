@@ -1,14 +1,5 @@
-3
+0
 20.0
 20.0
 1000.0
 1000.0
-0.0
-0.0
-023903939:Mr. Mangat:|230430030:Jonathan Xu:Fish Allergy,Nut Allergy|335548079:Jonathan Xu:Soy Allergy,Shellfish Allergy,yeets|002093939:Big Chungus:bad|
-0.08
-0.0
-222222222:Testard Carol:Nice people|029933334:I ammad:Shellfish Allergy|233333322:David Bao:Nut Allergy|335548078:Nasty Pen:Shellfish Allergy|
-0.16
-0.0
-203403904:Cust Man:|234234344:Custartd adsf:|
