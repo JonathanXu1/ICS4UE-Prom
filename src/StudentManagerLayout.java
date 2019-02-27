@@ -8,10 +8,8 @@
 // GUI & Graphics Imports
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.ColorUIResource;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 // Button Imports
 import java.awt.event.ActionEvent;

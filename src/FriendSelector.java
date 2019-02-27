@@ -93,7 +93,17 @@ public class FriendSelector extends CustomPanel {
                             null,
                             otherList,
                             null);
+
                     //Add listing if it doesn't exist already
+                    if (s == "<Empty>") {
+                        while (s.length() != 9 || !s.matches("[0-9]+")) {
+                            s = (String) JOptionPane.showInputDialog("Enter the student number of your friend");
+                            if (s.length() != 9 || !s.matches("[0-9]+")) {
+                                JOptionPane.showMessageDialog(null, "Not a valid student number.");
+                            }
+                        }
+                    }
+
                     if ((s != null) && (s.length() > 0)) {
                         addFriends(s);
                     }

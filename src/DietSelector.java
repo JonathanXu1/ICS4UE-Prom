@@ -109,6 +109,7 @@ private void addOption(String name){
         }
         otherField.setText("");
     }
+
     /**
      * setDiet
      * Sets the diet of the new student

@@ -1,32 +1,14 @@
-9
+3
 20.0
 20.0
 1000.0
 1000.0
 0.0
 0.0
-234234324:a a :|
+002093939:Big Chungus:bad|230430030:Jonathan Xu:Fish Allergy,Nut Allergy|023903939:Mr. Mangat:|335548079:Jonathan Xu:Soy Allergy,Shellfish Allergy,yeets|
 0.08
 0.0
-233423423:asdf asdf:|
+335548078:Nasty Pen:Shellfish Allergy|233300999:Big Chu:|
 0.16
 0.0
-235245235:adfa s asdfasd:|
-0.24
-0.0
-456545634:sfgsfdfdg sfdg :|
-0.32
-0.0
-454325432:gshh sdg:|
-0.4
-0.0
-537346757:sfafd adsfasdf:|
-0.48
-0.0
-262656253:dghdsghsdfh sfdghsdfgsfdh:|
-0.56
-0.0
-235243543:ggsdsesr sdfgsfdgsfdg:|
-0.64
-0.0
-230409409:Kolby Chongus:everything|
+233333322:David Bao:Nut Allergy|029933334:I ammad:Shellfish Allergy|939393939:Custartd Manss:|

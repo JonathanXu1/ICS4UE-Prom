@@ -5,6 +5,7 @@
  * Febuary 13, 2019
  * Template to create buttons
  **/
+
 // GUI & Graphics Import
 import javax.swing.JButton;
 import java.awt.Color;
@@ -33,6 +34,7 @@ public class CustomButton extends JButton {
         this.add(label);
     }// End of constructor
 
+/**---------------------------METHODS--------------------------**/
     /**
      * setEnabled
      * Enables the button when called

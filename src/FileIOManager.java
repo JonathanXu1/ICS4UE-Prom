@@ -237,10 +237,15 @@ public class FileIOManager{
         return students;
     }
 
+    /**
+     * setGenerated
+     * Creates the table display
+     * @return void,
+     */
     public void setGenerated(){
         String[] old = getProject();
         try {
-            // Save whether a tablelayout display has been generated
+            // Save whether a table layout display has been generated
             PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(this.directory + "/config.txt")));
             writer.println(old[1]);
             writer.println(1); // 0 for no table layouts generated, 1 for table layouts generated.
