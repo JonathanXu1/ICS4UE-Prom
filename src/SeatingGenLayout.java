@@ -61,12 +61,7 @@ public class SeatingGenLayout extends CustomPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                     loadStudents();
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            tables = seating.generateTables(students, tableSize);
-                        }
-                    });
+                    tables = seating.generateTables(students, tableSize);
                     tables = seating.generateTables(students, tableSize);
                     io.saveGroups(tables);
                     chart.loadTable(tables, tableSize);
@@ -100,12 +95,7 @@ public class SeatingGenLayout extends CustomPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 loadStudents();
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        tables = seating.generateTables(students, tableSize);
-                    }
-                });
+                tables = seating.generateTables(students, tableSize);
                 io.saveGroups(tables);
                 chart.loadTable(tables, tableSize);
                 tableLayout.updateTables(tables);
