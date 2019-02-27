@@ -23,7 +23,7 @@ public class TableLayout extends CustomPanel {
     private CustomPanel[] frames = new CustomPanel[1];
     private CustomButton generateFloorPlan, showFloorPlan;
     private ArrayList<Table> tables;
-    private FloorPlan floorDisplay;
+    private FloorPlan floorDisplay = null;
 
     // Constructor
     public TableLayout(int x, int y, FileIOManager io) {
@@ -74,7 +74,9 @@ public class TableLayout extends CustomPanel {
         generateFloorPlan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                floorDisplay = new FloorPlan();
+                if(floorDisplay == null){
+                    floorDisplay = new FloorPlan();
+                }
                 floorDisplay.generateFloorPlan(tables);
                 io.setGenerated();
                 showFloorPlan.setEnabled(true);
@@ -85,6 +87,9 @@ public class TableLayout extends CustomPanel {
         showFloorPlan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(floorDisplay == null){
+                    floorDisplay = new FloorPlan();
+                }
                 floorDisplay.displayFloorPlan();
             }
         });

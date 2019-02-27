@@ -76,7 +76,7 @@ public class StudentChart extends Chart {
 
         // Adds to panel
         table.setBackground(Color.WHITE);
-        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setPreferredSize(new Dimension(x, y));
         this.add(scrollPane);
     }

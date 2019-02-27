@@ -6,11 +6,9 @@
  * Layout to see and edit students
  **/
 // GUI & Graphics Imports
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -49,6 +47,9 @@ public class StudentManagerLayout extends CustomPanel{
        // this.setLayout(new OverlayLayout(this));
         this.io = io;
         this.dashboard = dashboardLayout;
+
+        //UIManager.put("ScrollBar.width", x/10);
+
 
         // Frames to be displayed
         addFrame1();

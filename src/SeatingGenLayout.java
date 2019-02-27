@@ -7,7 +7,8 @@
  **/
 // GUI & Graphics imports
 import javax.swing.*;
-import java.awt.BorderLayout;
+import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // Util
@@ -36,6 +37,9 @@ public class SeatingGenLayout extends CustomPanel {
         this.tableLayout = tableLayout;
         this.chart = new TableChart(x/10*9,y/4*3);
         this.dashboard = dashboard;
+
+        UIDefaults uid = UIManager.getDefaults();
+        //uid.put("ScrollBar.thumb", new ColorUIResource(Color.decode("#846D9B")));
 
         addFrame1();
         addFrame2();

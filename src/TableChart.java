@@ -11,10 +11,7 @@ import java.awt.Dimension;
 // Table Imports
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 // Utils
 import java.util.ArrayList;
 
@@ -51,9 +48,14 @@ public class TableChart extends Chart {
         table.setShowGrid(false);
         table.getTableHeader().setBackground(Color.decode("#BDA7D4"));
         table.getTableHeader().setFont(placeholder.getFont());
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setPreferredSize(new Dimension(x, y));
+        scrollPane.getHorizontalScrollBar().setPreferredSize(
+                new Dimension(Integer.MAX_VALUE, x/60));
+        scrollPane.getHorizontalScrollBar().setBackground(Color.WHITE);
+
         this.add(scrollPane);
     }// End of constructor
 /**-----------------------------METHODS---------------------------**/
