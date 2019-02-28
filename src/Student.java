@@ -6,7 +6,7 @@
  * Student class following UML standards
  **/
 import java.util.ArrayList;
-class Student {
+class Student{
   // Class variables
   private String name;
   private String studentNumber;

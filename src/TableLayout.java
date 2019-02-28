@@ -77,12 +77,13 @@ public class TableLayout extends CustomPanel {
                 if(floorDisplay == null){
                     floorDisplay = new FloorPlan();
                     //Listener for floor display frame
+                    /*
                     floorDisplay.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                             floorDisplay = null;
                         }
-                    });
+                    });*/
                 }
                 floorDisplay.generateFloorPlan(tables);
                 io.setGenerated();
@@ -96,12 +97,12 @@ public class TableLayout extends CustomPanel {
             public void actionPerformed(ActionEvent e) {
                 if(floorDisplay == null){
                     floorDisplay = new FloorPlan();
-                    floorDisplay.addWindowListener(new java.awt.event.WindowAdapter() {
+                    /*floorDisplay.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                             floorDisplay = null;
                         }
-                    });
+                    });*/
                 }
                 floorDisplay.displayFloorPlan();
             }
