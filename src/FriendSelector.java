@@ -96,21 +96,22 @@ public class FriendSelector extends CustomPanel {
                             null);
 
                     //Add listing if it doesn't exist already
-                    if (s == "<Empty>") {
+                    if (s.equals("<Empty>")) {
                         // Null is expected and will not be added
                         try {
-                            while (s != null || s.length() != 9 || !s.matches("[0-9]+")) {
-                                s = (String) JOptionPane.showInputDialog("Enter the student number of your friend");
-                                if (s.length() != 9 || !s.matches("[0-9]+")) {
-                                    JOptionPane.showMessageDialog(null, "Not a valid student number.");
-                                }
+                            s = (String) JOptionPane.showInputDialog("Enter the student number of your friend");
+                            if (s.length() == 9 && s.matches("[0-9]+")) {
+                                addFriends(s);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Not a valid student number.");
                             }
                         }catch(NullPointerException e1){};
+                    } else {
+                        if (s.length() > 0 ){
+                            addFriends(s);
+                        }
                     }
 
-                    if ((s != null) && (s.length() > 0)) {
-                        addFriends(s);
-                    }
                 }
             });
             initialized = true;
