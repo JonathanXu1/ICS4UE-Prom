@@ -5,7 +5,7 @@
  * February 13, 2019
  * Basis for ticketing system UML
  **/
-
+// GUI & Graphics imports
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import java.awt.BorderLayout;
@@ -14,6 +14,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
+// IO imports
 import java.io.IOException;
 
 public class TicketingSystem extends JFrame {
@@ -21,7 +22,7 @@ public class TicketingSystem extends JFrame {
     private static JFrame window;
     private HeaderPanel headerPanel;
     private ContentPanel  contentPanel;
-
+    // Fit to screen
     private final int MAX_WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int MAX_HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -81,6 +82,6 @@ public class TicketingSystem extends JFrame {
         this.setVisible(true);
 
 
-    }
+    }// End of constructor
 
 }

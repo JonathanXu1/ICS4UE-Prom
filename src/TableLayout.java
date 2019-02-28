@@ -5,9 +5,10 @@
  * Febuary 18, 2019
  * Layout to run the floor plan
  **/
-// GUI Imports
-import javax.swing.*;
-import java.awt.*;
+// GUI & Graphics Imports
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // Util

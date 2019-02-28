@@ -339,6 +339,12 @@ public class DashboardLayout extends CustomPanel {
         numOfStudents.setText("Students: " + students.size());
     }
 
+    /**
+     * updateDashboardTables
+     * Updates if seating has been generated instead of re-generating each time
+     * @param tables, ArrayList of Tables that were created
+     * @return void, updates the display
+     */
     public void updateDashboardTables(ArrayList<Table> tables){
         if(tables.size() > 0){
             seatingHeaderStatus.setText("Generated");
