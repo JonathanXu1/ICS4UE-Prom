@@ -10,10 +10,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 // Button Imports
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -145,7 +142,7 @@ public class DashboardLayout extends CustomPanel {
             initPane.add(errorLabel);
 
             // Buttons to save or cancel the project
-            CustomPanel row2 = new CustomPanel(x/3, y/20);
+            CustomPanel row2 = new CustomPanel(x/3, y/15);
             //row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
                 CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/30);
                 cancelBtn.addActionListener(new ActionListener(){
@@ -197,7 +194,6 @@ public class DashboardLayout extends CustomPanel {
         // Adds fields and label to frame
         frames[1].add(header);
         frames[1].add(initPane);
-        frames[1].add(Box.createVerticalGlue());
         frames[1].add(row2);
 
         this.add(frames[1], BorderLayout.CENTER);
@@ -210,20 +206,22 @@ public class DashboardLayout extends CustomPanel {
      */
     private void addFrame3(){
         // Setup new frame
-        frames[2] = new CustomPanel(x,y);
+        frames[2] = new CustomPanel();
         frames[2].setLayout(new BoxLayout(frames[2], BoxLayout.PAGE_AXIS));
 
         // Display project name, tables, and students
         projectTitle = new DynamicLabel("Current Project: NULL", x, y/15, Color.BLACK);
-        CustomPanel row1 = new CustomPanel();
+        CustomPanel row1 = new CustomPanel(x, y/12);
+        row1.setLayout(new FlowLayout(FlowLayout.LEFT));
             DynamicLabel studentHeader = new DynamicLabel("Student List:", x, y/20, Color.BLACK);
             studentHeaderStatus = new DynamicLabel("Empty", x, y/20, Color.RED);
         row1.add(studentHeader);
         row1.add(studentHeaderStatus);
         numOfStudents = new DynamicLabel("Students: NULL", x, y/30, Color.BLACK);
         // Elements that need to be generate or are already generated
-        CustomPanel row2 = new CustomPanel();
-            DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
+        CustomPanel row2 = new CustomPanel(x, y/12);
+        row2.setLayout(new FlowLayout(FlowLayout.LEFT));
+        DynamicLabel seatingHeader = new DynamicLabel("Seating Arrangement:", x, y/20, Color.BLACK);
             seatingHeaderStatus = new DynamicLabel("Not Generated", x, y/20, Color.RED);
 
         row2.add(seatingHeader);
@@ -262,15 +260,23 @@ public class DashboardLayout extends CustomPanel {
         bottomRow.add(Box.createHorizontalGlue());
         bottomRow.add(btnCont2);
 
+        projectTitle.setAlignmentX( Component.LEFT_ALIGNMENT );
+        row1.setAlignmentX( Component.LEFT_ALIGNMENT );
+        numOfStudents.setAlignmentX( Component.LEFT_ALIGNMENT );
+        row2.setAlignmentX( Component.LEFT_ALIGNMENT );
+        tablenum.setAlignmentX( Component.LEFT_ALIGNMENT );
+        tableSizeLabel.setAlignmentX( Component.LEFT_ALIGNMENT );
+
         // Adds buttons and information to the frame
         frames[2].add(projectTitle);
-        frames[2].add(Box.createVerticalGlue());
+        frames[2].add(Box.createVerticalStrut(y/8));
         frames[2].add(row1);
         frames[2].add(numOfStudents);
+        frames[2].add(Box.createVerticalStrut(y/15));
         frames[2].add(row2);
         frames[2].add(tablenum);
         frames[2].add(tableSizeLabel);
-        frames[2].add(Box.createVerticalGlue());
+        frames[2].add(Box.createVerticalStrut(y/8));
         frames[2].add(bottomRow);
         this.add(frames[2], BorderLayout.CENTER);
     }
