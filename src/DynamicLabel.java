@@ -1,7 +1,7 @@
 /**
  * DynamicLabel.java
  * Version 1.0;
- * @author Bao, Xu
+ * @author Xu, Bao
  * Febuary 14, 2019
  * Layout for text to show
  **/

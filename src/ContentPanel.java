@@ -1,7 +1,7 @@
 /**
  * ContentPanel.java
  * Version 1.0;
- * @author Bao, Xu
+ * @author Xu, Bao
  * Febuary 13, 2019
  * Template to create panels with information on them
  **/

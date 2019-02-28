@@ -87,7 +87,7 @@ public class FileIOManager{
 
         }
         else {
-            //System.out.println("No Selection ");
+            //No selection
             selected = false;
         }
         return selected;

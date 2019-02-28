@@ -1,7 +1,7 @@
 /**
  * StudentManagerLayout.java
  * Version 1.0;
- * @author Bao, Xu
+ * @author Xu, Bao
  * Febuary 16, 2019
  * Layout to see and edit students
  **/
@@ -18,8 +18,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 // Util
 import java.util.ArrayList;
-
-//TODO: Add button to generate test student data
 
 public class StudentManagerLayout extends CustomPanel{
     // Class variables
@@ -159,15 +157,15 @@ public class StudentManagerLayout extends CustomPanel{
         initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
         initPane.setBorder(new EmptyBorder(x/40, x/40, x/40, x/40));
             CustomPanel row1 = new CustomPanel();
-            //row1.setBackground(Color.RED);
-            CustomPanel namePanel = new CustomPanel();
+            row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
+            CustomPanel namePanel = new CustomPanel(x/3,y/12);
             namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel nameLabel = new DynamicLabel("Full Name", x/3, y/30, Color.BLACK);
                 nameField = new CustomJTextField(15, x/3, y/40);
             namePanel.add(nameLabel);
             namePanel.add(nameField);
 
-            CustomPanel numberPanel = new CustomPanel();
+            CustomPanel numberPanel = new CustomPanel(x/3,y/12);
             numberPanel.setLayout(new BoxLayout(numberPanel, BoxLayout.PAGE_AXIS));
                 DynamicLabel numLabel = new DynamicLabel("Student Number", x/3, y/30, Color.BLACK);
                 numField = new CustomJTextField(15, x/3, y/40);
@@ -177,9 +175,10 @@ public class StudentManagerLayout extends CustomPanel{
                             e.consume();
                     }
                 });
-            namePanel.add(numLabel);
-            namePanel.add(numField);
+            numberPanel.add(numLabel);
+            numberPanel.add(numField);
             row1.add(namePanel);
+            row1.add(Box.createHorizontalStrut(x/15));
             row1.add(numberPanel);
 
             CustomPanel row2 = new CustomPanel();
@@ -195,6 +194,7 @@ public class StudentManagerLayout extends CustomPanel{
         row4.add(errorLabel);
         errorLabel.setText("");
         initPane.add(row1);
+        initPane.add(Box.createVerticalStrut(y/20));
         initPane.add(row2);
         initPane.add(row4);
 
@@ -255,7 +255,6 @@ public class StudentManagerLayout extends CustomPanel{
                         int index = students.indexOf(chart.getStudent(students));
                         students.set(index, newStudent);
                         chart.updateStudent(newStudent);
-                        //System.out.println("saved edited student");
                     } else {
                         students.add(newStudent);
                         chart.loadStudents(students);
@@ -291,18 +290,14 @@ public class StudentManagerLayout extends CustomPanel{
             numField.setEditable(true);
             super.changeHeader("New Student", "Create a new student.");
         } else { // Edit student
-            //TODO: Uncheck all the add friend options when they are loaded
             editingMode = true;
             super.changeHeader("Edit Student", "Edit an existing student.");
-            //System.out.println(students);
             Student selectedStudent = chart.getStudent(students);
-            //System.out.println(selectedStudent);
             numField.setText(selectedStudent.getStudentNumber());
             numField.setEditable(false);
             nameField.setText(selectedStudent.getName());
             dietSelector.setDiet(selectedStudent.getDietaryRestrictions());
             likesSelector.setLikes(selectedStudent.getFriendStudentNumbers());
-            //System.out.println("editing panel styled");
         }
     }
     /**

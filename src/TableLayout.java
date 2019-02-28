@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 // Util
 import java.util.ArrayList;
 
-//TODO: Implement horizontal scrolling
 
 public class TableLayout extends CustomPanel {
     // Class variable

@@ -1,7 +1,7 @@
 /**
  * DashboardLayout.java
  * Version 1.0;
- * @author Bao, Xu
+ * @author Xu, Bao
  * Febuary 15, 2019
  * Layout for dashboard to appear in
  **/
@@ -16,8 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //Util
 import java.util.ArrayList;
-
-//TODO: Align elements
 
 public class DashboardLayout extends CustomPanel {
     // Class variables
@@ -118,18 +116,21 @@ public class DashboardLayout extends CustomPanel {
         frames[1] = new CustomPanel();
         frames[1].setLayout(new BoxLayout(frames[1], BoxLayout.PAGE_AXIS));
 
-            DynamicLabel header = new DynamicLabel("New Project", x, y/15, Color.BLACK);
+            CustomPanel headerPanel = new CustomPanel();
+            DynamicLabel header = new DynamicLabel("New Project", x, y/20, Color.BLACK);
+            headerPanel.add(header);
+
             JPanel initPane = new JPanel();
             initPane.setBackground(Color.WHITE);
             initPane.setLayout(new BoxLayout(initPane, BoxLayout.PAGE_AXIS));
             initPane.setBorder(new EmptyBorder(x/40, x/40, x/40, x/40));
 
             // Takes in a project name and table size
-                DynamicLabel nameLabel = new DynamicLabel("Project Name", x, y/20, Color.BLACK);
-                CustomJTextField nameField = new CustomJTextField(15, x, y/40);
+                DynamicLabel nameLabel = new DynamicLabel("Project Name", x, y/30, Color.BLACK);
+                CustomJTextField nameField = new CustomJTextField(15, x, y/30);
                 nameField.setPreferredSize(new Dimension(x/2, y/20));
-                DynamicLabel tableLabel = new DynamicLabel("Table Size", x, y/20, Color.BLACK);
-                CustomJTextField tableField = new CustomJTextField(15, x, y/40);
+                DynamicLabel tableLabel = new DynamicLabel("Table Size", x, y/30, Color.BLACK);
+                CustomJTextField tableField = new CustomJTextField(15, x, y/30);
                 tableField.setPreferredSize(new Dimension(x/2, y/20));
 
             DynamicLabel errorLabel = new DynamicLabel("Placeholder text. I hope Mr.Mangat gives me a good mark.", x/2, y/20, Color.RED);
@@ -137,14 +138,15 @@ public class DashboardLayout extends CustomPanel {
             // Add components to inner tabs
             initPane.add(nameLabel);
             initPane.add(nameField);
+            initPane.add(Box.createVerticalStrut(y/20));
             initPane.add(tableLabel);
             initPane.add(tableField);
             initPane.add(errorLabel);
 
             // Buttons to save or cancel the project
             CustomPanel row2 = new CustomPanel(x/3, y/15);
-            //row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
-                CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/30);
+            row2.setLayout(new BoxLayout(row2, BoxLayout.LINE_AXIS));
+                CustomButton cancelBtn = new CustomButton("Cancel", 2,  x, y/40);
                 cancelBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -154,7 +156,7 @@ public class DashboardLayout extends CustomPanel {
                         showFrame(0);
                     }
                 });
-                CustomButton saveBtn = new CustomButton("Save", 2,  x, y/30);
+                CustomButton saveBtn = new CustomButton("Save", 2,  x, y/40);
                 saveBtn.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e)
@@ -188,12 +190,14 @@ public class DashboardLayout extends CustomPanel {
                     }
                 });
             row2.add(cancelBtn);
-            //row1.add(Box.createHorizontalGlue());
+            row2.add(Box.createHorizontalStrut(x/4));
             row2.add(saveBtn);
 
         // Adds fields and label to frame
-        frames[1].add(header);
+        frames[1].add(headerPanel);
+        frames[1].add(Box.createVerticalStrut(y/15));
         frames[1].add(initPane);
+        frames[1].add(Box.createVerticalStrut(y/15));
         frames[1].add(row2);
 
         this.add(frames[1], BorderLayout.CENTER);

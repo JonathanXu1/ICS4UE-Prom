@@ -1,7 +1,7 @@
 /**
  * FriendSelector.java
  * Version 1.0;
- * @author Bao, Xu
+ * @author Xu,Bao
  * Febuary 19, 2019
  * Adds friends when creating new students
  **/
@@ -11,14 +11,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // Graphics & GUI imports
-import javax.swing.AbstractButton;
-import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
-import javax.swing.BoxLayout;
+import javax.swing.*;
 // Utils
 import java.util.ArrayList;
-
-//TODO: Add feature so that new students are entered by student number, and name is selected by match instead of dropdown.
 
 public class FriendSelector extends CustomPanel {
     // Class variables
@@ -40,7 +35,10 @@ public class FriendSelector extends CustomPanel {
 
         // Button and components
         CustomPanel row1 = new CustomPanel();
+        row1.setLayout(new BoxLayout(row1, BoxLayout.LINE_AXIS));
         DynamicLabel likesLabel = new DynamicLabel("Likes", x, y/15, Color.BLACK);
+        CustomPanel btnRow = new CustomPanel();
+        btnRow.setLayout(new FlowLayout(FlowLayout.RIGHT));
         deleteLikesBtn = new CustomButton("Delete", 2, x, y/20);
         deleteLikesBtn.setEnabled(false);
         deleteLikesBtn.addActionListener(new ActionListener() {
@@ -50,10 +48,13 @@ public class FriendSelector extends CustomPanel {
             }
         });
         addBtn = new CustomButton("Add", 2, x, y/20);
+        btnRow.add(deleteLikesBtn);
+        btnRow.add(addBtn);
 
         row1.add(likesLabel);
-        row1.add(deleteLikesBtn);
-        row1.add(addBtn);
+        row1.add(Box.createHorizontalGlue());
+        row1.add(btnRow);
+
 
         selector = new CustomPanel();
         selector.setLayout(new GridLayout(0, 2));
@@ -86,7 +87,7 @@ public class FriendSelector extends CustomPanel {
                     String[] otherList = studentNames.toArray(new String[0]);
                     String s = (String)JOptionPane.showInputDialog(
                             selector,
-                            "Add any friends you would like to sit with.",
+                            "Add any friends you would like to sit with. \n Leave the selection blank to choose a student that has not been added yet.",
                             "Selector Dialog",
                             JOptionPane.PLAIN_MESSAGE,
                             null,

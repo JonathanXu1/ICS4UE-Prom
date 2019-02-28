@@ -1,7 +1,7 @@
 /**
  * StudentChart.java
  * Version 1.0;
- * @author Bao, Xu
+ * @author Xu, Bao
  * Febuary 19, 2019
  * Puts students into chart display
  **/
@@ -17,8 +17,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 // Util
 import java.util.ArrayList;
-
-//TODO: Selecting students (edit/delete) messes up when tables are sorted
 
 public class StudentChart extends Chart {
     // Class variables
@@ -116,7 +114,6 @@ public class StudentChart extends Chart {
         model.setValueAt(token[0], row, 1);
         model.setValueAt(token[1], row, 2);
         model.setValueAt(updatedStudent.getFriendStudentNumbers(), row, 3);
-        //System.out.println(updatedStudent.getFriendStudentNumbers());
         model.setValueAt(updatedStudent.getDietaryRestrictions(), row, 4);
     }
 
@@ -141,12 +138,8 @@ public class StudentChart extends Chart {
         Student selectedStudent = null;
         // Searches for student
         for(Student target : reference){
-            //System.out.println(target.getStudentNumber());
-            //System.out.println(model.getValueAt(row, 0));
-            //System.out.println();
             if(target.getStudentNumber().equals(model.getValueAt(row, 0))){
                 selectedStudent = target;
-                //System.out.println("goteem");
             }
         }
         return selectedStudent;
@@ -162,8 +155,6 @@ public class StudentChart extends Chart {
 
         // Get row and column count
         int rowCount = table.getRowCount();
-        int colCount = table.getColumnCount();
-        //TODO: Compare only student numbers instead of everything
 
         // Get Current Table Entry
         String curNum = (String)entry;
