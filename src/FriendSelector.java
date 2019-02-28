@@ -80,6 +80,7 @@ public class FriendSelector extends CustomPanel {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     ArrayList<String> studentNames = new ArrayList<String>();
+                    studentNames.add("<Empty>");
                     for (Student student : students){
                         studentNames.add(student.getName());
                     }
@@ -96,13 +97,15 @@ public class FriendSelector extends CustomPanel {
 
                     //Add listing if it doesn't exist already
                     if (s == "<Empty>") {
-                        // Checks if new listing is valid
-                        while (s.length() != 9 || !s.matches("[0-9]+")) {
-                            s = (String) JOptionPane.showInputDialog("Enter the student number of your friend");
-                            if (s.length() != 9 || !s.matches("[0-9]+")) {
-                                JOptionPane.showMessageDialog(null, "Not a valid student number.");
+                        // Null is expected and will not be added
+                        try {
+                            while (s != null || s.length() != 9 || !s.matches("[0-9]+")) {
+                                s = (String) JOptionPane.showInputDialog("Enter the student number of your friend");
+                                if (s.length() != 9 || !s.matches("[0-9]+")) {
+                                    JOptionPane.showMessageDialog(null, "Not a valid student number.");
+                                }
                             }
-                        }
+                        }catch(NullPointerException e1){};
                     }
 
                     if ((s != null) && (s.length() > 0)) {

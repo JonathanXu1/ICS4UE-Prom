@@ -1,11 +1,5 @@
-2
+0
 20.0
 20.0
 1000.0
 1000.0
-0.0
-0.0
-233333322:David Bao:Nut Allergy|029933334:I ammad:Shellfish Allergy|335548078:Nasty Pen:Peanut Allergy,Soy Allergy,Shellfish Allergy,Shellfish Allergy|233300999:Big Chu:|
-0.08
-0.0
-002093939:Big Chungus:bad|230430030:Jonathan Xu:Fish Allergy,Nut Allergy|023903939:Mr. Mangat:|335548079:Jonathan Xu:Soy Allergy,Shellfish Allergy,yeets|
