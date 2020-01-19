@@ -2,19 +2,18 @@
 Repo for the grade 12 ap cs prom program
 
 ## Screenshots
-![Welcome screen](https://ibb.co/2FW3fHH)
+[Welcome screen](http://ibb.co/2FW3fHH)
 
-![Dashboard](https://ibb.co/fCZ7rNZ)
+[Dashboard](https://ibb.co/fCZ7rNZ)
 
-![Student manager](https://ibb.co/w4x4Kxh)
+[Student manager](https://ibb.co/w4x4Kxh)
 
-![New student](https://ibb.co/Jq9615g)
+[New student](https://ibb.co/Jq9615g)
 
-![Seating Generator](https://ibb.co/dLvxNbp)
+[Seating Generator](https://ibb.co/dLvxNbp)
 
-![Table menu](https://ibb.co/KV2T1Nk)
+[Table menu](https://ibb.co/KV2T1Nk)
 
-![Seating generation](https://ibb.co/h10tvj1)
+[Seating generation](https://ibb.co/h10tvj1)
 
-![Table display](https://ibb.co/Y7dw4TP)
-
+[Table display](https://ibb.co/Y7dw4TP)
